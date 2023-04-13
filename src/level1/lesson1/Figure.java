@@ -1,4 +1,4 @@
-package lesson1;
+package level1.lesson1;
 
 public class Figure {
     private String name;
