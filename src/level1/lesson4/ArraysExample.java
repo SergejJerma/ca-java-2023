@@ -18,9 +18,13 @@ public class ArraysExample {
         // declare an array
         int[] age2 = new int[5];
 
-// initialize array
+        // initialize array
         age2[0] = 12;
         age2[1] = 4;
         age2[2] = 5;
+
+        String transaction = "xxxxxx,yyyyy,zzzzz";
+        String [] transactionDetails = transaction.split(",");
+        System.out.println(transactionDetails[0]);
     }
 }
