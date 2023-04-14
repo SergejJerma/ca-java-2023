@@ -10,7 +10,7 @@ public class ArraysExample {
         String [] age = {"12", "4", "5", "2", "5"};
 
         int getArrayIndex = Arrays.asList(age).indexOf("4");
-        System.out.println("Index of 12: " + getArrayIndex);
+        System.out.println("Index of 4: " + getArrayIndex);
 
         // access each array elements
         System.out.println("Accessing Elements of Array:");
