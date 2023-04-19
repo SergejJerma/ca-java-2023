@@ -1,9 +1,14 @@
 package level1.tasks;
 
+
+import level1.lesson5.Auto;
+
 import java.util.Arrays;
 
 public class ArrayString {
+
     public static void main(String[] args) {
+
         String[] names = {"Jonas", "Petras", "Marytė"};
         System.out.println(names[0]);
 
