@@ -18,4 +18,8 @@ public class Task1 {
     public static void m3() {
         System.out.println("third");
     }
+
+    public static void print(String name, String surname, String lang, int monthNumber) {
+        System.out.println("Aš, "+ name);
+    }
 }
