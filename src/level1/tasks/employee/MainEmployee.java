@@ -1,4 +1,4 @@
-package level1.tasks;
+package level1.tasks.employee;
 
 public class MainEmployee {
     public static void main(String[] args) {

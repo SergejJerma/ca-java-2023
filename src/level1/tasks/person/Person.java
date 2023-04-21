@@ -1,4 +1,4 @@
-package level1.tasks;
+package level1.tasks.person;
 
 public class Person {
     private String name;

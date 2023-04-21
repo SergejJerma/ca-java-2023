@@ -1,9 +1,12 @@
-package level1.tasks;
+package level1.tasks.employee;
+
+import java.util.List;
 
 public class Employee {
     private Double salary;
     private String position;
     private Integer workHours;
+    private List<Bank> bank;
 
     public Employee() {
     }
