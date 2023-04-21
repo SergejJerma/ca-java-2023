@@ -33,7 +33,7 @@ public class MainTank {
 			break;
 			case "q": tank.doShot();
 			break;
-			case "i": tank.printTankInfo();
+			case "i": System.out.println(tank);
 			break;
 			case "x": isProcessing = false;
 			System.out.println("Gave Over");

@@ -56,16 +56,25 @@ public class Tank {
         }
     }
 
-    public void printTankInfo() {
-        System.out.println("Tank shots: " + shotToNorth + " to NORTH, " + shotToEast + " to EAST, " + shotToWest + " to WEST, " + shotToSouth + " to NORTH. " + "All shots: " + allShots);
-        System.out.println("Position:" + "(" + xPosition + ";" + yPosition + ")" + " Directio to " + direction + "\n");
-    }
-
     public void printActionDateTime() {
         LocalDateTime dateTime = LocalDateTime.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
         String formattedDateTime = dateTime.format(dtf);
         System.out.print("[" + formattedDateTime + "]");
+    }
+
+    @Override
+    public String toString() {
+        return "Tank{" +
+                "xPosition=" + xPosition +
+                ", yPosition=" + yPosition +
+                ", shotToNorth=" + shotToNorth +
+                ", shotToEast=" + shotToEast +
+                ", shotToWest=" + shotToWest +
+                ", shotToSouth=" + shotToSouth +
+                ", allShots=" + allShots +
+                ", direction='" + direction + '\'' +
+                '}';
     }
 
 }
