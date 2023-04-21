@@ -7,6 +7,8 @@ public class Main {
 //        b.print();
 //        System.out.println(b);
 
+        Object ob = new Object();
+
         Dog dog = new Dog();
         dog.doing();
     }
