@@ -76,5 +76,4 @@ public class Tank {
                 ", direction='" + direction + '\'' +
                 '}';
     }
-
 }
