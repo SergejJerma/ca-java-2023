@@ -5,7 +5,7 @@ public class SfTask1 {
         String vardas = "Petras";
         String pavarde = "Petraitis";
         int gimimoMetai = 1977;
-        double ugis = 1.90f;
+        double ugis = 1.902123f;
 
         System.out.println(String.format("Asmens %s %s, gimusio %dm., ugis yra %.2fm.", vardas, pavarde, gimimoMetai, ugis));
     }
