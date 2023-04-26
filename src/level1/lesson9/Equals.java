@@ -10,7 +10,28 @@ public class Equals {
 
         //compareObjects();
 
-        compareTanks();
+        //compareTanks();
+
+        compareStrings();
+    }
+
+    private static void compareStrings() {
+        //Initialize a String object without using constructor:
+        // Java automagically puts a new string into some string bucket
+        // But if such string already exists - java does not create a new string object - instead it uses the one
+        // that already exists in the bucket
+        String a = "aaa";
+        String a1 = "aaa";
+
+        System.out.println(a == a1);    //true
+
+        //Initialize a String object using constructor
+        String a2 = new String("aaa");
+
+        System.out.println(a == a2);    //false
+
+
+        System.out.println(a.equals(a2));   //true
     }
 
     private static void compareTanks() {
