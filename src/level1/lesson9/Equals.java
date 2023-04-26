@@ -1,8 +1,23 @@
 package level1.lesson9;
 
 public class Equals {
+
+
     public static void main(String[] args) {
-        comparePrimitives();
+        //comparePrimitives();
+
+        compareObjects();
+
+    }
+
+    private static void compareObjects() {
+        String a = new String("Namas");
+        String b = new String("Namas");
+        String c = new String("Miestas");
+
+        System.out.println(a == b); // false
+        System.out.println(a == c); // false
+        System.out.println(b == c); // false
     }
 
     private static void comparePrimitives() {
