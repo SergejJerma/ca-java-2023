@@ -15,9 +15,14 @@ public class Equals {
         String b = new String("Namas");
         String c = new String("Miestas");
 
-        System.out.println(a == b); // false
-        System.out.println(a == c); // false
-        System.out.println(b == c); // false
+//        System.out.println(a == b); // false
+//        System.out.println(a == c); // false
+//        System.out.println(b == c); // false
+
+        System.out.println(a.equals(b));  //true
+        System.out.println(a.equals(c));  //false
+        System.out.println(b.equals(c));  //false
+
     }
 
     private static void comparePrimitives() {
