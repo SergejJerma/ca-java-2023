@@ -12,7 +12,21 @@ public class Equals {
 
         //compareTanks();
 
-        compareStrings();
+        //compareStrings();
+
+        compareArrays();
+    }
+
+    private static void compareArrays() {
+        String obuolys = "obuolys";
+        String apelsinas = "apelsinas";
+        String bananas = "bananas";
+
+        String[] array1 = {obuolys, apelsinas, bananas};
+        String[] array2 = {obuolys, apelsinas, bananas};
+
+        System.out.println(array1 == array2);   //false
+        System.out.println(array1[0] == array2[0]); //true
     }
 
     private static void compareStrings() {
