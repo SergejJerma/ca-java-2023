@@ -23,6 +23,8 @@ public class Equals {
         System.out.println(a.equals(c));  //false
         System.out.println(b.equals(c));  //false
 
+        a=b;
+        System.out.println(a == b); // false
     }
 
     private static void comparePrimitives() {
