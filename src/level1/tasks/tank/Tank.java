@@ -6,12 +6,27 @@ import java.time.format.DateTimeFormatter;
 public class Tank {
     private int xPosition;
     private int yPosition;
+
     private int shotToNorth;
     private int shotToEast;
     private int shotToWest;
     private int shotToSouth;
     private int allShots;
     private String direction;
+
+    @Override
+    public boolean equals(Object anObject) {
+
+        if (this == anObject) {
+            return true;
+        }
+
+        return (anObject instanceof Tank aTank)
+                && this.shotToEast == aTank.shotToEast
+                && this.shotToNorth == aTank.shotToNorth
+                && this.shotToSouth == aTank.shotToSouth
+                && this.shotToWest == aTank.shotToWest;
+    }
 
     public void moveForward() {
         yPosition++;

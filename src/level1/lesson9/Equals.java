@@ -1,13 +1,24 @@
 package level1.lesson9;
 
+import level1.tasks.tank.Tank;
+
 public class Equals {
 
 
     public static void main(String[] args) {
         //comparePrimitives();
 
-        compareObjects();
+        //compareObjects();
 
+        compareTanks();
+    }
+
+    private static void compareTanks() {
+        Tank tank1 = new Tank();
+        Tank tank2 = new Tank();
+        System.out.println("tank equals: " + tank1.equals(tank2));
+
+        System.out.println("tank == " + (tank1 == tank2)); // false
     }
 
     private static void compareObjects() {
