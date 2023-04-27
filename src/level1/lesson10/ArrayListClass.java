@@ -6,10 +6,51 @@ import java.util.Iterator;
 public class ArrayListClass {
     public static void main(String[] args) {
         iterationOverList();
+        dynamicElementRemoval();
+    }
 
+    private static void dynamicElementRemoval() {
+        System.out.println("dynamicElementRemoval");
+        ArrayList<String> arrlist = new ArrayList<>();
+        arrlist.add("Vilnius");
+        arrlist.add("Kaunas");
+        arrlist.add("Klaipeda");
+        arrlist.add("Siauliai");
+
+        //Throws ConcurrentModificationException
+//        for (String str : arrlist) {
+//            System.out.println(str);
+//            arrlist.remove(str);
+//        }
+
+        //Throws IndexOutOfBoundsException
+//        int size = arrlist.size();
+//        for (int counter = 0; counter < size; counter++) {
+//            System.out.println(arrlist.get(counter));
+//            arrlist.remove(counter);
+//        }
+
+
+        //Throws IndexOutOfBoundsException
+//        int count = 0;
+//        int size = arrlist.size();
+//        while (size > count) {
+//            System.out.println(arrlist.get(count));  count++;
+//            arrlist.remove(count);
+//        }
+
+        //The way to remove every element dynamically
+        Iterator<String> iter = arrlist.iterator();
+        while (iter.hasNext()) {
+            String element = iter.next();
+            System.out.println(element);
+            iter.remove();
+        }
+        System.out.println("Size after removing every element = " + arrlist.size());
     }
 
     private static void iterationOverList() {
+        System.out.println("iterationOverList");
         ArrayList<String> arrlist = new ArrayList<>();
         arrlist.add("Vilnius");
         arrlist.add("Kaunas");
