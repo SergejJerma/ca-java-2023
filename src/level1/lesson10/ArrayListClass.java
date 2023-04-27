@@ -1,12 +1,36 @@
 package level1.lesson10;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 public class ArrayListClass {
     public static void main(String[] args) {
-        iterationOverList();
-        dynamicElementRemoval();
+//        iterationOverList();
+//        dynamicElementRemoval();
+        listElementSorting();
+    }
+
+    private static void listElementSorting() {
+        System.out.println("listElementSorting");
+
+        ArrayList<String> arrList = new ArrayList<>();
+        arrList.add("Vilnius");
+        arrList.add("Kaunas");
+        arrList.add("Kaunas2");
+        arrList.add("Klaipeda");
+        arrList.add("Siauliai");
+
+        System.out.println(arrList);
+
+        Collections.sort(arrList);
+        System.out.println(arrList);
+
+        Collections.sort(arrList, Collections.reverseOrder());
+        System.out.println(arrList);
+
+        arrList.sort(Collections.reverseOrder());
+        System.out.println(arrList);
     }
 
     private static void dynamicElementRemoval() {
