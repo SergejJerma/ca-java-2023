@@ -11,7 +11,21 @@ public class ArrayListClass {
 //        listElementSorting();
 //        listAugmentation();
 
-        listElementSwap();
+//        listElementSwap();
+
+        showCannotAddPrimitiveTypesToCollection();
+    }
+
+    private static void showCannotAddPrimitiveTypesToCollection() {
+        System.out.println("showCannotAddPrimitiveTypesToCollection");
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        int intVerte = 1;
+        arrayList.add(intVerte);
+        System.out.println("Idetas elementas priklauso klasei: " + arrayList.get(0).getClass());
+
+        Integer intObjektas = arrayList.get(0);
+        int primityvusIntKinatamasis = intObjektas.intValue();
+        System.out.println("primityvusIntKinatamasis: " + primityvusIntKinatamasis);
     }
 
     private static void listElementSwap() {
@@ -23,7 +37,7 @@ public class ArrayListClass {
         System.out.println("Pirmas  sarasas: " + pirmasSarasas);
 
         Collections.swap(pirmasSarasas, 0, 2);
-        System.out.println("Pirmas  sarasas  po  apkeitimo: " +  pirmasSarasas);
+        System.out.println("Pirmas  sarasas  po  apkeitimo: " + pirmasSarasas);
     }
 
     private static void listAugmentation() {
