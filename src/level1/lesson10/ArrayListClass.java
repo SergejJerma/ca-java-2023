@@ -8,7 +8,28 @@ public class ArrayListClass {
     public static void main(String[] args) {
 //        iterationOverList();
 //        dynamicElementRemoval();
-        listElementSorting();
+//        listElementSorting();
+        listAugmentation();
+    }
+
+    private static void listAugmentation() {
+        System.out.println("listAugmentation");
+
+        ArrayList<String> pirmasSarasas = new ArrayList<>();
+        pirmasSarasas.add("Vilnius");
+        pirmasSarasas.add("Kaunas");
+        pirmasSarasas.add("Klaipeda");
+        pirmasSarasas.add("Siauliai");
+
+        System.out.println("Pirmas sarasas: " + pirmasSarasas);
+
+        ArrayList<String> antrasSarasas = new ArrayList<>();
+        antrasSarasas.add("Panevezys");
+        antrasSarasas.add("Utena");
+        System.out.println("Antras sarasas: " + antrasSarasas);
+
+        pirmasSarasas.addAll(antrasSarasas);
+        System.out.println("Papildytas pirmas sarasas: " + pirmasSarasas);
     }
 
     private static void listElementSorting() {
@@ -97,7 +118,8 @@ public class ArrayListClass {
         System.out.println("\nWHILE ciklas");
         int count = 0;
         while (arrlist.size() > count) {
-            System.out.println(arrlist.get(count));  count++;
+            System.out.println(arrlist.get(count));
+            count++;
         }
 
         /* WHILE + ITERATOR */
