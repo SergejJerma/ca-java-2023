@@ -9,7 +9,21 @@ public class ArrayListClass {
 //        iterationOverList();
 //        dynamicElementRemoval();
 //        listElementSorting();
-        listAugmentation();
+//        listAugmentation();
+
+        listElementSwap();
+    }
+
+    private static void listElementSwap() {
+        ArrayList<String> pirmasSarasas = new ArrayList<>();
+        pirmasSarasas.add("Vilnius");
+        pirmasSarasas.add("Kaunas");
+        pirmasSarasas.add("Klaipeda");
+        pirmasSarasas.add("Siauliai");
+        System.out.println("Pirmas  sarasas: " + pirmasSarasas);
+
+        Collections.swap(pirmasSarasas, 0, 2);
+        System.out.println("Pirmas  sarasas  po  apkeitimo: " +  pirmasSarasas);
     }
 
     private static void listAugmentation() {
