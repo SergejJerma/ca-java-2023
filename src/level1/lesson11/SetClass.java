@@ -26,6 +26,8 @@ public class SetClass {
             System.out.println(it.next());
         }
 
+        System.out.println("aibe.isEmpty(): " + aibe.isEmpty());
+
         boolean contains = aibe.contains("Fig");
         System.out.println("Aibe contains Fig: " + contains);
 
