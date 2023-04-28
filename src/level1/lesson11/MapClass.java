@@ -47,5 +47,22 @@ public class MapClass {
             System.out.println("key is: " + entry.getKey() + " & Value is: " + entry.getValue());
         }
 
+        System.out.println("HashMap dydis: "+ map.size());
+
+        String removed =  map.remove("key3");
+        System.out.println("Istrinta reiksme: " + removed);
+        System.out.println("map: " + map);
+
+
+        System.out.println("map.isEmpty(): " + map.isEmpty());
+
+        boolean containsKey = map.containsKey("key2");
+        System.out.println("map containsKey key2: " + containsKey);
+
+        boolean containsValue = map.containsValue("value4");
+        System.out.println("map containsValue value4: " + containsValue);
+
+        map.clear();
+        System.out.println("map atlikus clear(): " + map);
     }
 }
