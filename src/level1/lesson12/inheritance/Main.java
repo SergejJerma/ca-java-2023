@@ -7,18 +7,26 @@ public class Main {
         Asmuo asmuo = new Asmuo("Petras", "Petraitis", "39901010000");
         System.out.println(String.format("Asmuo: %s %s %s", asmuo.getVardas(), asmuo.getPavarde(), asmuo.asmensKodas));
 
+        System.out.println(asmuo.getInfo());
+
         Studentas studentas = new Studentas("Antanas", "Antanaitis", "39901011111", "123456");
         System.out.println(String.format("Studentas: %s %s %s %s", studentas.getVardas(), studentas.getPavarde(), studentas.asmensKodas,
                 studentas.getStudentoPazymejimoNr()));
+
+        System.out.println(studentas.getInfo());
 
         Darbuotojas darbuotojas = new Darbuotojas("Mantas", "Mantauskas", "39901012222", "333");
         System.out.println(String.format("Darbuotojas: %s %s %s %s", darbuotojas.getVardas(), darbuotojas.getPavarde(), darbuotojas.asmensKodas,
                 darbuotojas.getSocDraudimoNr()));
 
+        System.out.println(darbuotojas.getInfo());
+
         ImonesXDarbuotojas xDarbuotojas = new ImonesXDarbuotojas("Onute", "Mantauskiene",
                 "49901012222", "444", "X000");
         System.out.println(String.format("ImonesXDarbuotojas: %s %s %s %s %s", xDarbuotojas.getVardas(), xDarbuotojas.getPavarde(), xDarbuotojas.getAsmensKodas(),
                 xDarbuotojas.getSocDraudimoNr(), xDarbuotojas.getxNr()));
+
+        System.out.println(xDarbuotojas.getInfo());
 
 
         ImonesXDarbuotojas xDarbuotojas2 = new ImonesXDarbuotojas(darbuotojas, "xNr");

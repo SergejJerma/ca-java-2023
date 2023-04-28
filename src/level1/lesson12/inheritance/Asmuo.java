@@ -19,6 +19,10 @@ public class Asmuo {
         this.asmensKodas = asmensKodas;
     }
 
+    public String getInfo() {
+        return String.format("Asmuo: %s-%s-%s", vardas, pavarde, asmensKodas);
+    }
+
     public String getVardas() {
         return vardas;
     }

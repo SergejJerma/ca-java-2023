@@ -23,6 +23,12 @@ class ImonesXDarbuotojas extends Darbuotojas {
         this.xNr = xNr;
     }
 
+    @Override
+    public String getInfo() {
+        System.out.println("ImonesXDarbuotojas perraso (override'ina is Darbuotojas paveldeta metoda 'getInfo')");
+        return String.format("ImonesXDarbuotojas: %s-%s-%s-%s-%s", vardas, pavarde, asmensKodas, socDraudimoNr, xNr);
+    }
+
     public String getxNr() {
         return xNr;
     }

@@ -18,9 +18,9 @@ class Studentas extends Asmuo {
     }
 
     @Override
-    public void setVardas(String vardas) {
-        this.vardas = vardas;
-        System.out.println("keiciamas asmens vardas");
+    public String getInfo(/* argumentai turi taip pat sutapti! */) {
+        System.out.println("Studentas perraso (override'ina is Asmuo paveldeta metoda 'getInfo')");
+        return String.format("Studentas: %s-%s-%s-%s", vardas, pavarde, asmensKodas, studentoPazymejimoNr);
     }
 
     public String getStudentoPazymejimoNr() {

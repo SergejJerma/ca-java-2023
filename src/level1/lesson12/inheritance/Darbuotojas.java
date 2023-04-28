@@ -17,6 +17,12 @@ class Darbuotojas extends Asmuo {
         this.socDraudimoNr = socDraudimoNr;
     }
 
+    @Override
+    public String getInfo() {
+        System.out.println("Darbuotojas perraso (override'ina is Asmuo paveldeta metoda 'getInfo')");
+        return String.format("Darbuotojas: %s-%s-%s-%s", vardas, pavarde, asmensKodas, socDraudimoNr);
+    }
+
     public Darbuotojas(Darbuotojas d) {
         super(d.vardas, d.pavarde, d.asmensKodas);
         this.socDraudimoNr = d.getSocDraudimoNr();
