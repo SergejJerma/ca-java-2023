@@ -1,6 +1,8 @@
 package level1.lesson11;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 public class MapClass {
@@ -31,5 +33,19 @@ public class MapClass {
 
         Set<String> keys = map.keySet();
         System.out.println("keys:" + keys);
+
+        System.out.println("Iterate over map using while loop");
+        Set<Map.Entry<String, String>> set = map.entrySet();
+        Iterator iterator = set.iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, String> mentry = (Map.Entry) iterator.next();
+            System.out.println("key is: " + mentry.getKey() + " & Value is: " + mentry.getValue());
+        }
+
+        System.out.println("Iterate over map using for loop");
+        for (Map.Entry<String, String> entry: map.entrySet()) {
+            System.out.println("key is: " + entry.getKey() + " & Value is: " + entry.getValue());
+        }
+
     }
 }
