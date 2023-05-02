@@ -6,4 +6,8 @@ public class LietuviskasVaisius extends Vaisius {
     public void kasAsEsu() {
         System.out.println("LietuviskasVaisius");
     }
+
+    public void metodasKuriTuriTikLietuviskiVaisiai() {
+        System.out.println("MetodmetodasKuriTuriTikLietuviskiVaisiai");
+    }
 }

@@ -42,6 +42,19 @@ public class VaisiaiUzd1 {
     public static void testInstanceOf(Vaisius vaisius) {
         System.out.println(vaisius.getClass().getSimpleName() + " yra LietuviskasVaisius: " + (vaisius instanceof LietuviskasVaisius));
         System.out.println("Vaisius yra Object: " + (vaisius instanceof Object));
+
+        /*
+            Compile time error: ne visi vaisiai turi metoda 'metodasKuriTuriTikLietuviskiVaisiai'
+            Java turi buti uztikrinta, kad objektas gali vykdyti kvieciama metoda
+        */
+        //vaisius.metodasKuriTuriTikLietuviskiVaisiai();
+        if (vaisius instanceof LietuviskasVaisius) {
+            System.out.println(vaisius.getClass().getSimpleName());
+            System.out.println("Hey - cia juk lietuviskas vaisius");
+            System.out.println("kad galetume kviest metodasKuriTuriTikLietuviskiVaisiai reikia cast'inti i LietuviskasVaisius");
+            LietuviskasVaisius lietuviskasVaisius = (LietuviskasVaisius) vaisius;   //cast'inimas
+            lietuviskasVaisius.metodasKuriTuriTikLietuviskiVaisiai();
+        }
         System.out.println();
     }
 }
