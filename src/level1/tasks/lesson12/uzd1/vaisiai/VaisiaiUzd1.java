@@ -37,6 +37,17 @@ public class VaisiaiUzd1 {
 
         System.out.println("Ar kriause yra instanceOf LietuviskasVaisius? ");
         testInstanceOf(kriause);
+
+        testIsObjectPaveldimiMetodai(kriause);
+    }
+
+    private static void testIsObjectPaveldimiMetodai(Vaisius vaisius) {
+        System.out.println("toString: " + vaisius.toString()); //paveldim is Object; bet patys galim Override'inti
+        System.out.println("hashCode: " + vaisius.hashCode()); //paveldim is Object; bet patys galim Override'inti
+        System.out.println("equals: " + vaisius.equals(vaisius)); //paveldim is Object; bet patys galim Override'inti
+
+//        Vaisius vaisius2 = (Vaisius) vaisius.clone();   //java: clone() has protected access in java.lang.Object
+//        System.out.println(vaisius2.toString());
     }
 
     public static void testInstanceOf(Vaisius vaisius) {

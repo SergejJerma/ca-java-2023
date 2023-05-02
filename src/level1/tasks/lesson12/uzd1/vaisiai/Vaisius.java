@@ -5,4 +5,9 @@ public class Vaisius {
     public void kasAsEsu() {
         System.out.println("Vaisius");
     }
+
+    @Override
+    public String toString() {
+        return "Vaisius{}";
+    }
 }
