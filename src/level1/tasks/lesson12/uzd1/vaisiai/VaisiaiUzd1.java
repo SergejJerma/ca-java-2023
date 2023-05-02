@@ -54,6 +54,9 @@ public class VaisiaiUzd1 {
             System.out.println("kad galetume kviest metodasKuriTuriTikLietuviskiVaisiai reikia cast'inti i LietuviskasVaisius");
             LietuviskasVaisius lietuviskasVaisius = (LietuviskasVaisius) vaisius;   //cast'inimas
             lietuviskasVaisius.metodasKuriTuriTikLietuviskiVaisiai();
+
+            //ClassCastException - LietuviskasVaisius cannot be cast to class Alyvinis
+            //Alyvinis alyvinis = (Alyvinis) vaisius;
         }
         System.out.println();
     }
