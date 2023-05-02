@@ -21,7 +21,7 @@ public class VaisiaiUzd1 {
         kriause.kasAsEsu();
 
         Obuolys obuolys = new Obuolys();
-        obuolys.kasAsEsu();
+        obuolys.kasAsEsu(); //LietuviskasVaisius - nes paveldi metoda kasAsEsu() is klases LietuviskasVaisius
 
         Alyvinis alyvinis = new Alyvinis();
         alyvinis.kasAsEsu();
