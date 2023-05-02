@@ -40,11 +40,21 @@ public class Main {
         /* Prieinami tik asmens metodai! */
         //imonesDarbuotojasIrgiYraAsmuo.getxNr(); //ImonesXDarbuotojas turi getxNr()
         doSomething(imonesDarbuotojasIrgiYraAsmuo);
+
+        getSuperClasses(xDarbuotojas2);
     }
 
     private static void doSomething(Asmuo asmuo) {
         System.out.printf("Metodas doSomething iskviestas argumenta, priklausanti klasei %s%n", asmuo.getClass().getName());
         asmuo.getInfo();
+    }
+
+    private static void getSuperClasses(Object object) {
+        Class obj = object.getClass();
+        while (obj != null) {
+            System.out.println(obj.getName());
+            obj = obj.getSuperclass();
+        }
     }
 
 
