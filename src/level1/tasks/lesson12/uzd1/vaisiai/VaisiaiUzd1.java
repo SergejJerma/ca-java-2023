@@ -41,6 +41,7 @@ public class VaisiaiUzd1 {
 
     public static void testInstanceOf(Vaisius vaisius) {
         System.out.println(vaisius.getClass().getSimpleName() + " yra LietuviskasVaisius: " + (vaisius instanceof LietuviskasVaisius));
+        System.out.println("Vaisius yra Object: " + (vaisius instanceof Object));
         System.out.println();
     }
 }
