@@ -46,4 +46,11 @@ public class Koordinate {
     public int hashCode() {
         return Objects.hash(x, y);
     }
+
+    @Override
+    public Koordinate clone() {
+        return new Koordinate(x, y);
+    }
+
+
 }
