@@ -29,5 +29,18 @@ public class VaisiaiUzd1 {
         Antaninis antaninis = new Antaninis();
         antaninis.kasAsEsu();
 
+        System.out.println("Ar lietuviskasVaisius yra instanceOf LietuviskasVaisius? ");
+        testInstanceOf(lietuviskasVaisius);
+
+        System.out.println("Ar ananasas yra instanceOf LietuviskasVaisius? ");
+        testInstanceOf(ananasas);
+
+        System.out.println("Ar kriause yra instanceOf LietuviskasVaisius? ");
+        testInstanceOf(kriause);
+    }
+
+    public static void testInstanceOf(Vaisius vaisius) {
+        System.out.println(vaisius.getClass().getSimpleName() + " yra LietuviskasVaisius: " + (vaisius instanceof LietuviskasVaisius));
+        System.out.println();
     }
 }
