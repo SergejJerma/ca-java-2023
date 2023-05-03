@@ -19,6 +19,7 @@ public class ProgramaGyvunai {
 		for(Gyvunas g : gyvunai) {
 			g.skleidziamasGarsas();
 			g.metodasInfo();
+			System.out.println("***************");
 		}
 
 	}
