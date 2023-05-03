@@ -11,4 +11,5 @@ public class Katinas implements Gyvunas{
 	public void testMethod() {
 		System.out.println("Katinas Miau");
 	}
+
 }

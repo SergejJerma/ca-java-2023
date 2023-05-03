@@ -13,6 +13,8 @@ public class Programa {
 		IsVehicle vehicle5 = new Hovercraft("Third hovercraft", 10, 30, 10, 3);
 		IsVehicle vehicle6 = new Frigate("First frigate", 12, 20, 4);
 		IsVehicle vehicle7 = new Frigate("Second frigate", 20, 40, 5);
+
+		IsVehicle vehicle8 = new PoliceCar();
 		
 		ArrayList<IsVehicle> vehicleList = new ArrayList<>();
 		vehicleList.add(vehicle1);
@@ -22,6 +24,7 @@ public class Programa {
 		vehicleList.add(vehicle5);
 		vehicleList.add(vehicle6);
 		vehicleList.add(vehicle7);
+		vehicleList.add(vehicle8);
 		
 		for(IsVehicle v : vehicleList) {
 			System.out.println("Name: " + v.getName());
@@ -49,6 +52,11 @@ public class Programa {
 			if (v instanceof Frigate) {
 				Frigate frigV = (Frigate) v;
 				frigV.fireGun();
+			}
+			if (v instanceof PoliceCar) {
+				PoliceCar policeCar = (PoliceCar) v;
+				policeCar.soundSiren();
+
 			}
 			System.out.println("-----------------------");
 		}

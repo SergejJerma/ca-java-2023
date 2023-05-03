@@ -49,7 +49,7 @@ class Y implements B {
 	}
 }
 
-class Z implements A, B {
+class Z extends Y implements A, B {
 	@Override
 	public void metodasB1() {
 		System.out.println("Z Metodas B1");

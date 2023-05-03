@@ -9,6 +9,10 @@ interface Gyvunas  {
 	default void testMethod() {
 		System.out.println("default");
 	}
+
+	static void staticMeth() {
+		System.out.println("STATIC");
+	}
 }
 
 
