@@ -14,19 +14,19 @@ public class Tank {
     private int allShots;
     private String direction;
 
-    @Override
-    public boolean equals(Object anObject) {
-
-        if (this == anObject) {
-            return true;
-        }
-
-        return (anObject instanceof Tank aTank)
-                && this.shotToEast == aTank.shotToEast
-                && this.shotToNorth == aTank.shotToNorth
-                && this.shotToSouth == aTank.shotToSouth
-                && this.shotToWest == aTank.shotToWest;
-    }
+//    @Override
+//    public boolean equals(Object anObject) {
+//
+//        if (this == anObject) {
+//            return true;
+//        }
+//
+//        return (anObject instanceof Tank aTank)
+//                && this.shotToEast == aTank.shotToEast
+//                && this.shotToNorth == aTank.shotToNorth
+//                && this.shotToSouth == aTank.shotToSouth
+//                && this.shotToWest == aTank.shotToWest;
+//    }
 
     public void moveForward() {
         yPosition++;

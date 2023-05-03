@@ -35,12 +35,12 @@ public class Koordinate {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Koordinate that)) return false;
-        return x == that.x && y == that.y;
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof Koordinate that)) return false;
+//        return x == that.x && y == that.y;
+//    }
 
     @Override
     public int hashCode() {
