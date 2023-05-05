@@ -1,6 +1,5 @@
 package level1.biudzetas;
 
-import java.util.Objects;
 
 public class Irasas {
 
@@ -8,7 +7,6 @@ public class Irasas {
 	private Double suma;
 	private String laikas;
 	private String komentaras;
-
 	private Category kategorija;
 	private String tipas;
 
