@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Biudzetas {
 
@@ -33,21 +34,16 @@ public class Biudzetas {
                 System.out.println("neteisingas ivedimas \n bandykite dar karta");
             }
         }
-
-        if (irasuTipasIsScan == 1) {
-            pridetiPajamuIrasa();
-        } else {
-            pridetiIslaiduIrasa();
-        }
+        uzpildytiIrasa(irasuTipasIsScan);
     }
 
-    private void pridetiPajamuIrasa() {
+    private void uzpildytiIrasa(int irasuTipasIsScan) {
         runProgram = true;
-        Irasas irasas = new PajamuIrasas();
+        Irasas irasas = new Irasas();
         irasas.setId(++irasoIdSkaitiklis);
 
         while (runProgram) {
-            System.out.println("Iveskite pajamu iraso suma:");
+            System.out.println("Iveskite iraso suma:");
             String sumaStr = sc.next();
             try {
                 Double sumaDouble = Double.parseDouble(sumaStr);
@@ -60,60 +56,33 @@ public class Biudzetas {
         irasas.setLaikas(LocalDateTime.now().format(formatter));
 
         sc.nextLine();
-        System.out.println("Iveskite pajamu iraso komentara:");
+        System.out.println("Iveskite iraso komentara:");
         irasas.setKomentaras(sc.nextLine());
-        ((PajamuIrasas) irasas).setPajamuKategorija(PajamuIrasas.PAJAMU_KATEGORIJA);
-        System.out.println("Iveskite pajamu iraso paskirti:");
-        ((PajamuIrasas) irasas).setPajamuTipas(sc.nextLine());
+
+        if (irasuTipasIsScan == 1) {
+            irasas.setKategorija(Category.PAJAMOS);
+        } else {
+            irasas.setKategorija(Category.ISLAIDOS);
+        }
+
+        System.out.println("Iveskite iraso paskirti:");
+        irasas.setTipas(sc.nextLine());
 
         irasai.add(irasas);
     }
 
-    private void pridetiIslaiduIrasa() {
-        runProgram = true;
-        Irasas irasas = new IslaiduIrasas();
-        irasas.setId(++irasoIdSkaitiklis);
 
-        while (runProgram) {
-            System.out.println("Iveskite islaidu iraso suma:");
-            String sumaStr = sc.next();
-            try {
-                Double sumaDouble = Double.parseDouble(sumaStr);
-                irasas.setSuma(sumaDouble);
-                runProgram = false;
-            } catch (NumberFormatException e) {
-                System.out.println("Ivestas neteisingas sumo formatas \n bandykite dar karta");
+    public void gautiIrasus(Category category) {
+        if (irasai.size() != 0) {
+            for (Irasas el : irasai) {
+                if (el.getKategorija().equals(category)) {
+                    System.out.println(el);
+                }
             }
-        }
-        irasas.setLaikas(LocalDateTime.now().format(formatter));
-        sc.nextLine();
-        System.out.println("Iveskite islaidu iraso komentara:");
-        irasas.setKomentaras(sc.nextLine());
-
-        ((IslaiduIrasas) irasas).setIslaiduKategorija(IslaiduIrasas.ISLAIDU_KATEGORIJA);
-        System.out.println("Iveskite islaidu iraso paskirti:");
-
-        ((IslaiduIrasas) irasas).setIslaiduTipas(sc.nextLine());
-
-        irasai.add(irasas);
-    }
-
-    public void gautiPajamuIrasa() {
-        for (Irasas el : irasai) {
-            if (el instanceof PajamuIrasas) {
-                System.out.println(el);
-            }
+        } else {
+            System.out.println("Irasu sarasas tuscias");
         }
     }
-
-    public void gautiIslaiduIrasa() {
-        for (Irasas el : irasai) {
-            if (el instanceof IslaiduIrasas) {
-                System.out.println(el);
-            }
-        }
-    }
-
     public void redaguotiIrasa() {
         runProgram = true;
         spausdintiVisusIrasus();
@@ -125,36 +94,46 @@ public class Biudzetas {
                 int skInt = 0;
 
                 runProgram = true;
-                while (runProgram) {
-                    System.out.println("Pasirinkite: [1] - redaguoti ar [2] - grizti i pagr meniu");
-                    String skStr = sc.next();
+                skInt = gautiPasirinkima(skInt);
 
-                    try {
-                        skInt = Integer.parseInt(skStr);
-                        if (skInt == 1 || skInt == 2) {
-                            runProgram = false;
-                        } else
-                            System.out.println("ivestas neteisingas skaicius \n bandykite dar karta");
-                    } catch (NumberFormatException e) {
-                        System.out.println("neteisingas ivedimas \n bandykite dar karta");
-                    }
-                }
                 if (skInt == 1) {
                     runProgram = true;
-                    while (runProgram) {
-                        System.out.println("Iveskite nauja sumos reiksme:");
-                        String sumaStr = sc.next();
-                        try {
-                            Double sumaDouble = Double.parseDouble(sumaStr);
-                            el.setSuma(sumaDouble);
-                            runProgram = false;
-                        } catch (NumberFormatException e) {
-                            System.out.println("Ivestas neteisingas sumo formatas \n bandykite dar karta");
-                        }
-                    }
+                    irasoSumosPakeitimas(el);
                 }
             }
         }
+    }
+
+    private void irasoSumosPakeitimas(Irasas el) {
+        while (runProgram) {
+            System.out.println("Iveskite nauja sumos reiksme:");
+            String sumaStr = sc.next();
+            try {
+                Double sumaDouble = Double.parseDouble(sumaStr);
+                el.setSuma(sumaDouble);
+                runProgram = false;
+            } catch (NumberFormatException e) {
+                System.out.println("Ivestas neteisingas sumo formatas \n bandykite dar karta");
+            }
+        }
+    }
+
+    private int gautiPasirinkima(int skInt) {
+        while (runProgram) {
+            System.out.println("Pasirinkite: [1] - redaguoti ar [2] - grizti i pagr meniu");
+            String skStr = sc.next();
+
+            try {
+                skInt = Integer.parseInt(skStr);
+                if (skInt == 1 || skInt == 2) {
+                    runProgram = false;
+                } else
+                    System.out.println("ivestas neteisingas skaicius \n bandykite dar karta");
+            } catch (NumberFormatException e) {
+                System.out.println("neteisingas ivedimas \n bandykite dar karta");
+            }
+        }
+        return skInt;
     }
 
     public int validuotiId() {
@@ -188,13 +167,10 @@ public class Biudzetas {
 
                 System.out.println("Iveskite naujinamo iraso komentara:");
                 el.setKomentaras(sc.nextLine());
-                System.out.println("Iveskite naujinamo iraso paskirti:");
 
-                if (el instanceof PajamuIrasas) {
-                    ((PajamuIrasas) el).setPajamuTipas(sc.nextLine());
-                } else {
-                    ((IslaiduIrasas) el).setIslaiduTipas(sc.nextLine());
-                }
+                System.out.println("Iveskite naujinamo iraso paskirti:");
+                el.setTipas(sc.nextLine());
+
                 System.out.println("Irasas atnaujintas");
             }
         }
@@ -210,7 +186,7 @@ public class Biudzetas {
         double balansas = 0;
 
         for (Irasas el : irasai) {
-            if (el instanceof PajamuIrasas) {
+            if (el.getKategorija().equals(Category.PAJAMOS)) {
                 balansas += el.getSuma();
             } else {
                 balansas -= el.getSuma();
@@ -219,4 +195,17 @@ public class Biudzetas {
 
         System.out.println("Jusu pajamu/islaidu balansas: " + balansas + "\n");
     }
+
+    public void trintiIrasa() {
+        spausdintiVisusIrasus();
+        validuotiId();
+
+        irasai = irasai
+                .stream()
+                .filter(irasas -> !irasas.getId().equals(idInt))
+                .collect(Collectors.toList());
+
+        System.out.println("Irasas istrintas");
+    }
+
 }

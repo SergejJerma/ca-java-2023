@@ -19,6 +19,7 @@ public class MainProgram {
                     + "[4] - redaguoti irasa \n"
                     + "[5] - atnaujinti irasa \n"
                     + "[6] - gauti balansa \n"
+                    + "[9] - itrinti irasa \n"
                     + "[x] - baigti darba");
             command = sc.nextLine();
             switch (command) {
@@ -26,10 +27,10 @@ public class MainProgram {
                     biudzetas.pridetiIrasa();
                     break;
                 case "2":
-                    biudzetas.gautiPajamuIrasa();
+                    biudzetas.gautiIrasus(Category.PAJAMOS);
                     break;
                 case "3":
-					biudzetas.gautiIslaiduIrasa();
+                    biudzetas.gautiIrasus(Category.ISLAIDOS);
                     break;
                 case "4":
                     biudzetas.redaguotiIrasa();
@@ -39,6 +40,9 @@ public class MainProgram {
                     break;
                 case "6":
                     biudzetas.gautiBalansa();
+                    break;
+                case "9":
+                    biudzetas.trintiIrasa();
                     break;
                 case "x":
                     isRunning = false;
