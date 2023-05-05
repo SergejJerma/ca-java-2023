@@ -39,8 +39,7 @@ public class Biudzetas {
 
     private void uzpildytiIrasa(int irasuTipasIsScan) {
         runProgram = true;
-        Irasas irasas = new Irasas();
-        irasas.setId(++irasoIdSkaitiklis);
+        Irasas irasas = new Irasas(++irasoIdSkaitiklis);
 
         while (runProgram) {
             System.out.println("Iveskite iraso suma:");

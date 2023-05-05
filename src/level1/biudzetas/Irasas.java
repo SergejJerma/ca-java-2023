@@ -1,6 +1,8 @@
 package level1.biudzetas;
 
 
+import java.util.Objects;
+
 public class Irasas {
 
 	private Integer id;
@@ -10,13 +12,17 @@ public class Irasas {
 	private Category kategorija;
 	private String tipas;
 
+	public Irasas() {
+	}
+
+	public Irasas(Integer id) {
+		this.id = id;
+	}
+
 	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public Double getSuma() {
 		return suma;
@@ -56,6 +62,19 @@ public class Irasas {
 
 	public void setTipas(String tipas) {
 		this.tipas = tipas;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Irasas irasas = (Irasas) o;
+		return Objects.equals(id, irasas.id);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
 	}
 
 	@Override
