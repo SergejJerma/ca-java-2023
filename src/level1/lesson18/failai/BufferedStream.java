@@ -1,20 +1,34 @@
 package level1.lesson18.failai;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class BufferedStream {
     public static void main(String[] args) throws IOException {
         FileWriter fileWriter = new FileWriter("automobiliai.csv");
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-        writeSomething(bufferedWriter);
+
+        FileReader fileReader = new FileReader("automobiliai.csv");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+        writeVehicles(bufferedWriter);
+        readVehicles(bufferedReader);
+
 
         bufferedWriter.close();
     }
 
-    private static void writeSomething(BufferedWriter bufferedWriter) throws IOException {
+    private static void readVehicles(BufferedReader bufferedReader) throws IOException {
+        String line = bufferedReader.readLine();
+
+        while ( (line = bufferedReader.readLine()) != null) {
+            Automobilis automobilis = Automobilis.fromString(line);
+            System.out.println(automobilis.toJsonString());
+        }
+    }
+
+    private static void writeVehicles(BufferedWriter bufferedWriter) throws IOException {
+        bufferedWriter.write("ratu skaicius,max greitis\n");
         for (int i = 0; i < 10; i++) {
             Automobilis automobilis = new Automobilis(4, 220 + i);
 
