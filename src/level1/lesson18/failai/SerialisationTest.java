@@ -1,12 +1,22 @@
 package level1.lesson18.failai;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 
 public class SerialisationTest {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        writeObjectToFile();
+        readObjectFromFile();
+    }
+
+    private static void readObjectFromFile() throws IOException, ClassNotFoundException {
+        FileInputStream in = new FileInputStream("objdata.ser");
+        ObjectInputStream s = new ObjectInputStream(in);
+        A a = (A) s.readObject();
+        System.out.println(a.getI());
+        s.close();
+    }
+
+    private static void writeObjectToFile() throws IOException {
         FileOutputStream out = new FileOutputStream("objdata.ser");
         ObjectOutputStream s = new ObjectOutputStream(out);
         s.writeObject(new A(200));
