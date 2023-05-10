@@ -5,11 +5,9 @@ public class LektuvoPrograma {
     public static void main(String[] args) {
 
         Lektuvas lektuvas = new Lektuvas();
-        lektuvas.isskleistiVaziuokle();
-        lektuvas.isskleistiVaziuokle();
-        lektuvas.isskleistiVaziuokle();
-        lektuvas.isskleistiVaziuokle();
-        lektuvas.isskleistiVaziuokle();
+        for (int i = 0; i < 50; i++) {
+            lektuvas.isskleistiVaziuokle();
+        }
 
     }
 
