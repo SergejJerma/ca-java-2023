@@ -16,8 +16,13 @@ public class Main {
         String vardas = bufferedReader.readLine();
         System.out.println(vardas);
 
+        StringBuilder stringBuilder = new StringBuilder(vardas);
+        FileWriter fileWriter2 = new FileWriter("vardas_kitasFailas.txt");
+        fileWriter2.write(stringBuilder.reverse().toString());
+
         fileWriter.close();
         fileReader.close();
+        fileWriter2.close();
     }
 
 }
