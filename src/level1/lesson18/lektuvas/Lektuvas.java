@@ -7,8 +7,15 @@ class Lektuvas {
         try {
             vaziuokle();
             System.out.println("OK: vaziuokle sekmingai isskleista");
+        } catch (LaikinaKlaida e) {
+            System.out.printf("ERROR1: nepavyko isskleisti vaziuokles. Priezastis: %s. Svarbumas: %s%n",
+                    e.getPriezastis(), e.getSvarbumas());
+        } catch (SvarbiKlaida e) {
+            System.out.printf("ERROR2: nepavyko isskleisti vaziuokles. Priezastis: %s. Svarbumas: %s%n",
+                    e.getPriezastis(), e.getSvarbumas());
         } catch (VaziuoklesIsskleidimoKlaida e) {
-            System.out.println("ERROR: nepavyko isskleisti vaziuokles. Priezastis: " + e.getPriezastis());
+            System.out.printf("ERROR3: nepavyko isskleisti vaziuokles. Priezastis: %s. Svarbumas: %s%n",
+                    e.getPriezastis(), e.getSvarbumas());
         }
     }
 
@@ -19,9 +26,9 @@ class Lektuvas {
             case 0:
                 throw new VaziuoklesIsskleidimoKlaida("Neatsidare durys");
             case 1:
-                throw new VaziuoklesIsskleidimoKlaida("Nenusileido ratas");
+                throw new SvarbiKlaida("Nenusileido ratas");
             case 2:
-                throw new VaziuoklesIsskleidimoKlaida("Per didelis aukstis");
+                throw new LaikinaKlaida("Per didelis aukstis");
         }
     }
 
