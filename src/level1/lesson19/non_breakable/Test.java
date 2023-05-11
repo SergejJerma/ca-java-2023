@@ -10,10 +10,17 @@ public class Test {
         boolean runProgram = true;
 
         while (runProgram) {
-            System.out.print("Iveskite skaiciu: ");
+            System.out.print("Iveskite skaiciu, arba X - baigt programa: ");
             String skaiciusStr = sc.next(); // nuskaitomas skaičius kaip tekstas
 
             try {
+                if (skaiciusStr.equalsIgnoreCase("X")) {
+                    System.out.println("Programa baigiama vartotojo pasirinkimu");
+                    //return;
+                    runProgram = false;
+                    continue;
+                }
+
                 int skaiciusInt = Integer.parseInt(skaiciusStr);        // tekstas paverčiamas i skaičiu (int)
                 System.out.println(String.format("Ivestas skaicius yra %d", skaiciusInt));
                 runProgram = false;
