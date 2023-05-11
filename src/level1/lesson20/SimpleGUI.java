@@ -12,6 +12,7 @@ public class SimpleGUI {
         frame.setSize(600, 600);    // remelio dydis pikseliais
 
         JPanel apatinisPanel = configurePanel(Color.GRAY, frame, BorderLayout.SOUTH);
+        apatinisPanel.setLayout(new FlowLayout());
 
         configurePanel(Color.DARK_GRAY, frame, BorderLayout.NORTH);
 
