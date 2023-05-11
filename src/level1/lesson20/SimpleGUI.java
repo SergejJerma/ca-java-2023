@@ -13,16 +13,34 @@ public class SimpleGUI {
 
         JPanel bottomPanel = configurePanel(Color.GRAY, frame, BorderLayout.SOUTH);
         JPanel centerPanel = configurePanel(Color.ORANGE, frame, BorderLayout.CENTER);
+        JPanel leftPanel = configurePanel(Color.BLUE, frame, BorderLayout.WEST);
 
         configurePanel(Color.DARK_GRAY, frame, BorderLayout.NORTH);
-        configurePanel(Color.BLUE, frame, BorderLayout.WEST);
         configurePanel(Color.CYAN, frame, BorderLayout.EAST);
 
         configureCenterPanel(centerPanel);
         configureBottomPanel(bottomPanel);
+        configureLeftPanel(leftPanel);
 
         frame.setVisible(true);
 
+    }
+
+    private static void configureLeftPanel(JPanel leftPanel) {
+        leftPanel.setLayout(new GridLayout(0, 1));
+
+        JRadioButton radioButton1 = new JRadioButton("pirmas pasirinkimas");
+        JRadioButton radioButton2 = new JRadioButton("antras pasirinkimas");
+        JRadioButton radioButton3 = new JRadioButton("trecias pasirinkimas");
+
+        ButtonGroup group = new ButtonGroup();
+        group.add(radioButton1);
+        group.add(radioButton2);
+        group.add(radioButton3);
+
+        leftPanel.add(radioButton1);
+        leftPanel.add(radioButton2);
+        leftPanel.add(radioButton3);
     }
 
     private static void configureBottomPanel(JPanel bottomPanel) {
