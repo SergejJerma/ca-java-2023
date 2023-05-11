@@ -11,31 +11,45 @@ public class SimpleGUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 600);    // remelio dydis pikseliais
 
-        JPanel apatinisPanel = configurePanel(Color.GRAY, frame, BorderLayout.SOUTH);
-        apatinisPanel.setLayout(new FlowLayout());
+        JPanel bottomPanel = configurePanel(Color.GRAY, frame, BorderLayout.SOUTH);
+        JPanel centerPanel = configurePanel(Color.ORANGE, frame, BorderLayout.CENTER);
 
         configurePanel(Color.DARK_GRAY, frame, BorderLayout.NORTH);
-
         configurePanel(Color.BLUE, frame, BorderLayout.WEST);
-
         configurePanel(Color.CYAN, frame, BorderLayout.EAST);
 
-        configurePanel(Color.ORANGE, frame, BorderLayout.CENTER);
-
-        JButton button1 = new JButton("Mygtukas 1");
-        JButton button2 = new JButton("Mygtukas 2");
-        apatinisPanel.add(button1);
-        apatinisPanel.add(button2);
+        configureCenterPanel(centerPanel);
+        configureBottomPanel(bottomPanel);
 
         frame.setVisible(true);
 
     }
 
-    private static JPanel configurePanel(Color darkGray, JFrame frame, String north) {
-        JPanel virsutinisPanel = new JPanel();
-        virsutinisPanel.setBackground(darkGray);
-        frame.getContentPane().add(north, virsutinisPanel);
-        return virsutinisPanel;
+    private static void configureBottomPanel(JPanel bottomPanel) {
+        bottomPanel.setLayout(new FlowLayout());
+        JButton button1 = new JButton("Mygtukas 1");
+        JButton button2 = new JButton("Mygtukas 2");
+        bottomPanel.add(button1);
+        bottomPanel.add(button2);
+    }
+
+    private static void configureCenterPanel(JPanel centerPanel) {
+        centerPanel.setLayout(new GridLayout(0, 1));
+
+        JCheckBox checkBox1 = new JCheckBox("pirmas pasirinkimas");
+        JCheckBox checkBox2 = new JCheckBox("antras pasirinkimas");
+        JCheckBox checkBox3 = new JCheckBox("trecias pasirinkimas");
+
+        centerPanel.add(checkBox1);
+        centerPanel.add(checkBox2);
+        centerPanel.add(checkBox3);
+    }
+
+    private static JPanel configurePanel(Color color, JFrame frame, String panelPlace) {
+        JPanel panel = new JPanel();
+        panel.setBackground(color);
+        frame.getContentPane().add(panelPlace, panel);
+        return panel;
     }
 
 }
