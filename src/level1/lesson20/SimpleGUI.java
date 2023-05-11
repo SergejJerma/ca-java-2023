@@ -7,9 +7,11 @@ public class SimpleGUI {
 
     public static void main(String[] args) {
 
-        JFrame frame = new JFrame("My First GUI"); // remelio objektas
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 600);    // remelio dydis pikseliais
+        JFrame frame = new JFrame("My First GUI"); //the main frame object
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   //exit on close (x)
+        frame.setSize(600, 600);    //initial frame size in pixels
+        frame.setResizable(false);              //make frame not resizable
+        frame.setLocationRelativeTo(null);      //center the jframe on the screen
 
         JPanel bottomPanel = configurePanel(Color.GRAY, frame, BorderLayout.SOUTH);
         JPanel centerPanel = configurePanel(Color.ORANGE, frame, BorderLayout.CENTER);
