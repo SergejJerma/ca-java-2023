@@ -33,10 +33,10 @@ public class SimpleGUI {
         centrinisPanel.setBackground(Color.ORANGE);
         frame.getContentPane().add(BorderLayout.CENTER, centrinisPanel);
 
-//        JButton button1 = new JButton("Mygtukas 1");
-//        JButton button2 = new JButton("Mygtukas 2");
-//        frame.getContentPane().add(button1);
-//        frame.getContentPane().add(button2);
+        JButton button1 = new JButton("Mygtukas 1");
+        JButton button2 = new JButton("Mygtukas 2");
+        apatinisPanel.add(button1);
+        apatinisPanel.add(button2);
 
         frame.setVisible(true);
 
