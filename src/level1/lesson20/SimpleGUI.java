@@ -11,8 +11,10 @@ public class SimpleGUI {
         frame.setSize(600, 600);    // remelio dydis pikseliais
 
 
-        JButton button = new JButton("Press"); // mygtuko objektas
-        frame.getContentPane().add(button); // i remeli idedamas mygtukas
+        JButton button1 = new JButton("Mygtukas 1");
+        JButton button2 = new JButton("Mygtukas 2");
+        frame.getContentPane().add(button1);
+        frame.getContentPane().add(button2);
 
         frame.setVisible(true);
 
