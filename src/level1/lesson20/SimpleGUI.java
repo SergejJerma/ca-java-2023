@@ -11,27 +11,15 @@ public class SimpleGUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 600);    // remelio dydis pikseliais
 
-        JPanel apatinisPanel = new JPanel(); // sukuriame panel
-        apatinisPanel.setBackground(Color.GRAY); // suteikiame panel spalva
+        JPanel apatinisPanel = configurePanel(Color.GRAY, frame, BorderLayout.SOUTH);
 
-        // idedame panel i remeli
-        frame.getContentPane().add(BorderLayout.SOUTH, apatinisPanel);
+        configurePanel(Color.DARK_GRAY, frame, BorderLayout.NORTH);
 
-        JPanel virsutinisPanel = new JPanel();
-        virsutinisPanel.setBackground(Color.DARK_GRAY);
-        frame.getContentPane().add(BorderLayout.NORTH, virsutinisPanel);
+        configurePanel(Color.BLUE, frame, BorderLayout.WEST);
 
-        JPanel kairysisPanel = new JPanel();
-        kairysisPanel.setBackground(Color.BLUE);
-        frame.getContentPane().add(BorderLayout.WEST, kairysisPanel);
+        configurePanel(Color.CYAN, frame, BorderLayout.EAST);
 
-        JPanel desinysisPanel = new JPanel();
-        desinysisPanel.setBackground(Color.CYAN);
-        frame.getContentPane().add(BorderLayout.EAST, desinysisPanel);
-
-        JPanel centrinisPanel = new JPanel();
-        centrinisPanel.setBackground(Color.ORANGE);
-        frame.getContentPane().add(BorderLayout.CENTER, centrinisPanel);
+        configurePanel(Color.ORANGE, frame, BorderLayout.CENTER);
 
         JButton button1 = new JButton("Mygtukas 1");
         JButton button2 = new JButton("Mygtukas 2");
@@ -40,6 +28,13 @@ public class SimpleGUI {
 
         frame.setVisible(true);
 
+    }
+
+    private static JPanel configurePanel(Color darkGray, JFrame frame, String north) {
+        JPanel virsutinisPanel = new JPanel();
+        virsutinisPanel.setBackground(darkGray);
+        frame.getContentPane().add(north, virsutinisPanel);
+        return virsutinisPanel;
     }
 
 }
