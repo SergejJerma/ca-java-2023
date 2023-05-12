@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class SimpleGUI {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         JFrame frame = new JFrame("My First GUI"); //the main frame object
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   //exit on close (x)
@@ -28,9 +28,15 @@ public class SimpleGUI {
 
         frame.setVisible(true);
 
+        JProgressBar pBar = new JProgressBar();
+        ((JPanel)centerPanel.getComponent(0)).add(pBar);
+        for (int i = 0; i < 100; i++) {
+            Thread.sleep(100);
+            pBar.setValue(i);
+        }
     }
 
-    private static void configureCenterPanel(JPanel centerPanel) {
+    private static void configureCenterPanel(JPanel centerPanel) throws InterruptedException {
         centerPanel.setLayout(new GridBagLayout());
 
         JLabel textLabel = new JLabel("Tekstas");
@@ -53,6 +59,7 @@ public class SimpleGUI {
         textFieldsPanel.add(passwordLabel);
         textFieldsPanel.add(verticalSpace);
         textFieldsPanel.add(passwordField);
+        textFieldsPanel.add(verticalSpace);
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
