@@ -1,6 +1,6 @@
 package level1.tasks.lesson20.static_var_counter;
 
-public class Vehicle {
+public abstract class Vehicle {
 
     private static int totalVehicles = 0;
 
