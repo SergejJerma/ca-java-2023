@@ -32,11 +32,16 @@ public class SimpleGUI {
     private static void configureCenterPanel(JPanel centerPanel) {
         centerPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
-        JTextField tekstas = new JTextField(20);
-        JPasswordField slaptazodis = new JPasswordField(20);
+        JLabel textLabel = new JLabel("Tekstas");
+        JTextField textField = new JTextField(20);
 
-        centerPanel.add(tekstas);
-        centerPanel.add(slaptazodis);
+        JLabel passwordLabel = new JLabel("slaptazodis");
+        JPasswordField passwordField = new JPasswordField(20);
+
+        centerPanel.add(textLabel);
+        centerPanel.add(textField);
+        centerPanel.add(passwordLabel);
+        centerPanel.add(passwordField);
     }
 
     private static void configureTopPanel(JPanel topPanel) {
