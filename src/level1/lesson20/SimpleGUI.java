@@ -23,9 +23,20 @@ public class SimpleGUI {
         configureBottomPanel(bottomPanel);
         configureLeftPanel(leftPanel);
         configureRightPanel(rightPanel);
+        configureCenterPanel(centerPanel);
 
         frame.setVisible(true);
 
+    }
+
+    private static void configureCenterPanel(JPanel centerPanel) {
+        centerPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+
+        JTextField tekstas = new JTextField(20);
+        JPasswordField slaptazodis = new JPasswordField(20);
+
+        centerPanel.add(tekstas);
+        centerPanel.add(slaptazodis);
     }
 
     private static void configureTopPanel(JPanel topPanel) {
