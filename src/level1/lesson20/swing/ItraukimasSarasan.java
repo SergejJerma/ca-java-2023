@@ -1,4 +1,4 @@
-package level1.lesson20;
+package level1.lesson20.swing;
 
 import javax.swing.*;
 import java.awt.*;
