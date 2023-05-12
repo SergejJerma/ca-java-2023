@@ -1,6 +1,7 @@
 package level1.lesson20;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public class SimpleGUI {
@@ -30,7 +31,7 @@ public class SimpleGUI {
     }
 
     private static void configureCenterPanel(JPanel centerPanel) {
-        centerPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        centerPanel.setLayout(new GridBagLayout());
 
         JLabel textLabel = new JLabel("Tekstas");
         JTextField textField = new JTextField(20);
@@ -38,10 +39,24 @@ public class SimpleGUI {
         JLabel passwordLabel = new JLabel("slaptazodis");
         JPasswordField passwordField = new JPasswordField(20);
 
-        centerPanel.add(textLabel);
-        centerPanel.add(textField);
-        centerPanel.add(passwordLabel);
-        centerPanel.add(passwordField);
+        Component verticalSpace = Box.createRigidArea(new Dimension(0, 10));
+
+        JPanel textFieldsPanel = new JPanel();
+        Border fieldPanelBorder = BorderFactory.createEmptyBorder(10, 10, 10, 10);
+        textFieldsPanel.setBorder(fieldPanelBorder);
+
+        textFieldsPanel.setLayout(new BoxLayout(textFieldsPanel, BoxLayout.Y_AXIS));
+        textFieldsPanel.add(textLabel);
+        textFieldsPanel.add(verticalSpace);
+        textFieldsPanel.add(textField);
+        textFieldsPanel.add(verticalSpace);
+        textFieldsPanel.add(passwordLabel);
+        textFieldsPanel.add(verticalSpace);
+        textFieldsPanel.add(passwordField);
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        centerPanel.add(textFieldsPanel, gbc);
     }
 
     private static void configureTopPanel(JPanel topPanel) {
