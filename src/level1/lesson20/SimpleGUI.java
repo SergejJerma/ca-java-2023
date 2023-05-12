@@ -19,12 +19,23 @@ public class SimpleGUI {
         JPanel rightPanel = configurePanel(Color.CYAN, frame, BorderLayout.EAST);
         JPanel centerPanel = configurePanel(Color.ORANGE, frame, BorderLayout.CENTER);
 
+        configureTopPanel(topPanel);
         configureBottomPanel(bottomPanel);
         configureLeftPanel(leftPanel);
         configureRightPanel(rightPanel);
 
         frame.setVisible(true);
 
+    }
+
+    private static void configureTopPanel(JPanel topPanel) {
+        topPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+
+        String[] metuLaikai = {"Vasara", "Ruduo", "Žiema", "Pavasaris"};
+        JComboBox<String> metuLaikaiComboBox = new JComboBox<>(metuLaikai);
+        metuLaikaiComboBox.setSelectedIndex(2);
+
+        topPanel.add(metuLaikaiComboBox);
     }
 
     private static void configureLeftPanel(JPanel leftPanel) {
