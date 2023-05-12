@@ -10,19 +10,18 @@ public class SimpleGUI {
         JFrame frame = new JFrame("My First GUI"); //the main frame object
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   //exit on close (x)
         frame.setSize(600, 600);    //initial frame size in pixels
-        frame.setResizable(false);              //make frame not resizable
+        //frame.setResizable(false);              //make frame not resizable
         frame.setLocationRelativeTo(null);      //center the jframe on the screen
 
+        JPanel topPanel = configurePanel(Color.DARK_GRAY, frame, BorderLayout.NORTH);
         JPanel bottomPanel = configurePanel(Color.GRAY, frame, BorderLayout.SOUTH);
-        JPanel centerPanel = configurePanel(Color.ORANGE, frame, BorderLayout.CENTER);
         JPanel leftPanel = configurePanel(Color.BLUE, frame, BorderLayout.WEST);
+        JPanel rightPanel = configurePanel(Color.CYAN, frame, BorderLayout.EAST);
+        JPanel centerPanel = configurePanel(Color.ORANGE, frame, BorderLayout.CENTER);
 
-        configurePanel(Color.DARK_GRAY, frame, BorderLayout.NORTH);
-        configurePanel(Color.CYAN, frame, BorderLayout.EAST);
-
-        configureCenterPanel(centerPanel);
         configureBottomPanel(bottomPanel);
         configureLeftPanel(leftPanel);
+        configureRightPanel(rightPanel);
 
         frame.setVisible(true);
 
@@ -46,23 +45,23 @@ public class SimpleGUI {
     }
 
     private static void configureBottomPanel(JPanel bottomPanel) {
-        bottomPanel.setLayout(new FlowLayout());
+        bottomPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
         JButton button1 = new JButton("Mygtukas 1");
         JButton button2 = new JButton("Mygtukas 2");
         bottomPanel.add(button1);
         bottomPanel.add(button2);
     }
 
-    private static void configureCenterPanel(JPanel centerPanel) {
-        centerPanel.setLayout(new GridLayout(0, 1));
+    private static void configureRightPanel(JPanel rightPanel) {
+        rightPanel.setLayout(new GridLayout(0, 1));
 
         JCheckBox checkBox1 = new JCheckBox("pirmas pasirinkimas");
         JCheckBox checkBox2 = new JCheckBox("antras pasirinkimas");
         JCheckBox checkBox3 = new JCheckBox("trecias pasirinkimas");
 
-        centerPanel.add(checkBox1);
-        centerPanel.add(checkBox2);
-        centerPanel.add(checkBox3);
+        rightPanel.add(checkBox1);
+        rightPanel.add(checkBox2);
+        rightPanel.add(checkBox3);
     }
 
     private static JPanel configurePanel(Color color, JFrame frame, String panelPlace) {
