@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class Biudzetas {
 
     private static int irasoIdSkaitiklis;
-    private static final String COMMA_DELIMITER = ",";
+    private static final String COMMA_DELIMITER = ";";
     private static final String NEW_LINE_SEPARATOR = "\n";
     static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
