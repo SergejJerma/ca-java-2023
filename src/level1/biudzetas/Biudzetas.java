@@ -1,9 +1,14 @@
 package level1.biudzetas;
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -11,6 +16,8 @@ import java.util.stream.Collectors;
 public class Biudzetas {
 
     private static int irasoIdSkaitiklis;
+    private static final String COMMA_DELIMITER = ",";
+    private static final String NEW_LINE_SEPARATOR = "\n";
     static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     List<Irasas> irasai = new ArrayList<>();
@@ -82,6 +89,7 @@ public class Biudzetas {
             System.out.println("Irasu sarasas tuscias");
         }
     }
+
     public void redaguotiIrasa() {
         runProgram = true;
         spausdintiVisusIrasus();
@@ -207,4 +215,69 @@ public class Biudzetas {
         System.out.println("Irasas istrintas");
     }
 
+    public void issaugotiDuomenis() {
+        try {
+            File failas = new File("C:/Users/User/Desktop/isaugotiDuomenys.csv");
+//			FileWriter fw = new FileWriter("src/isaugotiDuomenys.csv");
+//			BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter inFailas = new PrintWriter(failas);
+            for (Irasas el : irasai) {
+
+                inFailas.append(String.valueOf(el.getId()));
+                inFailas.append(COMMA_DELIMITER);
+                inFailas.append(String.valueOf(el.getSuma()));
+                inFailas.append(COMMA_DELIMITER);
+                inFailas.append(el.getKomentaras());
+                inFailas.append(COMMA_DELIMITER);
+                inFailas.append(LocalDateTime.now().format(formatter));
+                inFailas.append(NEW_LINE_SEPARATOR);
+            }
+
+            inFailas.flush();
+            inFailas.close();
+            System.out.println("Failas buvo sekmingai sukurtas \n");
+        } catch (FileNotFoundException e) {
+            System.out.println("Kazkas negerai su failu");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("Klaida su irasymu");
+            e.printStackTrace();
+        }
+    }
+
+    public void gautiDuomenis() {
+        String line = "";
+        try {
+            File failas = new File("C:/Users/User/Desktop/pradiniaiDuomenys.csv");
+            Scanner scFailas = new Scanner(failas);
+
+//			FileReader failas = new FileReader("src/pradiniaiDuomenys.csv");
+//			BufferedReader fileReader = new BufferedReader(failas);
+
+            while (scFailas.hasNextLine()) {
+                line = scFailas.nextLine();
+                String[] a = line.split(COMMA_DELIMITER);
+                System.out.println(Arrays.toString(a)); // spausdina masyva
+
+                Irasas irasas = new Irasas(++irasoIdSkaitiklis);
+                if (a[0].equals(Category.PAJAMOS.getCategory())) {
+                    irasas.setKategorija(Category.PAJAMOS);
+                } else {
+                    irasas.setKategorija(Category.ISLAIDOS);
+                }
+                irasas.setTipas(a[1]);
+                irasas.setKomentaras(a[3]);
+                irasas.setSuma(Double.parseDouble(a[2]));
+                irasas.setLaikas(LocalDateTime.now().format(formatter));
+                irasai.add(irasas);
+
+            }
+            System.out.println("Failas sekmingai nuskaitytas \n");
+            scFailas.close();
+            // fileReader.close();
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+    }
 }

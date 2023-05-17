@@ -19,6 +19,8 @@ public class MainProgram {
                     + "[4] - redaguoti irasa \n"
                     + "[5] - atnaujinti irasa \n"
                     + "[6] - gauti balansa \n"
+                    + "[7] - isaugoti duomenis faile \n"
+                    + "[8] - gauti duomenis is failo \n"
                     + "[9] - itrinti irasa \n"
                     + "[x] - baigti darba");
             command = sc.nextLine();
@@ -40,6 +42,12 @@ public class MainProgram {
                     break;
                 case "6":
                     biudzetas.gautiBalansa();
+                    break;
+                case "7":
+                    biudzetas.issaugotiDuomenis();
+                    break;
+                case "8":
+                    biudzetas.gautiDuomenis();
                     break;
                 case "9":
                     biudzetas.trintiIrasa();

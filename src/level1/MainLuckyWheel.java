@@ -7,6 +7,7 @@ import java.util.Random;
 public class MainLuckyWheel {
     public static void main(String[] args) {
         List<String> students = new ArrayList<>();
+
         students.add("Ramūnas Juozapaitis");
         students.add("Vitalij Rusakevič");
         students.add("Paulius Žemaitis");
