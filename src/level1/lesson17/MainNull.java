@@ -1,24 +1,33 @@
 package level1.lesson17;
 
-import java.util.Objects;
-
 public class MainNull {
     public static void main(String[] args) {
-        AA a = null;
+        Classs1 cl = new Classs1();
 
-        if (a != null) {
-            a.test();
-            System.out.println("!= null");
+        if (cl != null) {
+            System.out.println("cl not NULL");
         }
+        cl.name = "name";
+        if (cl.name == null) {
+            System.out.println("field name is NULL");
+        }
+
+//        AA a = null;
+//        a.test();
+//
+//        if (a != null) {
+//            a.test();
+//            System.out.println("!= null");
+//        }
 
 //        if (a.equals(null)) {
 //            System.out.println("equals null");
 //        }
 
-        if (Objects.isNull(a)) {
-            System.out.println("Objects Is null");
-        }
+//        if (Objects.isNull(a)) {
+//            System.out.println("Objects Is null");
+//        }
 
-      //  a.test();
+        //  a.test();
     }
 }
