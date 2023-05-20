@@ -1,4 +1,4 @@
-package level2.oop.part1.arrays1;
+package arrays1;
 
 public class Masyvai1 {
     public static void main(String[] args) {

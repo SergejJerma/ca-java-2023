@@ -1,8 +1,6 @@
 package level1.lesson3;
 
 
-import java.util.Scanner;
-
 public class ScannerExample {
 
     private String classField;

@@ -1,8 +1,6 @@
 package level1.tasks;
 
 
-import level1.lesson5.Auto;
-
 import java.util.Arrays;
 
 public class ArrayString {

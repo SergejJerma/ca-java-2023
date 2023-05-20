@@ -1,6 +1,4 @@
-package level2.oop.part1.pass_by_ref;
-
-import level1.lesson12.inheritance.Asmuo;
+package pass_by_ref;
 
 import java.util.Arrays;
 

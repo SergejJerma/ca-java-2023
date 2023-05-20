@@ -1,4 +1,4 @@
-package level2.oop.part1.arrays0;
+package arrays0;
 
 import java.util.Arrays;
 

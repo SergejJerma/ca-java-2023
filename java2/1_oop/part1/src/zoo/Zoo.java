@@ -1,4 +1,4 @@
-package level2.oop.part1.zoo;
+package zoo;
 
 /**
  * How to compile and run using command line:

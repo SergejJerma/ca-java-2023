@@ -1,7 +1,5 @@
 package level1.tasks.static_var;
 
-import level1.tasks.static_var.StaticVar;
-
 public class MainStatic {
     public static void main(String[] args) {
         StaticVar sv = new StaticVar();
