@@ -44,6 +44,10 @@ class SomeClass {
         whateverVariable.add("some value");         //...but you can still modify the value itself
     }
 
+    //works same way as a variable declared as final
+    public final void methodHavingFinalArguments(final Object whatever) {
+        //whatever = new String("Nope - cannot change reference to variable declared as final");
+    }
 
     //method declared as final cannot be overridden
     public final void finalMethod() {
