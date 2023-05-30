@@ -1,6 +1,6 @@
 package polymorphism;
 
-class Butter {
+class Butter implements Product{
     private final int expirationLevel;
 
     Butter(int expirationLevel) {

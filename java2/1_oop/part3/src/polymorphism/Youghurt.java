@@ -1,6 +1,6 @@
 package polymorphism;
 
-class Youghurt {
+class Youghurt implements Product{
     private final int expirationLevel;
 
     Youghurt(int expirationLevel) {

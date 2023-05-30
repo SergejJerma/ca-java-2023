@@ -1,6 +1,6 @@
 package polymorphism;
 
-class Bread {
+class Bread implements Product{
     private final int expirationLevel;
 
     Bread(int expirationLevel) {
