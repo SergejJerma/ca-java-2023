@@ -12,15 +12,15 @@ public class ParentClass {
     }
 
     int getX_default() {
-        return x;
+        return x_default;
     }
 
     protected int getX_protected() {
-        return x;
+        return x_protected;
     }
 
     public int getX_public() {
-        return x;
+        return x_public;
     }
 
 
