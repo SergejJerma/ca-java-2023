@@ -7,19 +7,19 @@ public class Main {
         Random random = new Random();
         ProductValidator productValidator = new ProductValidator();
 
-        Milk milk = new Milk(random.nextInt(5));
+        Product milk = new Milk(random.nextInt(5));
         productValidator.validate(milk);
 
-        Bread bread = new Bread(random.nextInt(5));
+        Product bread = new Bread(random.nextInt(5));
         productValidator.validate(bread);
 
-        Butter butter = new Butter(random.nextInt(5));
+        Product butter = new Butter(random.nextInt(5));
         productValidator.validate(butter);
 
-        Cheese cheese = new Cheese(random.nextInt(5));
+        Product cheese = new Cheese(random.nextInt(5));
         productValidator.validate(cheese);
 
-        Youghurt youghurt = new Youghurt(random.nextInt(5));
+        Product youghurt = new Youghurt(random.nextInt(5));
         productValidator.validate(youghurt);
 
     }

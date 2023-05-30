@@ -1,6 +1,6 @@
 package polymorphism;
 
-class Cheese implements Product{
+class Cheese extends Product {
     private final int expirationLevel;
 
     Cheese(int expirationLevel) {
