@@ -10,20 +10,26 @@ public class Main {
         int num = random.nextInt(5);
         System.out.println(num);
 
-        Product milk = new Milk(num);
-        productValidator.validate(milk);
+        Milk milk = new Milk(num, random.nextInt()*100);
 
-        Product bread = new Bread(random.nextInt(5));
+        productValidator.validate(milk); // upcasting to Product
+        productValidator.printCalories(milk); // upcasting to CaloriesNumber
+
+        Bread bread = new Bread(random.nextInt(5), random.nextInt()*100);
         productValidator.validate(bread);
+        productValidator.printCalories(bread);
 
-        Product butter = new Butter(random.nextInt(5));
+        Butter butter = new Butter(random.nextInt(5), random.nextInt()*100);
         productValidator.validate(butter);
+        productValidator.printCalories(butter);
 
-        Product cheese = new Cheese(random.nextInt(5));
+        Cheese cheese = new Cheese(random.nextInt(5), random.nextInt()*100);
         productValidator.validate(cheese);
+        productValidator.printCalories(cheese);
 
-        Product youghurt = new Youghurt(random.nextInt(5));
+        Youghurt youghurt = new Youghurt(random.nextInt(5), random.nextInt()*100);
         productValidator.validate(youghurt);
+        productValidator.printCalories(cheese);
 
     }
 }

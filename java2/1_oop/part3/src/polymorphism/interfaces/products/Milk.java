@@ -1,10 +1,12 @@
 package polymorphism.interfaces.products;
 
-class Milk implements Product {
+class Milk implements Product, CaloriesNumber {
     private final int expirationLevel;
+    private final int calories;
 
-    public Milk(int expirationLevel) {
+    public Milk(int expirationLevel, int calories) {
         this.expirationLevel = expirationLevel;
+        this.calories = calories;
     }
 
     public boolean isNotExpired() {
@@ -13,5 +15,10 @@ class Milk implements Product {
 
     public int getExpirationLevel() {
         return expirationLevel;
+    }
+
+    @Override
+    public int calories() {
+        return calories;
     }
 }
