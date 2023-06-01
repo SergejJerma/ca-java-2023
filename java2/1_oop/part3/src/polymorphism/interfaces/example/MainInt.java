@@ -1,4 +1,4 @@
-package polymorphism.interfaces;
+package polymorphism.interfaces.example;
 
 public class MainInt {
     public static void main(String[] args) {

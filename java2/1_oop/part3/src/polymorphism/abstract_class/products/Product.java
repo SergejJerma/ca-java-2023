@@ -1,4 +1,4 @@
-package polymorphism;
+package polymorphism.abstract_class.products;
 
 //Abstract class provides common functionality for all subclasses
 public abstract class Product {

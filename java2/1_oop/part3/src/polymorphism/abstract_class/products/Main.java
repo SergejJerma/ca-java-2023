@@ -1,13 +1,16 @@
-package polymorphism;
+package polymorphism.abstract_class.products;
 
 import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
         Random random = new Random();
-        ProductValidator productValidator = new ProductValidator();
 
-        Product milk = new Milk(random.nextInt(5));
+        ProductValidator productValidator = new ProductValidator();
+        int num = random.nextInt(5);
+        System.out.println(num);
+
+        Product milk = new Milk(num);
         productValidator.validate(milk);
 
         Product bread = new Bread(random.nextInt(5));

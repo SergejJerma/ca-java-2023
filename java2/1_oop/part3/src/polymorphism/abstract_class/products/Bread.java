@@ -1,4 +1,4 @@
-package polymorphism;
+package polymorphism.abstract_class.products;
 
 class Bread extends Product {
     private final int expirationLevel;
@@ -7,6 +7,7 @@ class Bread extends Product {
         this.expirationLevel = expirationLevel;
     }
 
+    @Override
     public boolean isNotExpired() {
         return this.expirationLevel <= 3;
     }

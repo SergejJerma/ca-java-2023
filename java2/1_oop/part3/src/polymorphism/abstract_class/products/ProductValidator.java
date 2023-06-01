@@ -1,4 +1,4 @@
-package polymorphism;
+package polymorphism.abstract_class.products;
 
 class ProductValidator {
 

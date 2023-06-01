@@ -1,9 +1,8 @@
-package polymorphism.numbers;
+package polymorphism.abstract_class.numbers;
 
 import java.util.List;
 
 public class MainNumbers {
-
 
     public static void main(String[] args) {
 

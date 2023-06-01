@@ -1,4 +1,4 @@
-package polymorphism.numbers;
+package polymorphism.abstract_class.numbers;
 
 import java.util.List;
 

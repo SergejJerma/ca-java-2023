@@ -1,15 +1,15 @@
-package polymorphism.numbers;
+package polymorphism.abstract_class.numbers;
 
 import java.util.ArrayList;
 import java.util.List;
 
 abstract class Skaicius {
-    protected List<Integer> numbers = new ArrayList<>();
+    List<Integer> numbers = new ArrayList<>();
 
     public abstract List<Integer> generuok();
 
-    public Integer suma(List<Integer> list) {
-        return list.stream().mapToInt(Integer::intValue).sum();
+    public Integer suma(List<Integer> numbers) {
+        return numbers.stream().mapToInt(Integer::intValue).sum();
     }
 
     @Override

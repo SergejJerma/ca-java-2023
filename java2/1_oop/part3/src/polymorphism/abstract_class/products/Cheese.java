@@ -1,9 +1,9 @@
-package polymorphism;
+package polymorphism.abstract_class.products;
 
-class Butter extends Product {
+class Cheese extends Product {
     private final int expirationLevel;
 
-    Butter(int expirationLevel) {
+    Cheese(int expirationLevel) {
         this.expirationLevel = expirationLevel;
     }
 

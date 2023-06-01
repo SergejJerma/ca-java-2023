@@ -1,4 +1,4 @@
-package polymorphism.numbers;
+package polymorphism.abstract_class.numbers;
 
 import java.util.List;
 
@@ -8,7 +8,4 @@ public class LyginisSkaicius extends Skaicius{
         return List.of(2, -8, 6, 4);
     }
 
-    public void lyginisMetodas() {
-        System.out.println("lllll");
-    }
 }

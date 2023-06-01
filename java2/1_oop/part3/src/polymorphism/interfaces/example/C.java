@@ -1,4 +1,4 @@
-package polymorphism.interfaces;
+package polymorphism.interfaces.example;
 
 class C implements A, B {
 

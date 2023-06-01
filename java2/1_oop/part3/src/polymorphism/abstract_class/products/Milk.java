@@ -1,4 +1,4 @@
-package polymorphism;
+package polymorphism.abstract_class.products;
 
 class Milk extends Product {
     private final int expirationLevel;
@@ -8,6 +8,10 @@ class Milk extends Product {
     }
 
     public boolean isNotExpired() {
-        return this.expirationLevel <= 2;
+        return this.expirationLevel <= 6;
+    }
+
+    public int getExpirationLevel() {
+        return expirationLevel;
     }
 }
