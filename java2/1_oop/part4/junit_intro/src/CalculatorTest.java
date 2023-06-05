@@ -1,3 +1,6 @@
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,7 +11,23 @@ class CalculatorTest {
 
     @BeforeEach
     void setUp() {
+        System.out.println("Executing this before each test");
         calculator = new Calculator();
+    }
+
+    @AfterEach
+    void tearDown() {
+        System.out.println("A test is completed");
+    }
+
+    @BeforeAll
+    static void beforeAll() {
+        System.out.println("Executing this static method once before all tests in this class");
+    }
+
+    @AfterAll
+    static void afterAll() {
+        System.out.println("Executing this static method once after all tests in this class");
     }
 
     @org.junit.jupiter.api.Test
