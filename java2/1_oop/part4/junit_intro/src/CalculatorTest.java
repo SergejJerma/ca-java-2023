@@ -81,4 +81,17 @@ class CalculatorTest {
         //then
         assertEquals(0, result);
     }
+
+    @org.junit.jupiter.api.Test
+    void divide_withValidInput_providesValidOutput() {
+        //given
+        int a = 9;
+        int b = 3;
+
+        //when
+        int result = calculator.divide(a, b);
+
+        //then
+        assertEquals(3, result);
+    }
 }
