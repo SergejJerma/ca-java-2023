@@ -1,7 +1,4 @@
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,7 +27,7 @@ class CalculatorTest {
         System.out.println("Executing this static method once after all tests in this class");
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void add_withValidInput_providesValidOutput() {
         //given
         int a = 1;
@@ -43,7 +40,7 @@ class CalculatorTest {
         assertEquals(3, result);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void add_withNullBInput_providesValidOutput() {
         //given
         int a = 1;
@@ -56,7 +53,7 @@ class CalculatorTest {
         assertEquals(1, result);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void add_withNullAInput_providesValidOutput() {
         //given
         int b = 1;
@@ -69,7 +66,7 @@ class CalculatorTest {
         assertEquals(1, result);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void multiply_withValidInput_providesValidOutput() {
         //given
         int a = 2;
@@ -82,7 +79,7 @@ class CalculatorTest {
         assertEquals(6, result);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void multiply_withNullAInput_providesValidOutput() {
         //given
         Integer a = null;
@@ -95,7 +92,7 @@ class CalculatorTest {
         assertEquals(0, result);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void multiply_withNullBInput_providesValidOutput() {
         //given
         int a = 2;
@@ -108,7 +105,7 @@ class CalculatorTest {
         assertEquals(0, result);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void divide_withValidInput_providesValidOutput() {
         //given
         int a = 9;
@@ -121,7 +118,7 @@ class CalculatorTest {
         assertEquals(3, result);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void divide_withBBeingZeroInput_throwsCustomException() {
         //given
         int a = 9;
