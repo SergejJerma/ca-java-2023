@@ -94,4 +94,15 @@ class CalculatorTest {
         //then
         assertEquals(3, result);
     }
+
+    @org.junit.jupiter.api.Test
+    void divide_withBBeingZeroInput_throwsCustomException() {
+        //given
+        int a = 9;
+        int b = 0;
+
+        //when
+        //then
+        assertThrows(CustomException.class, () -> calculator.divide(a, b));
+    }
 }
