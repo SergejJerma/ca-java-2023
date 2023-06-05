@@ -1,8 +1,15 @@
+import org.junit.jupiter.api.BeforeEach;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
 
-    private Calculator calculator = new Calculator();
+    private Calculator calculator;
+
+    @BeforeEach
+    void setUp() {
+        calculator = new Calculator();
+    }
 
     @org.junit.jupiter.api.Test
     void add_withValidInput_providesValidOutput() {
