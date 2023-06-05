@@ -15,6 +15,10 @@ public class Calculator {
     }
 
     public int divide(int a, int b) {
-        return a / b;
+        try {
+            return a / b;
+        } catch (ArithmeticException e) {
+            throw new CustomException("b shall not be zero!");
+        }
     }
 }
