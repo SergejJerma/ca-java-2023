@@ -21,4 +21,8 @@ public class Calculator {
             throw new CustomException("b shall not be zero!");
         }
     }
+
+    public int subtract(int a, int b) {
+        return a - b;
+    }
 }

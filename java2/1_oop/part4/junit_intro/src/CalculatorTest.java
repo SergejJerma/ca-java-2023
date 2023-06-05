@@ -128,4 +128,19 @@ class CalculatorTest {
         //then
         assertThrows(CustomException.class, () -> calculator.divide(a, b));
     }
+
+    @Test
+    void subtract_withValidInput_providesValidOutput() {
+        //given
+        int a = 2;
+        int b = 3;
+
+        //when
+        int result = calculator.subtract(a, b);
+
+        //then
+        assertEquals(-1, result);
+    }
+
+
 }
