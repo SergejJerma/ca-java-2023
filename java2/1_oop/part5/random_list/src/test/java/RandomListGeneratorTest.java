@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -63,6 +64,36 @@ class RandomListGeneratorTest {
 
         //when - then   //off-topic: Hey! - there's a lambda!
         assertThrows(MyIllegalArgumentException.class, () -> randomListGenerator.generateArrayList(sizeBelowZero));
+    }
+
+    /*  4. Add another method to your RandomListGenerator...
+     The method must have 1 more input argument - upper bound, that would limit the randomly generated number
+     For example: generateArrayList(int sizeToGenerate, int randomIntUpperBound)
+     Make a test that would call generateArrayList 10 times ...
+      and assert that none of randomly generated numbers exceed the upper bound.
+     */
+    @Test
+    void generateArrayList_givenPositiveSizeAndUpperBound_generatesListOfIntegersWithin0AndUpperBound() {
+        //given
+        final int givenSize = 3;
+        final int upperBound = 10;
+        List<List<Integer>> listOfIntegerLists = new ArrayList<>();
+
+        //when
+        for (int i = 0; i < 10; i++)
+            listOfIntegerLists.add(randomListGenerator.generateArrayList(givenSize, upperBound));
+
+        //then
+        for (int i = 0; i < 10; i++) {
+            List<Integer> listToValidate = listOfIntegerLists.get(i);
+            assertEquals(givenSize, listToValidate.size());
+            listValuesAreWithinBounds(upperBound, listToValidate);
+        }
+    }
+
+    private static void listValuesAreWithinBounds(int upperBound, List<Integer> integerList) {
+        for (Integer integer : integerList)
+            assertTrue(integer >= 0 && integer <= upperBound);
     }
 
 

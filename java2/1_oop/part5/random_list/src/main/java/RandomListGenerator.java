@@ -35,4 +35,16 @@ public class RandomListGenerator {
         return list;
     }
 
+    /* 4. Add another method to your RandomListGenerator...
+     The method must have 1 more input argument - upper bound, that would limit the randomly generated number */
+    public List<Integer> generateArrayList(int size, int upperBound) {
+        if (size < 0)
+            throw new MyIllegalArgumentException("size must be >= 0");
+
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 0; i < size; i++)
+            list.add(random.nextInt(upperBound));
+
+        return list;
+    }
 }
