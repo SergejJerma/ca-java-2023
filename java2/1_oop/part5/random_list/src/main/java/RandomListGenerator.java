@@ -4,7 +4,7 @@ import java.util.Random;
 
 /* 0. Write a Java program to create an array list of random integers of a specified size
   1. Test that given size=0 it will generate an empty list
-  2. Update test and test that given size=<0 it will generate an empty list
+  2. Add test and test that given size<0 it will generate an empty list
   3. Create MyIllegalArgumentException
      Update the test and test that given size=0 it will generate an empty list...
      but given size=-1 it will throw MyIllegalArgumentException

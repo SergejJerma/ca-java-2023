@@ -37,4 +37,17 @@ class RandomListGeneratorTest {
         //then
         assertEquals(size0, integerList.size());
     }
+
+    //  2. Add test and test that given size<0 it will generate an empty list
+    @Test
+    void generateArrayList_givenNegativeSize_generatesEmptyList() {
+        //given
+        final int sizeBelowZero = -1;
+
+        //when
+        List<Integer> integerList = randomListGenerator.generateArrayList(sizeBelowZero);
+
+        //then
+        assertEquals(0, integerList.size());
+    }
 }
