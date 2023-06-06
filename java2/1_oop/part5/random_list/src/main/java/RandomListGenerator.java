@@ -25,10 +25,12 @@ public class RandomListGenerator {
 
     // 0. Write a Java program to create an array list of random integers of a specified size
     public ArrayList<Integer> generateArrayList(int size) {
+        if (size < 0)
+            throw new MyIllegalArgumentException("size must be >= 0");
+
         ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++)
             list.add(random.nextInt());
-        }
 
         return list;
     }

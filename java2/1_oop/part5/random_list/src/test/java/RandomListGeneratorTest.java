@@ -1,9 +1,9 @@
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class RandomListGeneratorTest {
 
@@ -39,6 +39,7 @@ class RandomListGeneratorTest {
     }
 
     //  2. Add test and test that given size<0 it will generate an empty list
+    @Disabled("Because the requirements have changed and I did not delete this test just so you have an example")
     @Test
     void generateArrayList_givenNegativeSize_generatesEmptyList() {
         //given
@@ -50,4 +51,19 @@ class RandomListGeneratorTest {
         //then
         assertEquals(0, integerList.size());
     }
+
+    /* 3. Create MyIllegalArgumentException
+         Update the test and test that given size=0 it will generate an empty list...
+         but given size=-1 it will throw MyIllegalArgumentException
+     */
+    @Test
+    void generateArrayList_givenNegativeSize_throwsMyIllegalArgumentException() {
+        //given
+        final int sizeBelowZero = -1;
+
+        //when - then   //off-topic: Hey! - there's a lambda!
+        assertThrows(MyIllegalArgumentException.class, () -> randomListGenerator.generateArrayList(sizeBelowZero));
+    }
+
+
 }
