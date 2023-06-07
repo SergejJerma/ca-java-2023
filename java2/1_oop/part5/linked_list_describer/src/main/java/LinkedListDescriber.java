@@ -1,6 +1,4 @@
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class LinkedListDescriber {
     /**
@@ -13,6 +11,20 @@ public class LinkedListDescriber {
      * expect output = {"": [0, 7], "a": [1], "b": [2], "c": [3], "d": [4, 5, 6]}
      */
     public Map<String, Integer[]> describe(List<String> list) {
-        return null;
+        Map<String, Integer[]> result = new HashMap<>();
+
+        for (int i = 0; i < list.size(); i++) {
+            String element = list.get(i);
+            if (result.containsKey(element)) {
+                Integer[] indexes = result.get(element);
+                Integer[] newIndexes = Arrays.copyOf(indexes, indexes.length + 1);
+                newIndexes[indexes.length] = i;
+                result.put(element, newIndexes);
+            } else {
+                result.put(element, new Integer[] {i});
+            }
+        }
+
+        return result;
     }
 }
