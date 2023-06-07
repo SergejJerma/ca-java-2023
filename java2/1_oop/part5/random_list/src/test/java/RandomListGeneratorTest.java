@@ -12,7 +12,7 @@ class RandomListGeneratorTest {
 
     //0. Write a Java program to create an array list of random integers of a specified size
     @Test
-    void generateArrayList_givenPozitiveSize_generatesListOfIntegers() {
+    void generateArrayList_givenPositiveSize_generatesListOfIntegers() {
         //given
         final int givenSize = 3;
 
