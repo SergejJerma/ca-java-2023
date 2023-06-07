@@ -13,6 +13,6 @@ public class ListCutter {
      * @return list that's a sub-list of the original, like ["b", "c", "d"]
      */
     public List<String> cut(List<String> list, int start, int end) {
-        return null;
+        return list.subList(start, end + 1);
     }
 }
