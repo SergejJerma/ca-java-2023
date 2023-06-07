@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ArraySwapperTest {
@@ -30,5 +31,24 @@ public class ArraySwapperTest {
         //then
         assertEquals(givenArrayList.get(index0), element3);
         assertEquals(givenArrayList.get(index3), element0);
+    }
+
+    @Test
+    void sort_givenListOfStrings_sortsThemAlphabetically() {
+        //given
+        List<String> listToSort = new ArrayList<>();
+        listToSort.add("b");
+        listToSort.add("a");
+        listToSort.add("c");
+
+        //when
+        swapper.sort(listToSort);
+
+        //then (assert using assertj (library; look into .pom file))
+        assertThat(listToSort).size().isEqualTo(3);
+
+        assertThat(listToSort.get(0)).isEqualTo("a");
+        assertThat(listToSort.get(1)).isEqualTo("b");
+        assertThat(listToSort.get(2)).isEqualTo("c");
     }
 }

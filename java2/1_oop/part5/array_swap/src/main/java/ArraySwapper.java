@@ -12,4 +12,7 @@ public class ArraySwapper {
     }
 
 
+    public void sort(List<String> listToSort) {
+        listToSort.sort(String::compareTo);
+    }
 }
