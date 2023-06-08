@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ListFilter {
 
@@ -30,7 +31,9 @@ public class ListFilter {
      * result = {"labas", "laba", "laukiu"}
      */
     public List<String> filterStrings(List<String> list, String subString) {
-        return null;
+        return list.stream()
+                .filter(s -> s.startsWith(subString))
+                .collect(Collectors.toList());
     }
 
 
