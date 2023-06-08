@@ -13,7 +13,9 @@ public class ListFilter {
      * result = 3
      */
     public int countStrings(List<String> list, String subString) {
-        return 0;
+        return (int) list.stream()
+                .filter(s -> s.startsWith(subString))
+                .count();
     }
 
     /**
