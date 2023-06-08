@@ -34,4 +34,44 @@
         </dependency>
     </dependencies>
 
+
+    <build>
+        <pluginManagement>
+            <!-- NOTE: These plugins will be removed from future versions of the super POM -->
+            <!-- They are kept for the moment as they are very unlikely to conflict with lifecycle mappings (MNG-4453) -->
+            <!-- plugin for java test coverage estimation. Read more on:    https://www.baeldung.com/jacoco
+                   would require SonarQube (probably) or some alternative
+
+            mvn jacoco:report
+            mvn sonar:sonar -Pcoverage
+        -->
+            <plugins>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.8.7</version>
+                    <executions>
+                        <execution>
+                            <id>prepare-agent</id>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>report</id>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                            <configuration>
+                                <formats>
+                                    <format>XML</format>
+                                </formats>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
 </project>
