@@ -42,7 +42,6 @@ public class Friends {
                 byte[] strToBytes = text.getBytes();
                 outputStream.write(strToBytes);
             }
-
         }
     }
 }
