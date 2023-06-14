@@ -1,15 +1,23 @@
+import java.util.Arrays;
+
 class Box<T> {
-    private T item;
+    private final T[] items;
+    private int size;
 
-    public void setItem(T item) {
-        this.item = item;
+    public Box(T[] items) {
+        this.items = items;
     }
 
-    public void printItem() {
-        System.out.println(item.toString() + " " + item.getClass().getSimpleName());
+    public void putItems(T item) {
+        this.items[size] = item;
+        size++;
     }
 
-    public T getItem() {
-        return item;
+    public void printItems() {
+        System.out.println(Arrays.toString(items));
+    }
+
+    public T[] getItems() {
+        return items;
     }
 }

@@ -15,14 +15,14 @@ public class Main {
         System.out.println("What currency would you like to put into box - Dollar[D] / Euro[E] ?: ");
         String decision = scanner.nextLine();
 
-        Box<Currency> box = new Box<>();
+        Box<Currency> box = new Box<>(new Currency[10]);
 
         if (decision.equals("D"))
-           box.setItem(new Dollar(1));
+           box.putItems(new Dollar(1));
         else if (decision.equals("E"))
-            box.setItem(new Euro(1));
+            box.putItems(new Euro(1));
 
-        box.printItem();
+        box.printItems();
     }
 }
 
