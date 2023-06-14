@@ -13,6 +13,7 @@ public class Main {
         showUnsafeBox();
     }
 
+    @SuppressWarnings({"unchecked", "rawtypes"})
     private static void showUnsafeBox() {
         System.out.println("String[S] / Integer[I] ?: ");
         String decision = scanner.nextLine();
