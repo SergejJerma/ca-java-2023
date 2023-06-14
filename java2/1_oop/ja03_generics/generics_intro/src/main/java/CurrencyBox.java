@@ -10,15 +10,24 @@ class CurrencyBox implements Box<Currency> {
         this.items = items;
     }
 
-    public void putItems(Currency item) {
+    @Override
+    public void putItem(Currency item) {
         this.items[size] = item;
         size++;
     }
 
+    @Override
+    public void putItems(Currency[] items) {
+        for (Currency i : items)
+            putItem(i);
+    }
+
+    @Override
     public void printItems() {
         System.out.println(Arrays.toString(items));
     }
 
+    @Override
     public Currency[] getItems() {
         return items;
     }

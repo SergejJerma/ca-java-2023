@@ -1,3 +1,4 @@
+import currencies.Currency;
 import toys.Toy;
 
 import java.util.Arrays;
@@ -10,15 +11,24 @@ class ToyBox implements Box<Toy> {
         this.items = items;
     }
 
-    public void putItems(Toy item) {
+    @Override
+    public void putItem(Toy item) {
         this.items[size] = item;
         size++;
     }
 
+    @Override
+    public void putItems(Toy[] items) {
+        for (Toy i : items)
+            putItem(i);
+    }
+
+    @Override
     public void printItems() {
         System.out.println(Arrays.toString(items));
     }
 
+    @Override
     public Toy[] getItems() {
         return items;
     }
