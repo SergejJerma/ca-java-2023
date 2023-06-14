@@ -2,7 +2,6 @@ import currencies.Currency;
 import currencies.Dollar;
 import currencies.Euro;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -10,7 +9,33 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        showSafeBox();
+//        showSafeBox();
+        showUnsafeBox();
+    }
+
+    private static void showUnsafeBox() {
+        System.out.println("String[S] / Integer[I] ?: ");
+        String decision = scanner.nextLine();
+        Box<Integer> safeBox = new UnspecifiedBox();
+
+        if (decision.equals("S")) {
+            //cannot put String, because we defined box would only store <Integer> values
+            //safeBox.putItem("Some String");
+        } else if (decision.equals("I")) {
+            safeBox.putItem(1);
+        }
+
+        Box unsafeBox = new UnspecifiedBox();
+        if (decision.equals("S")) {
+            unsafeBox.putItem("Some String");
+        } else if (decision.equals("I")) {
+            unsafeBox.putItem(1);
+        }
+
+        /* will throw a runtime exception if you've put a wrong object (not an integer) into the box
+         */
+        System.out.println("The integer * 10 you've put is: " + (Integer)unsafeBox.getItems()[0] * 10);
+
     }
 
     private static void showSafeBox() {
