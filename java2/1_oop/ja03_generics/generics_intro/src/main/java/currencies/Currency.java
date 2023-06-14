@@ -1,6 +1,6 @@
 package currencies;
 
-public class Currency {
+public abstract class Currency {
 
     final int amount;
 
