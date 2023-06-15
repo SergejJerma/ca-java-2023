@@ -1,4 +1,5 @@
-import medziai.Medis;
+package medziai;
+
 import medziai.lapuociai.Azuolas;
 import medziai.lapuociai.Berzas;
 import medziai.spygliuociai.Egle;
@@ -9,7 +10,7 @@ import medziai.spygliuociai.Spygliuotis;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainWildCard {
+public class MainSubtypes {
     public static void main(String[] args) {
         Azuolas azuolas = new Azuolas();
         azuolas.turi();
@@ -31,43 +32,44 @@ public class MainWildCard {
         berzynas.add(new Berzas());
 
         ivairusMiskas(medziai);
-        ivairusMiskas(spygliuociai);
-        ivairusMiskas(berzynas);
+        //ivairusMiskas(spygliuociai);  <-- problem with subtypes
+        //ivairusMiskas(berzynas);      <-- problem with subtypes
 
         //spygliuociuMiskas(medziai);
         spygliuociuMiskas(spygliuociai);
         //spygliuociuMiskas(berzynas);
+
+//        berzuMiskas(medziai);
+//        berzuMiskas(spygliuoziai);
+        berzuMiskas(berzynas);
     }
 
-    //wildcard implementation
-    public static void ivairusMiskas(List<? extends Medis> medziai) {
+    /*    Polymorphism allows us to use a subtype in place of a supertype */
+    public static void ivairusMiskas(List<Medis> medziai) {
         medziai.forEach(medis -> medis.turi()); //lambda pavyzdys
 
         Medis pirmasMedis = medziai.get(0);
         pirmasMedis.turi();
 
-        //medziai.add(pirmasMedis);
+        medziai.add(pirmasMedis);  //<-- with subtypes we can add to the list
     }
 
-
-    public static void spygliuociuMiskas(List<? extends Spygliuotis> spygliuociai) {
+    public static void spygliuociuMiskas(List<Spygliuotis> spygliuociai) {
         spygliuociai.forEach(spygliuotis -> spygliuotis.turi()); //lambda pavyzdys
 
         Spygliuotis pirmasSpygliuotis = spygliuociai.get(0);
         pirmasSpygliuotis.turi();
 
-        //spygliuociai.add(pirmasSpygliuotis);
+        spygliuociai.add(pirmasSpygliuotis);
     }
 
-    static void berzuMiskas(List<? extends Berzas> berzai) {
+    static void berzuMiskas(List<Berzas> berzai) {
         berzai.forEach(berzas -> berzas.turi()); //lambda pavyzdys
 
         Berzas pirmasBerzas = berzai.get(0);
         pirmasBerzas.turi();
 
-        //berzai.add(pirmasBerzas);
+        berzai.add(pirmasBerzas);
     }
-
-
 
 }
