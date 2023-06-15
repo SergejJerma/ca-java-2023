@@ -24,4 +24,14 @@ public  class Calculator <T extends Number> {
             System.out.println(n.doubleValue());
         }
     }
+
+    public  void addTenNumbers(List<? super Integer> list) {
+        System.out.println("Lower bound wildcard method adds to list");
+        for (int i = 0; i < 10; i++) {
+            list.add(i);
+        }
+
+        Object object = list.get(0);
+        //Integer integer = list.get(0);    //cannot properly read from list (but can write into it)
+    }
 }
