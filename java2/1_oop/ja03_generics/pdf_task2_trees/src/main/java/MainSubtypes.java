@@ -1,5 +1,4 @@
-package medziai;
-
+import medziai.Medis;
 import medziai.lapuociai.Azuolas;
 import medziai.lapuociai.Berzas;
 import medziai.spygliuociai.Egle;

@@ -37,6 +37,10 @@ public class MainWildCard {
         //spygliuociuMiskas(medziai);
         spygliuociuMiskas(spygliuociai);
         //spygliuociuMiskas(berzynas);
+
+        //berzuMiskas(medziai);
+        //berzuMiskas(spygliuoziai);
+        berzuMiskas(berzynas);
     }
 
     //wildcard implementation
