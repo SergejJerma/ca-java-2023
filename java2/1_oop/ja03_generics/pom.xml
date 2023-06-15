@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>pdf_task2_trees</module>
+        <module>slides2_task</module>
     </modules>
     <packaging>pom</packaging>
 
