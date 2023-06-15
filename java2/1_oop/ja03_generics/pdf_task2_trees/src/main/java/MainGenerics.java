@@ -9,7 +9,7 @@ import medziai.spygliuociai.Spygliuotis;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class MainGenerics {
     public static void main(String[] args) {
         Azuolas azuolas = new Azuolas();
         azuolas.turi();
