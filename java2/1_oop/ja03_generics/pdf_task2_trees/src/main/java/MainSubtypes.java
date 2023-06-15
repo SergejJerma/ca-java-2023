@@ -31,8 +31,8 @@ public class MainSubtypes {
         berzynas.add(new Berzas());
 
         ivairusMiskas(medziai);
-        //ivairusMiskas(spygliuociai);  <-- problem with subtypes
-        //ivairusMiskas(berzynas);      <-- problem with subtypes
+        //ivairusMiskas(spygliuociai);  // <-- problem - cannot pass list of subtypes
+        //ivairusMiskas(berzynas);      // <-- problem - cannot pass list of subtypes
 
         //spygliuociuMiskas(medziai);
         spygliuociuMiskas(spygliuociai);

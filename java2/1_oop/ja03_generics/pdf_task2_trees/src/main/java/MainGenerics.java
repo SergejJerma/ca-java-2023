@@ -43,6 +43,13 @@ public class MainGenerics {
         berzuMiskas(berzynas);
     }
 
+    /*
+        Generic methods (notice the Type T definition in diamond brackets like '<T extends Spygliuotis>')
+
+        Using generics, T is determined to be some specific type that extends Medis (like Kadagys, Pusis, etc.).
+         Once T is determined, you can both read from the list and write to the list with objects of type T.
+     */
+
     // Generics (generic method)
     //    <tipo 'T' aprasymas>               <panaudojame tipa T>
     //            v                                  v
@@ -56,7 +63,7 @@ public class MainGenerics {
         // extend'inantis tipą 'medziai.Medis'          //<T extends medziai.Medis>
         T pirmasMedisT = medziai.get(0);
         pirmasMedisT.turi();
-        medziai.add(pirmasMedisT);
+        medziai.add(pirmasMedisT);      //<-- bet galime deti i sarasa naudodamiesi savo paciu apibreztu tipu T
 
         Medis pirmasMedis = medziai.get(0);
         pirmasMedis.turi();
