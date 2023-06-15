@@ -7,6 +7,9 @@
     <groupId>org.example</groupId>
     <artifactId>generics-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>pdf_task2_trees</module>
+    </modules>
     <packaging>pom</packaging>
 
     <!-- A simple example available here:
