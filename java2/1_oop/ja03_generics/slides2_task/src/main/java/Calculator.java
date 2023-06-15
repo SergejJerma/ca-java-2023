@@ -1,3 +1,5 @@
+import java.util.List;
+
 public  class Calculator <T extends Number> {
 
     private T varA;
@@ -14,5 +16,12 @@ public  class Calculator <T extends Number> {
 
     public  Number sum() {
         return varA.doubleValue() + varB.doubleValue();
+    }
+
+    public void printList(List<? extends Number> list) {
+        System.out.println("wildcard method reads items from list");
+        for (Number n : list) {
+            System.out.println(n.doubleValue());
+        }
     }
 }
