@@ -1,3 +1,11 @@
+import medziai.*;
+import medziai.lapuociai.Azuolas;
+import medziai.lapuociai.Berzas;
+import medziai.spygliuociai.Egle;
+import medziai.spygliuociai.Kadagys;
+import medziai.spygliuociai.Pusis;
+import medziai.spygliuociai.Spygliuotis;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,14 +53,14 @@ public class Main {
 //            medis.turi();
 
         //java compiler'is zino, kad T yra bet kok tipas (klase),
-        // extend'inantis tipą 'Medis'          //<T extends Medis>
+        // extend'inantis tipą 'medziai.Medis'          //<T extends medziai.Medis>
         T pirmasMedisT = medziai.get(0);
         pirmasMedisT.turi();
         medziai.add(pirmasMedisT);
 
         Medis pirmasMedis = medziai.get(0);
         pirmasMedis.turi();
-        //medziai.add(pirmasMedis);   // <-- generic'u silpnoji vieta - negalime prideti i sarasa: "Required type: T; Provided Medis"
+        //medziai.add(pirmasMedis);   // <-- generic'u silpnoji vieta - negalime prideti i sarasa: "Required type: T; Provided medziai.Medis"
     }
 
     static <T extends Spygliuotis> void spygliuociuMiskas(List<T> spygliuociai) {
@@ -80,44 +88,3 @@ public class Main {
 
 }
 
-abstract class Medis {
-    void turi() {
-        System.out.print(this.getClass().getSimpleName());
-    }
-}
-
-abstract class Lapuotis extends Medis {
-    @Override
-    void turi() {
-        super.turi();
-        System.out.println(" turi Lapus");
-    }
-}
-
-abstract class Spygliuotis extends Medis {
-    @Override
-    void turi() {
-        super.turi();
-        System.out.println(" turi Spyglius");
-    }
-}
-
-class Azuolas extends Lapuotis {
-
-}
-
-class Berzas extends Lapuotis {
-
-}
-
-class Egle extends Spygliuotis {
-
-}
-
-class Pusis extends Spygliuotis {
-
-}
-
-class Kadagys extends Spygliuotis {
-
-}
