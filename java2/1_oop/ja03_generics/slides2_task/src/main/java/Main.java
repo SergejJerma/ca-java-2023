@@ -12,6 +12,8 @@ public class Main {
 
         calculator.printList(List.of(1, 2.5f, 3.4d, -4, 5.7f));
 
+        calculator.printListInAVeryAbstractWay(List.of(1, 2.5f, "Some stuff", 3.4d, -4));
+
         //type checking
         //Calculator<Integer> integerCalculator = new Calculator<>(1, 2.0); //compile time error
         Calculator<Integer> integerCalculator = new Calculator<>(1, 2);

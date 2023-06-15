@@ -34,4 +34,11 @@ public  class Calculator <T extends Number> {
         Object object = list.get(0);
         //Integer integer = list.get(0);    //cannot properly read from list (but can write into it)
     }
+
+    public  void  printListInAVeryAbstractWay(List<?> list) {
+        System.out.println("Wildcard method only reads Object from list");
+        for (Object element : list) {
+            System.out.println(element);
+        }
+    }
 }
