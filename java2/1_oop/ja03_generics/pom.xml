@@ -13,6 +13,7 @@
         <module>slides_map_task</module>
         <module>w3_maps</module>
         <module>w3_object_finder</module>
+        <module>list_merge</module>
     </modules>
     <packaging>pom</packaging>
 
