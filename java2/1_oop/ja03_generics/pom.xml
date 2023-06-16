@@ -12,6 +12,7 @@
         <module>slides2_task</module>
         <module>slides_map_task</module>
         <module>w3_maps</module>
+        <module>w3_object_finder</module>
     </modules>
     <packaging>pom</packaging>
 
