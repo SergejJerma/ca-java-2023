@@ -11,6 +11,7 @@
         <module>pdf_task2_trees</module>
         <module>slides2_task</module>
         <module>slides_map_task</module>
+        <module>w3_maps</module>
     </modules>
     <packaging>pom</packaging>
 
