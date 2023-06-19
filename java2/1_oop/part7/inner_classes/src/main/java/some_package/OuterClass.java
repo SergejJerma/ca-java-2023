@@ -1,4 +1,4 @@
-package some_package;
+package java.some_package;
 
 public class OuterClass {
 
