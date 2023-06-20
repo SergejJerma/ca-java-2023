@@ -37,7 +37,7 @@ class CalculatorTest {
         int result = calculator.add(a, b);
 
         //then
-        assertEquals(3, result);
+        assertEquals(-1, result);
     }
 
     @Test
