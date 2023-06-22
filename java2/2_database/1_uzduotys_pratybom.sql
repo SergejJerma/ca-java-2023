@@ -1,3 +1,7 @@
+----------------------------------------------------------------
+-- Uzduotys is "užduotys 1 pratybom.pdf"
+
+
 -- 1. Išrinkite visus duomenis iš lentelės “DARBUOTOJAS”.
 select * from DARBUOTOJAS;
 
@@ -11,14 +15,15 @@ where SKYRIUS_PAVADINIMAS='Java';
 -- (asmens kodą, vardą, pavardę, nuo kada pradėjo dirbti, gimimo metus,
 --     pareigas, skyriaus pavadinimą ir projekto numerį ).
 
--- 1 budas: Visos vertes surasomos stulpeliu eiliskumo tvarka
+-- I budas: Visos vertes surasomos stulpeliu eiliskumo tvarka
 insert into DARBUOTOJAS values
 ('39303094444', 'Tomas', 'Zvinys', '2020-03-30', '1993-03-03', 'Programuotojas', 'Java', 3 );
 
 -- Kadangi primary key yra asmens kodas - negalim antra kart iterpt tokios pacios eilutes (reik istrint)
 delete from DARBUOTOJAS where ASMENSKODAS='39303094444';
 
--- 2 budas: Patys nurodom stulpeliu eiliskuma
+
+-- II budas: Patys nurodom stulpeliu eiliskuma
 insert into DARBUOTOJAS (
 ASMENSKODAS, DIRBANUO, GIMIMOMETAI, PAREIGOS, PAVARDE, PROJEKTAS_ID, SKYRIUS_PAVADINIMAS, VARDAS) values
 ('39303094444', '2020-03-30', '1993-03-03', 'Programuotojas', 'Zvinys', 3, 'Java','Tomas');
@@ -38,7 +43,5 @@ ASMENSKODAS, DIRBANUO, GIMIMOMETAI, PAREIGOS, PAVARDE, PROJEKTAS_ID, SKYRIUS_PAV
 select * from DARBUOTOJAS where PAVARDE = 'Antanaitis';
 
 update DARBUOTOJAS
- set PAREIGOS = 'Testuotojas'
- where PAVARDE = 'Antanaitis';
-
+ set PAREIGOS = 'Testuotojas';
 
