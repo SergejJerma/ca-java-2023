@@ -1,5 +1,6 @@
 ----------------------------------------------------------------
 -- PASKAITOS MEDZIAGA IS SKAIDRIU
+-- dirbam su sakila duomenu rinkiniu
 
 -- LIKE
 select * from film where description like '%_rama%' and description like '%_ction%';
@@ -31,8 +32,10 @@ select title, special_features from film where special_features like concat('%',
 
 -- GROUP BY ir AVG, COUNT, MAX, MIN, SUM
 select * from film;
+
 select distinct
 	rating,
+    count(rating),
 	avg(rental_rate) as vidurkis,
 	count(rental_rate) eiluciu_kiekis,
 	max(rental_rate),
@@ -41,3 +44,28 @@ select distinct
 from film
 group by rating;
 
+
+-- 2023-06-23
+-- HAVING
+SELECT
+ category.category_id,
+ category.name,
+ COUNT(film_id) AS number_of_films
+FROM film_category
+join category on film_category.category_id = category.category_id
+GROUP BY category_id
+HAVING COUNT(film_id) > 60
+order by number_of_films desc;
+
+-- norim gauti tik 1 eilute (kuriai kategorijai priklauso daugiausiai filmu)
+SELECT
+ category.category_id,
+ category.name,
+ COUNT(film_id) AS number_of_films
+FROM film_category
+    join category on film_category.category_id = category.category_id
+GROUP BY category_id
+order by number_of_films desc
+LIMIT 1;
+
+select * from country;
