@@ -1,4 +1,27 @@
 ## How to
+
+### Re-run (fresh-restart)
+
+
+1. Delete docker container
+    ```shell
+    docker-compose rm sakila
+    ```
+   Here's how to do that in Docker Desktop (UI):
+   ![How to delete a container](./images/deleteDockerContainer.jpg)
+
+2. Delete docker volume that had been related to the deleted container
+   ```shell
+   docker volume prune
+   ```
+   Here's how to do that in Docker Desktop (UI):
+   ![How to delete a container](./images/deleteUnusedVolume.jpg)
+
+3. Build containers once again:
+   ```shell
+   docker-compose up --build -d
+   ```
+
 ### Run (start) the containers
 Run this command line in you command shell (from directory of [docker-compose](./docker-compose.yaml))
 ```shell
