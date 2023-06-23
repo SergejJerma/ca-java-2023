@@ -5,7 +5,7 @@
 
 1. Delete docker container
     ```shell
-    docker-compose rm sakila
+    docker-compose rm --stop sakila
     ```
    Here's how to do that in Docker Desktop (UI):
    ![How to delete a container](./images/deleteDockerContainer.jpg)
