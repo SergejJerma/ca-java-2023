@@ -8,7 +8,7 @@ use projektas;
 CREATE TABLE `projektai` (
     `nr` integer NOT NULL,
     `pavadinimas` varchar(60),
-    `svarba` varchar(60),
+    `svarba` varchar(60) DEFAULT 'Vidutinė',
     `pradzia` date,
     `trukme` integer
 );
@@ -16,16 +16,16 @@ CREATE TABLE `projektai` (
 CREATE TABLE `vykdymas` (
     `projektas` integer NOT NULL,
     `vykdytojas` integer NOT NULL,
-    `statusas` varchar(60),
-    `valandos` integer
+    `statusas` varchar(60) default 'Programuotojas',
+    `valandos` SMALLINT default 1
 );
 
 
 CREATE TABLE `vykdytojai` (
     `nr` integer NOT NULL,
     `pavarde` varchar(60),
-    `kvalifikacija` varchar(60),
-    `kategorija` integer,
+    `kvalifikacija` varchar(60) DEFAULT 'Informatikas',
+    `kategorija` SMALLINT,
     `issilavinimas` varchar(60)
 );
 
