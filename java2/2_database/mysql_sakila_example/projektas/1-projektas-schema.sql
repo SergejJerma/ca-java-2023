@@ -1,8 +1,8 @@
-drop schema if exists projektai;
+drop schema if exists projektas;
 
-create schema projektai;
+create schema projektas;
 
-use projektai;
+use projektas;
 
 
 CREATE TABLE `projektai` (
