@@ -129,7 +129,7 @@ group by PROJEKTAS_ID, PAREIGOS;
 select PROJEKTAS_ID, PAREIGOS, count(*)
 from DARBUOTOJAS 
 where PAREIGOS like 'Programuotoja%'
-group by PROJEKTAS_ID, PAREIGOS
+group by PROJEKTAS_ID, PAREIGOS;
 
 
 
