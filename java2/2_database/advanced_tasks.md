@@ -24,11 +24,11 @@
    Write a query to find films in the 'film' table with a rental rate higher than the average rental rate.
 
 8. **Inserting data:**\
-   Insert a new record into the 'customer' table with appropriate values. This should include customer first name, last
-   name, email, and store id at least.
+   Insert a new record into the 'customer' table with appropriate values.
+   This should include customer first name, last name, email, address id and store id at least.
 
 9. **Updating data:**\
-   Update the 'rental_rate' of films in the 'film' table to 2.99 if they are currently 0.99.
+   Update the 'rental_rate' of film 'ALICE FANTASIA' in the 'film' table to 2.99
 
 #### LVL 2
 
