@@ -19,6 +19,7 @@ public class MongoDbJdbc {
 //        Document asmuo = new Document("name", "Vardas").append("surname", "Pavarde");
 //
 //        collection.insertOne(asmuo);
+        collection.insertMany(List.of(asmuo));
 
 //        Iterator it = collection.find().iterator();
 //        while (it.hasNext()) {
