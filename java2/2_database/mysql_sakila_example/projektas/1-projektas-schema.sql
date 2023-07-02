@@ -23,6 +23,7 @@ CREATE TABLE `vykdymas` (
 
 CREATE TABLE `vykdytojai` (
     `nr` integer NOT NULL,
+    `vardas` varchar(60),
     `pavarde` varchar(60),
     `kvalifikacija` varchar(60) DEFAULT 'Informatikas',
     `kategorija` SMALLINT,
@@ -33,7 +34,8 @@ CREATE TABLE `vykdytojai` (
 insert into `projektai` (`nr`, `pavadinimas`, `svarba`, `pradzia`, `trukme`) values
 (1, 'Studentų apskaita', 'Aukšta', '2015-01-01', 12),
 (2, 'Buhalterinė apskaita', 'Vidutinė', '2005-03-01', 10),
-(3, 'WWW svetainė', 'Ypatinga', '2005-06-01', 2);
+(3, 'WWW svetainė', 'Ypatinga', '2005-06-01', 2),
+(4, 'Naujas projektas', 'Abejotina', null, null);
 
 
 insert into `vykdymas` (`projektas`, `vykdytojas`, `Statusas`, `Valandos`) values
@@ -43,17 +45,17 @@ insert into `vykdymas` (`projektas`, `vykdytojas`, `Statusas`, `Valandos`) value
 (1, 4, 'Vadovas', 100),
 (2, 1, 'Programuotojas', 300),
 (2, 2, 'Analitikas', 250),
-(2, 34, 'Vadovas', 100),
+(2, 3, 'Vadovas', 100),
 (3, 1, 'Programuotojas', 250),
 (3, 2, 'Vadovas', 400),
 (3, 3, 'Dizaineris', 150);
 
-insert into `vykdytojai` (`nr`, `pavarde`, `kvalifikacija`, `kategorija`, `issilavinimas`) values
-(1, 'Jonaitis', 'Informatikas', 2, 'VU'),
-(2, 'Petraitis', 'Statistikas', 3, 'VU'),
-(3, 'Gražulytė', 'Inžinierius', 1, null),
-(4, 'Onaitytė', 'Vadybininkas', 5, 'VDU'),
-(5, 'Antanaitis', 'Informatikas', 3, 'VU');
+insert into `vykdytojai` (`nr`, `vardas`, `pavarde`, `kvalifikacija`, `kategorija`, `issilavinimas`) values
+(1, 'Jonass', 'Jonaitis', 'Informatikas', 2, 'VU'),
+(2, 'Petras', 'Petraitis', 'Statistikas', 3, 'VU'),
+(3, 'Gražina', 'Gražulytė', 'Inžinierius', 1, null),
+(4, 'Ona', 'Onaitytė', 'Vadybininkas', 5, 'VDU'),
+(5, 'Antantas', 'Antanaitis', 'Informatikas', 3, 'VU');
 
 
 ALTER TABLE `projektai`
@@ -65,3 +67,9 @@ ALTER TABLE `vykdymas`
 
 ALTER TABLE `vykdytojai`
     ADD CONSTRAINT `vykdytojai_pkey` PRIMARY KEY (`nr`);
+
+ALTER TABLE vykdymas
+    ADD CONSTRAINT fk_vykdymas_vykdytojai FOREIGN KEY(vykdytojas) REFERENCES vykdytojai(nr);
+
+ALTER TABLE vykdymas
+    ADD CONSTRAINT fk_vykdymas_projektai FOREIGN KEY(projektas) REFERENCES projektai(nr);
