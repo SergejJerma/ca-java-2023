@@ -1,3 +1,69 @@
+-- ------------------------
+-- table joins
+-- ------------------------
+
+-- lenteliu apjungimas nenaudojant 'join' keyword'o
+SELECT *
+FROM projektai, vykdymas
+WHERE projektai.nr = vykdymas.projektas
+  AND trukme = 12;
+
+-- kitas variantas - naudojant 'join'
+SELECT *
+FROM projektai join vykdymas on projektai.nr = vykdymas.projektas
+WHERE trukme = 12;
+
+-- renkames is kurios lenteles norime duomenu <tenteles_pavadinimas>.<stulpelio_pavadinimas>
+SELECT projektai.*, vykdymas.statusas
+FROM projektai join vykdymas on projektai.nr = vykdymas.projektas
+WHERE trukme = 12;
+
+SELECT *
+FROM vykdytojai, vykdymas
+WHERE
+        vykdymas.vykdytojas = vykdytojai.nr
+  AND projektas = 1;
+
+
+-- Informacija apie tai, kokie vykdytojai kokius projektus vykdo ir kiek  kiekvienam projektui skiria valandų:
+SELECT pavarde, pavadinimas, valandos
+FROM vykdytojai, projektai, vykdymas
+WHERE projektas = projektai.nr AND vykdytojas = vykdytojai.nr;
+
+SELECT pavarde, pavadinimas, valandos
+FROM vykdymas
+    inner join vykdytojai on vykdymas.vykdytojas = vykdytojai.nr
+    inner join projektai on vykdymas.vykdytojas = vykdytojai.nr;
+
+
+--    Visų projekto Nr. 1 vykdytojų pavardės, statusai ir valandos:
+SELECT pavarde, statusas, valandos
+FROM vykdymas
+         inner join vykdytojai on vykdymas.vykdytojas = vykdytojai.nr
+         inner join projektai on vykdymas.projektas = projektai.nr
+WHERE vykdymas.projektas = 1;
+
+-- Vykdytojai, kuriems nepriskirtas joks projektas:
+select vykdytojai.*, vykdymas.*
+from vykdymas
+    right join vykdytojai on vykdymas.vykdytojas = vykdytojai.nr
+where
+    projektas is null;
+
+-- Projektai, kuriems nepriskirtas joks vykdytojas
+
+insert into `projektai` (`nr`, `pavadinimas`, `svarba`, `pradzia`, `trukme`)
+values (4, 'Naujas projektas', 'Abejotina', null, null);    -- Sukuriam projekta be vykdytojo (kol kas tokio nera)
+
+select *
+from projektai
+    left join vykdymas on projektai.nr = vykdymas.projektas
+where
+    vykdymas.projektas is null;
+
+-- -----------------
+-- Transactions
+-- -----------------
 drop table if exists CUSTOMERS;
 CREATE TABLE CUSTOMERS
 (
@@ -17,6 +83,7 @@ VALUES (1, 'Ramesh', 32, 'Ahmedabad', 2000.00),
        (6, 'Komal', 22, 'MP', 4500.00),
        (7, 'Muffy', 24, 'Indore', 10000.00);
 
+BEGIN;
 start transaction;
 # SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
 # SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
