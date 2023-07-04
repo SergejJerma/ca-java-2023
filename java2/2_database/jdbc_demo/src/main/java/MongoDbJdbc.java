@@ -6,6 +6,7 @@ import com.mongodb.client.model.Filters;
 import org.bson.Document;
 
 import java.util.Iterator;
+import java.util.List;
 
 public class MongoDbJdbc {
     public static void main(String[] args) {
@@ -16,7 +17,7 @@ public class MongoDbJdbc {
 
         MongoCollection<Document> collection = database.getCollection("my_collection");
 
-//        Document asmuo = new Document("name", "Vardas").append("surname", "Pavarde");
+        Document asmuo = new Document("name", "Vardas").append("surname", "Pavarde");
 //
 //        collection.insertOne(asmuo);
         collection.insertMany(List.of(asmuo));
