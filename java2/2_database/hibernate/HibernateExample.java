@@ -27,8 +27,9 @@ public class HibernateExample {
 //        List<Darbuotojas> list = q.list();
 //        list.forEach(System.out::println);
 
-        Query q = session.createQuery("DELETE FROM Darbuotojas WHERE id = 1");
-//        Query q = session.createQuery("UPDATE  Darbuotojas SET vardas = :naujasVardas WHERE vardas = :senasVardas");
+//        Query q = session.createQuery("DELETE FROM Darbuotojas WHERE id = 1");
+        Query q = session.createQuery("UPDATE  Darbuotojas SET vardas = :naujasVardas WHERE vardas = :senasVardas");
+
 //        q.setParameter("naujasVardas", "Nevardenis");
 //        q.setParameter("senasVardas", "Petras");
 //        q.executeUpdate();
