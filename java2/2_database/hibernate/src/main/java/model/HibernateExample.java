@@ -1,3 +1,4 @@
+package model;
 
 import model.Darbas;
 import model.Darbuotojas;
