@@ -1,3 +1,5 @@
+import model.Actor;
+
 import java.util.Scanner;
 
 public class Main {
