@@ -35,13 +35,6 @@
             <version>8.0.32</version>
         </dependency>
 
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.logging.log4j</groupId>-->
-<!--            <artifactId>log4j-core</artifactId>-->
-<!--            <version>2.20.0</version>-->
-<!--        </dependency>-->
-
 
     </dependencies>
 </project>
