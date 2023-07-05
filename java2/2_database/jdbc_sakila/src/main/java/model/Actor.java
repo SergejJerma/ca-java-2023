@@ -1,10 +1,10 @@
 package model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Generated;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.SourceType;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -12,12 +12,17 @@ import java.time.LocalDateTime;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
+@Entity
+@Table(name = "actor")
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Actor {
 
+    @Id
     @Generated()
     @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "actor_id", columnDefinition = "SMALLINT")
     private Long id;
 
     @Column(name = "first_name", nullable = false)
