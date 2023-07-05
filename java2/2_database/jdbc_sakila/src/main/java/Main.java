@@ -10,16 +10,28 @@ import java.util.List;
 
 public class Main {
 
-    private static final UserInterface userInterface = new UserCmdInterface();
+    private static final UserInterface ui = new UserCmdInterface();
 
     public static void main(String[] args) {
 
         final Session session = getSession();
         final ActorDao actorDao = new ActorDao(session);
 
-        Actor actor = userInterface.getActorFirstAndLastName();
-        List<Actor> actors = actorDao.listActorsByFirstAndLastName(actor.getFirstName(), actor.getLastName());
-        System.out.println(actors);
+        boolean run = true;
+        while (run) {
+            switch (ui.getMenuItem()) {
+                case LIST_ACTORS:
+                    Actor actor = ui.getActorFirstAndLastName();
+                    List<Actor> actors = actorDao.listActorsByFirstAndLastName(actor.getFirstName(), actor.getLastName());
+                    System.out.printf("Actors found: %n%s%n", actors);
+                    break;
+                case QUIT:
+                    System.out.println("Bye!");
+                    run = false;
+                default:
+                    break;
+            };
+        }
 
         session.close();
     }

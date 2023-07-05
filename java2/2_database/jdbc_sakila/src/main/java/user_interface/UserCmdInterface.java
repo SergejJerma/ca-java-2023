@@ -4,6 +4,8 @@ import model.Actor;
 
 import java.util.Scanner;
 
+import static user_interface.Command.INVALID;
+
 public class UserCmdInterface implements UserInterface {
 
     private final Scanner scanner = new Scanner(System.in);
@@ -15,9 +17,23 @@ public class UserCmdInterface implements UserInterface {
         System.out.println("Please provide actor's last name: ");
         String lastName = scanner.nextLine();
 
-        Actor actor = new Actor(firstName, lastName);
-        System.out.println(actor);
+        return new Actor(firstName, lastName);
+    }
 
-        return actor;
+    @Override
+    public Command getMenuItem() {
+        do {
+            System.out.println("\nPlease select an option: ");
+            System.out.println("[L] List actors by first and last name");
+            System.out.println("[Q] Quit");
+            Command command = readUserCommand();
+            if (command != INVALID)
+                return command;
+        } while (true);
+    }
+
+    private Command readUserCommand() {
+        String optionStr = scanner.nextLine();
+        return Command.get(optionStr);
     }
 }
