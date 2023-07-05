@@ -16,8 +16,8 @@ public class ActorDao {
         this.session = session;
     }
 
-    public List<Actor> listActorsByFirstAndLastName(String firstName, String lastName) {
-        return session.createQuery("FROM Actor A where A.firstName = :firstName and A.lastName = :lastName", Actor.class)
+    public List<Actor> listActorsByFirstNameLikeAndLastNameLike(String firstName, String lastName) {
+        return session.createQuery("FROM Actor A where A.firstName like :firstName and A.lastName like :lastName", Actor.class)
                 .setParameter("firstName", firstName)
                 .setParameter("lastName", lastName)
                 .list();

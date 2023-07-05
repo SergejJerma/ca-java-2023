@@ -21,9 +21,11 @@ public class Main {
         while (run) {
             switch (ui.getMenuItem()) {
                 case LIST_ACTORS:
-                    Actor actor = ui.getActorFirstAndLastName();
-                    List<Actor> actors = actorDao.listActorsByFirstAndLastName(actor.getFirstName(), actor.getLastName());
-                    System.out.printf("Actors found: %n%s%n", actors);
+                    Actor actorLike = ui.getActorFirstAndLastName();
+                    List<Actor> actors = actorDao
+                            .listActorsByFirstNameLikeAndLastNameLike(actorLike.getFirstName(), actorLike.getLastName());
+                    System.out.printf("Actors found [%d]: %n", actors.size());
+                    actors.forEach(actor -> System.out.printf("\t%s%n", actor));
                     break;
                 case QUIT:
                     System.out.println("Bye!");
