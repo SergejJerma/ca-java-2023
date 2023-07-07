@@ -1,6 +1,7 @@
 package org.codeacademy.test;
 
-import jakarta.persistence.EntityManager;
+import org.codeacademy.test.model.QuestionDao;
+import org.codeacademy.test.ui.TeacherUi;
 import org.codeacademy.test.user.User;
 import org.codeacademy.test.user.UserDao;
 import org.hibernate.FlushMode;
@@ -23,6 +24,7 @@ public class Main {
         QuestionDao questionDao = new QuestionDao(session);
 
         User user = new User();//login(userDao);
+        //User user = login(userDao);
         user.setTeacher(true);
 
         if (user.isTeacher()) {
@@ -44,14 +46,20 @@ public class Main {
         return session;
     }
 
-    private static void login(UserDao userDao) {
-        System.out.println("Iveskite vartotojo varda: ");
-        String username = scanner.nextLine();
-        System.out.println("Iveskite vartotojo slaptazodi: ");
-        String password = scanner.nextLine();
+    private static User login(UserDao userDao) {
+        while (true) {
+            System.out.println("Prasom prisijungti");
+            System.out.println("Iveskite vartotojo varda: ");
+            String username = scanner.nextLine();
+            System.out.println("Iveskite vartotojo slaptazodi: ");
+            String password = scanner.nextLine();
 
-        User user = userDao.getUserLogin(username, password);
-        System.out.println(user);
+            User user = userDao.getUserLogin(username, password);
 
+            if (user != null)
+                return user;
+
+            System.out.println("Bad username or password.");
+        }
     }
 }
