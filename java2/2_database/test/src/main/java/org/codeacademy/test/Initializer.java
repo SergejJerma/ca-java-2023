@@ -23,17 +23,14 @@ public class Initializer {
         session.createQuery("delete from Question")
                 .executeUpdate();
 
-        Question question1 = new Question();
-        question1.setText("Color of the grass");
+        Question question1 = new Question("Color of the grass");
         Answer answer11 = new Answer("Red");
         Answer answer12 = new Answer("Green", true);
         Answer answer13 = new Answer("Yellow");
         question1.setAnswers(List.of(answer11, answer12, answer13));
         session.persist(question1);
 
-
-        Question question2 = new Question();
-        question2.setText("Color of the sky");
+        Question question2 = new Question("Color of the sky");
         Answer answer21 = new Answer("Red");
         Answer answer22 = new Answer("Green");
         Answer answer23 = new Answer("Blue", true);

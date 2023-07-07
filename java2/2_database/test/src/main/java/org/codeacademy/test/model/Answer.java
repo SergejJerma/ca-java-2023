@@ -31,4 +31,9 @@ public class Answer {
         this.text = text;
         this.correct = isCorrect;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Answer: id=%d, , text=%s, correct=%s", id, text, correct);
+    }
 }

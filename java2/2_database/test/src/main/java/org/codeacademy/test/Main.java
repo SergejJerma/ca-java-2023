@@ -19,17 +19,24 @@ public class Main {
         Session session = createSession();
         Initializer.initialize(session);
 
-
         UserDao userDao = new UserDao(session);
+        QuestionDao questionDao = new QuestionDao(session);
 
-        login(userDao);
+        User user = new User();//login(userDao);
+        user.setTeacher(true);
+
+        if (user.isTeacher()) {
+            TeacherUi teacherUi = new TeacherUi(scanner);
+            teacherUi.setQuestionDao(questionDao);
+            teacherUi.run(user);
+
+        }
 
     }
 
 
 
     private static Session createSession() {
-
         Configuration cfg = new Configuration();
         SessionFactory factory = cfg.configure().buildSessionFactory();
         Session session = factory.openSession();
