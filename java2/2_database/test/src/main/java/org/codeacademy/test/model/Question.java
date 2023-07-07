@@ -23,4 +23,10 @@ public class Question {
     )
     private List<Answer> answers;
 
+
+    public void setAnswers(List<Answer> answers) {
+        for (Answer answer : answers)
+            answer.setQuestion(this);
+        this.answers = answers;
+    }
 }
