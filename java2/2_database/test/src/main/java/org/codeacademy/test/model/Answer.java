@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class Answer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String text;
