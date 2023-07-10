@@ -1,8 +1,6 @@
 package org.codeacademy.test.ui;
 
-import org.codeacademy.test.exam.Answer;
-import org.codeacademy.test.exam.Question;
-import org.codeacademy.test.exam.QuestionDao;
+import org.codeacademy.test.exam.*;
 import org.codeacademy.test.user.User;
 
 import java.util.List;
@@ -12,6 +10,7 @@ public class TeacherUi {
 
     private final Scanner scanner;
     private QuestionDao questionDao;
+    private ExamDao examDao;
 
     public TeacherUi(Scanner scanner) {
         this.scanner = scanner;
@@ -29,6 +28,7 @@ public class TeacherUi {
             System.out.println("[2] Perziureti klausimus");
             System.out.println("[3] Keisti klausima");
             System.out.println("[4] Trinti klausimus");
+            System.out.println("[5] Sudaryti egzamina");
             String answer = scanner.nextLine();
             switch (answer) {
                 case "1":
@@ -43,11 +43,27 @@ public class TeacherUi {
                 case "4":
                     deleteQuestion();
                     break;
+                case "5":
+                    createExam();
+                    break;
                 case "q":
                     run = false;
                     break;
             }
         } while (run);
+    }
+
+    private void createExam() {
+        Exam exam = new Exam();
+        int questionId = 0;
+        while (questionId != -1 && questionId!= -2) {
+            questionId = getCleanUserInputInt("Kuri klausima itraukti i egzamina (-1 = saugoti; -2 = nutraukti)? [id]");
+            Question question = questionDao.getQuestionById(questionId);
+            ExamQuestion examQuestion = new ExamQuestion(exam, question);
+            exam.addQuestion(examQuestion);
+        }
+        if (questionId == -1)
+            examDao.save(exam);
     }
 
     private void updateQuestion() {
@@ -125,5 +141,9 @@ public class TeacherUi {
             } catch (NumberFormatException ignore) {
             }
         }
+    }
+
+    public void setExamQuestionDao(ExamDao examDao) {
+        this.examDao = examDao;
     }
 }

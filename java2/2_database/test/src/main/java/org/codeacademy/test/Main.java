@@ -1,5 +1,6 @@
 package org.codeacademy.test;
 
+import org.codeacademy.test.exam.ExamDao;
 import org.codeacademy.test.exam.QuestionDao;
 import org.codeacademy.test.ui.TeacherUi;
 import org.codeacademy.test.user.User;
@@ -22,6 +23,7 @@ public class Main {
 
         UserDao userDao = new UserDao(session);
         QuestionDao questionDao = new QuestionDao(session);
+        ExamDao examQuestionDao = new ExamDao(session);
 
         User user = new User();//login(userDao);
         //User user = login(userDao);
@@ -30,6 +32,7 @@ public class Main {
         if (user.isTeacher()) {
             TeacherUi teacherUi = new TeacherUi(scanner);
             teacherUi.setQuestionDao(questionDao);
+            teacherUi.setExamQuestionDao(examQuestionDao);
             teacherUi.run(user);
 
         }

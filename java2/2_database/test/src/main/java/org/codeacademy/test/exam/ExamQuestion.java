@@ -2,7 +2,9 @@ package org.codeacademy.test.exam;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @Data
 @Entity
 @Table(name = "exam_questions")
@@ -23,4 +25,9 @@ public class ExamQuestion {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "answer_id")
     private Answer givenAnswer;
+
+    public ExamQuestion(Exam exam, Question question) {
+        this.exam = exam;
+        this.question = question;
+    }
 }

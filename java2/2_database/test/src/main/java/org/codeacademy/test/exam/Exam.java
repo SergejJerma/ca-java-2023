@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.codeacademy.test.user.User;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -23,6 +25,12 @@ public class Exam {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<ExamQuestion> examQuestions;
+    private List<ExamQuestion> examQuestions = new ArrayList<>();
 
+    private LocalDateTime dateCompleted;
+
+    public void addQuestion(ExamQuestion examQuestion) {
+        examQuestion.setExam(this);
+        examQuestions.add(examQuestion);
+    }
 }
