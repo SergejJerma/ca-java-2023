@@ -1,4 +1,4 @@
-package org.codeacademy.test.model;
+package org.codeacademy.test.exam;
 
 import org.hibernate.Session;
 

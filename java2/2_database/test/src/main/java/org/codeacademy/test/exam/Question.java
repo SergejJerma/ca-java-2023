@@ -1,4 +1,4 @@
-package org.codeacademy.test.model;
+package org.codeacademy.test.exam;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -25,6 +25,13 @@ public class Question {
             orphanRemoval = true
     )
     private List<Answer> answers = new ArrayList<>();
+
+    @OneToMany(
+            mappedBy = "question",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<ExamQuestion> examQuestions = new ArrayList<>();
 
     public Question(String text) {
         this.text = text;

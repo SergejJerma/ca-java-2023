@@ -14,8 +14,10 @@
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
 
-        <mapping class="org.codeacademy.test.model.Question" />
-        <mapping class="org.codeacademy.test.model.Answer" />
+        <mapping class="org.codeacademy.test.exam.Question" />
+        <mapping class="org.codeacademy.test.exam.Answer" />
+        <mapping class="org.codeacademy.test.exam.Exam" />
+        <mapping class="org.codeacademy.test.exam.ExamQuestion" />
         <mapping class="org.codeacademy.test.user.User" />
 
     </session-factory>

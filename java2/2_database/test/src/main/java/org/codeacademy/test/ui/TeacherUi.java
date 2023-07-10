@@ -1,8 +1,8 @@
 package org.codeacademy.test.ui;
 
-import org.codeacademy.test.model.Answer;
-import org.codeacademy.test.model.Question;
-import org.codeacademy.test.model.QuestionDao;
+import org.codeacademy.test.exam.Answer;
+import org.codeacademy.test.exam.Question;
+import org.codeacademy.test.exam.QuestionDao;
 import org.codeacademy.test.user.User;
 
 import java.util.List;

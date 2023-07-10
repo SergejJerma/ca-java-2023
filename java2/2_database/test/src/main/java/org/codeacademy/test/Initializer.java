@@ -1,7 +1,7 @@
 package org.codeacademy.test;
 
-import org.codeacademy.test.model.Answer;
-import org.codeacademy.test.model.Question;
+import org.codeacademy.test.exam.Answer;
+import org.codeacademy.test.exam.Question;
 import org.codeacademy.test.user.User;
 import org.hibernate.Session;
 

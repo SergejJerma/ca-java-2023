@@ -1,8 +1,11 @@
-package org.codeacademy.test.model;
+package org.codeacademy.test.exam;
 
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -21,6 +24,13 @@ public class Answer {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id")
     private Question question;
+
+    @OneToMany(
+            mappedBy = "givenAnswer",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<ExamQuestion> examQuestions = new ArrayList<>();
 
     public Answer(String text) {
         this.text = text;

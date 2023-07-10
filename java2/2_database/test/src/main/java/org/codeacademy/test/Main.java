@@ -1,6 +1,6 @@
 package org.codeacademy.test;
 
-import org.codeacademy.test.model.QuestionDao;
+import org.codeacademy.test.exam.QuestionDao;
 import org.codeacademy.test.ui.TeacherUi;
 import org.codeacademy.test.user.User;
 import org.codeacademy.test.user.UserDao;
