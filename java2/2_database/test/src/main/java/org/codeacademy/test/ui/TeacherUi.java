@@ -27,6 +27,7 @@ public class TeacherUi {
             System.out.println("Ka veikiam?");
             System.out.println("[1] Kuriam nauja klausima");
             System.out.println("[2] Perziureti klausimus");
+            System.out.println("[3] Trinti klausimus");
             String answer = scanner.nextLine();
             switch (answer) {
                 case "1":
@@ -35,11 +36,19 @@ public class TeacherUi {
                 case "2":
                     showQuestions();
                     break;
+                case "3":
+                    deleteQuestions();
+                    break;
                 case "q":
                     run = false;
                     break;
             }
         } while (run);
+    }
+
+    private void deleteQuestions() {
+        int id = getCleanUserInputInt("Kuri klausima trinti? [id]");
+        questionDao.deleteById(id);
     }
 
     private void showQuestions() {

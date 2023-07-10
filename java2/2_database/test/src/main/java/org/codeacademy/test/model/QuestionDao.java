@@ -26,4 +26,12 @@ public class QuestionDao {
     public List<Question> findAll() {
         return session.createQuery("from Question", Question.class).getResultList();
     }
+
+    public void deleteById(int id) {
+        session.beginTransaction();
+        session.createMutationQuery("delete Question where id = :id")
+                .setParameter("id", id)
+                .executeUpdate();
+        session.getTransaction().commit();
+    }
 }
