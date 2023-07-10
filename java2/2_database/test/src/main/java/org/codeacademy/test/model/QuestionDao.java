@@ -16,7 +16,6 @@ public class QuestionDao {
         return session.get(Question.class, id);
     }
 
-
     public void save(Question question) {
         session.beginTransaction();
         session.persist(question);

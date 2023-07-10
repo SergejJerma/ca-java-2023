@@ -24,7 +24,7 @@ public class Question {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<Answer> answers;
+    private List<Answer> answers = new ArrayList<>();
 
     public Question(String text) {
         this.text = text;
@@ -37,8 +37,6 @@ public class Question {
     }
 
     public void addAnswer(Answer answer) {
-        if (answers == null)
-            answers = new ArrayList<>();
         answer.setQuestion(this);
         answers.add(answer);
     }
