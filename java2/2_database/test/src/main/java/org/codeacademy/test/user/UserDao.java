@@ -1,5 +1,6 @@
 package org.codeacademy.test.user;
 
+import org.codeacademy.test.exam.Question;
 import org.hibernate.Session;
 
 /**
@@ -21,5 +22,9 @@ public class UserDao {
                 .setParameter("username", username)
                 .setParameter("password", password)
                 .getSingleResultOrNull();
+    }
+
+    public User getUserById(int id) {
+        return session.get(User.class, id);
     }
 }

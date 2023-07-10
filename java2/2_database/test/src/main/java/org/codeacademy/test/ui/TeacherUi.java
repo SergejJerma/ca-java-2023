@@ -2,15 +2,20 @@ package org.codeacademy.test.ui;
 
 import org.codeacademy.test.exam.*;
 import org.codeacademy.test.user.User;
+import org.codeacademy.test.user.UserDao;
 
 import java.util.List;
 import java.util.Scanner;
+
+import static org.codeacademy.test.ui.UserInterfaceCommand.CANCEL;
+import static org.codeacademy.test.ui.UserInterfaceCommand.SAVE;
 
 public class TeacherUi {
 
     private final Scanner scanner;
     private QuestionDao questionDao;
     private ExamDao examDao;
+    private UserDao userDao;
 
     public TeacherUi(Scanner scanner) {
         this.scanner = scanner;
@@ -29,6 +34,7 @@ public class TeacherUi {
             System.out.println("[3] Keisti klausima");
             System.out.println("[4] Trinti klausimus");
             System.out.println("[5] Sudaryti egzamina");
+            System.out.println("[6] Priskirti egzamina studentams");
             String answer = scanner.nextLine();
             switch (answer) {
                 case "1":
@@ -46,6 +52,9 @@ public class TeacherUi {
                 case "5":
                     createExam();
                     break;
+                case "6":
+                    assignExam();
+                    break;
                 case "q":
                     run = false;
                     break;
@@ -53,16 +62,30 @@ public class TeacherUi {
         } while (run);
     }
 
+    private void assignExam() {
+        System.out.println("Kuri egzamina kuriam studentui priskirti?");
+        int egzamId = getCleanUserInputInt("Kuri egzamina (-1 = nutraukti;)? [id]");
+        Exam exam = examDao.getExamById(egzamId);
+        if (egzamId == CANCEL.id())
+            return;
+        int studentId = getCleanUserInputInt("Kuriam studentui priskirti (-1 = nutraukti;)? [id]");
+        if (studentId == CANCEL.id())
+            return;
+        User student = userDao.getUserById(studentId);
+        exam.setUser(student);
+        examDao.save(exam);
+    }
+
     private void createExam() {
         Exam exam = new Exam();
         int questionId = 0;
-        while (questionId != -1 && questionId!= -2) {
-            questionId = getCleanUserInputInt("Kuri klausima itraukti i egzamina (-1 = saugoti; -2 = nutraukti)? [id]");
+        while (questionId != CANCEL.id() && questionId!= SAVE.id()) {
+            questionId = getCleanUserInputInt("Kuri klausima itraukti i egzamina (-1 = nutraukti; -2 = saugoti)? [id]");
             Question question = questionDao.getQuestionById(questionId);
             ExamQuestion examQuestion = new ExamQuestion(exam, question);
             exam.addQuestion(examQuestion);
         }
-        if (questionId == -1)
+        if (questionId == SAVE.id())
             examDao.save(exam);
     }
 
@@ -80,7 +103,7 @@ public class TeacherUi {
 
             int result = getCleanUserInputInt(prompt);
 
-            if (result == -1) {
+            if (result == CANCEL.id()) {
                 return;
             }
             else if (result == 0) {
@@ -145,5 +168,9 @@ public class TeacherUi {
 
     public void setExamQuestionDao(ExamDao examDao) {
         this.examDao = examDao;
+    }
+
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
     }
 }

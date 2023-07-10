@@ -33,8 +33,8 @@ public class Main {
             TeacherUi teacherUi = new TeacherUi(scanner);
             teacherUi.setQuestionDao(questionDao);
             teacherUi.setExamQuestionDao(examQuestionDao);
+            teacherUi.setUserDao(userDao);
             teacherUi.run(user);
-
         }
 
     }

@@ -15,4 +15,8 @@ public class ExamDao {
         session.persist(exam);
         session.getTransaction().commit();
     }
+
+    public Exam getExamById(int id) {
+        return session.get(Exam.class, id);
+    }
 }
