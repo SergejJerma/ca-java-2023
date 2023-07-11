@@ -146,7 +146,7 @@ public class TeacherUi extends BasicUserInterface {
     }
 
     private Answer getAnswer() {
-        System.out.println("Atsakymo variantas?: ");
+        System.out.println("Atsakymo tekstas?: ");
         String text = scanner.nextLine();
         boolean correct = getCleanUserInputInt("Ar tai teisingas atsakymas? [0, 1]") != 0;
         Answer answer = new Answer(text, correct);
