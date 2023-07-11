@@ -32,6 +32,7 @@ public class Initializer {
     private List<Exam> setupExamQuestionsForStudent(List<Question> questions, User user) {
         Exam exam1 = new Exam();
         exam1.setUser(user);
+        exam1.setTitle("Pirmasis egzaminas");
         user.setExam(exam1);
 
         List<ExamQuestion> examQuestions = questions.stream()

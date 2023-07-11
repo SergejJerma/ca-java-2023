@@ -72,6 +72,10 @@ public class TeacherUi extends BasicUserInterface {
 
     private void createExam() {
         Exam exam = new Exam();
+        System.out.println("Kaip pavadinsite egzamina?: ");
+        String egzamTitle = scanner.nextLine();
+        exam.setTitle(egzamTitle);
+
         int questionId = 0;
         while (questionId != CANCEL.id() && questionId!= SAVE.id()) {
             questionId = getCleanUserInputInt("Kuri klausima itraukti i egzamina (-1 = nutraukti; -2 = saugoti)? [id]");
