@@ -16,14 +16,14 @@ public class Main {
 
     private static Scanner scanner = new Scanner(System.in);
 
-
     public static void main(String[] args) {
         Session session = createSession();
-        Initializer.initialize(session);
 
         UserDao userDao = new UserDao(session);
         QuestionDao questionDao = new QuestionDao(session);
         ExamDao examQuestionDao = new ExamDao(session);
+
+        new Initializer(userDao, questionDao, examQuestionDao).initialize();
 
         User user = new User();//login(userDao);
         //User user = login(userDao);
@@ -38,8 +38,6 @@ public class Main {
         }
 
     }
-
-
 
     private static Session createSession() {
         Configuration cfg = new Configuration();
