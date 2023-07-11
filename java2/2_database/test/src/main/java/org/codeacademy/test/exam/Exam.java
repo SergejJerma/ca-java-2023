@@ -40,11 +40,6 @@ public class Exam {
 
     @Override
     public String toString() {
-        return "Exam{" +
-                "id=" + id +
-//                ", user=" + user.getUsername() +
-                ", examQuestions=" + examQuestions +
-                ", dateCompleted=" + dateCompleted +
-                '}';
+        return String.format("Exam{id:%d, title:'%s', dateCompleted: %s}", id, title, dateCompleted);
     }
 }

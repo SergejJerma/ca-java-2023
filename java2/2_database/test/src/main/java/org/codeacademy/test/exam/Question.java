@@ -51,10 +51,10 @@ public class Question {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("Question: id:%s, text: %s\n", id, text));
+        sb.append(String.format("Question{ id: %s, text: %s", id, text));
         for (Answer answer : answers)
             sb.append("\n\t").append(answer.toString());
-
+        sb.append("\n}");
         return sb.toString();
     }
 }

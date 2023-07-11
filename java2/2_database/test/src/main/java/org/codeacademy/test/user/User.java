@@ -25,11 +25,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", teacher=" + teacher +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return String.format("User{ id: %s, username: %s, isTeacher: %b }", id, username, teacher);
     }
 }

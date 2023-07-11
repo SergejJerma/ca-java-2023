@@ -33,6 +33,7 @@ public class ExamQuestion {
 
     @Override
     public String toString() {
-        return "ExamQuestion [id=" + id + ", exam=" + exam.getId() + ", question=" + question + ", givenAnswer=" + givenAnswer + "]";
+        return String.format("ExamQuestion{ id: %d, exam: %d, question: %s, answer: %s }",
+                id, exam.getId(), question, givenAnswer);
     }
 }

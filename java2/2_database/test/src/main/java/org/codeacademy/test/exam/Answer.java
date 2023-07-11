@@ -44,6 +44,6 @@ public class Answer {
 
     @Override
     public String toString() {
-        return String.format("Answer: id=%d, , text=%s, correct=%s", id, text, correct);
+        return String.format("Answer{ id: %d, , text: %s, correct: %s}", id, text, correct);
     }
 }
