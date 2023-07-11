@@ -15,13 +15,10 @@ public class Initializer {
         setupUsers(session);
         setupQuestionAndAnswers(session);
 
-
         session.getTransaction().commit();
     }
 
     private static void setupQuestionAndAnswers(Session session) {
-        session.createQuery("delete from Question")
-                .executeUpdate();
 
         Question question1 = new Question("Color of the grass");
         Answer answer11 = new Answer("Red");
@@ -40,8 +37,6 @@ public class Initializer {
     }
 
     private static void setupUsers(Session session) {
-        session.createQuery("delete from User")
-                .executeUpdate();
 
         User teacher = new User();
         teacher.setUsername("teacher");

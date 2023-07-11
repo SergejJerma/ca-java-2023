@@ -43,7 +43,8 @@ public class Main {
 
     private static Session createSession() {
         Configuration cfg = new Configuration();
-        SessionFactory factory = cfg.configure().buildSessionFactory();
+        Configuration configuration = cfg.configure();
+        SessionFactory factory = configuration.buildSessionFactory();   //At this row create-drop functionality is executed (hibernate.hbm2ddl.auto)
         Session session = factory.openSession();
         session.setHibernateFlushMode(FlushMode.ALWAYS);
         return session;
