@@ -3,6 +3,8 @@ package org.codeacademy.test.exam;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,7 @@ public class Question {
 
     private String text;
 
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(
             mappedBy = "question",
             cascade = CascadeType.ALL,
@@ -26,6 +29,7 @@ public class Question {
     )
     private List<Answer> answers = new ArrayList<>();
 
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(
             mappedBy = "question",
             cascade = CascadeType.ALL,
