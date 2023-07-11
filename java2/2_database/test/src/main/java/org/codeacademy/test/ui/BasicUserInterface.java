@@ -31,4 +31,15 @@ public abstract class BasicUserInterface {
     }
 
     public abstract void run(User user);
+
+    public int getCleanUserInputInt(String userPrompt){
+        while (true) {
+            System.out.println(userPrompt);
+            String result = scanner.nextLine().trim();
+            try {
+                return Integer.parseInt(result);
+            } catch (NumberFormatException ignore) {
+            }
+        }
+    }
 }

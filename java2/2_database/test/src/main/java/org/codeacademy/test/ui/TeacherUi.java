@@ -152,15 +152,4 @@ public class TeacherUi extends BasicUserInterface {
         Answer answer = new Answer(text, correct);
         return answer;
     }
-
-    public int getCleanUserInputInt(String userPrompt){
-        while (true) {
-            System.out.println(userPrompt);
-            String result = scanner.nextLine().trim();
-            try {
-                return Integer.parseInt(result);
-            } catch (NumberFormatException ignore) {
-            }
-        }
-    }
 }
