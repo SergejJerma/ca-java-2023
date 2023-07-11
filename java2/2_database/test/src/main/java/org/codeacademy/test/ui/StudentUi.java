@@ -1,9 +1,7 @@
 package org.codeacademy.test.ui;
 
-import org.codeacademy.test.exam.Exam;
 import org.codeacademy.test.user.User;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class StudentUi extends BasicUserInterface {
@@ -24,6 +22,8 @@ public class StudentUi extends BasicUserInterface {
                 case "1":
                     showExams(user);
                     break;
+                case "2":
+                    solveExam(user);
                 case "q":
                     run = false;
                     break;
@@ -33,9 +33,13 @@ public class StudentUi extends BasicUserInterface {
 
     }
 
+    //todo: implement process of solving exam
+    private void solveExam(User user) {
+
+
+    }
+
     private void showExams(User user) {
-//        List<Exam> exams = examDao.findAllByStudent(user);
-//        exams.forEach(System.out::println);
         System.out.println(user.getExam());
     }
 
