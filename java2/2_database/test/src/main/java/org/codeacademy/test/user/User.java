@@ -1,10 +1,12 @@
 package org.codeacademy.test.user;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.codeacademy.test.exam.Exam;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "user")
 public class User {
@@ -18,8 +20,7 @@ public class User {
 
     private String password;
 
-//    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
     private Exam exam;
 
