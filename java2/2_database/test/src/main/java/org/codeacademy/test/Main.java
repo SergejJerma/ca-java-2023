@@ -28,10 +28,7 @@ public class Main {
         new Initializer(userDao, questionDao, examQuestionDao).initialize();
 
         //User user = login(userDao);
-//        User user = new User();
-//        user.setTeacher(true);
-        List<User> students = userDao.findAllByTeacher(false);
-        User user = students.get(0);
+        User user = demoLogin(userDao);
 
         if (user.isTeacher()) {
             TeacherUi teacherUi = new TeacherUi(scanner);
@@ -47,6 +44,15 @@ public class Main {
             studentUi.run(user);
         }
 
+    }
+
+    private static User demoLogin(UserDao userDao) {
+        System.out.println("Prisijungti kaip studentui ar destytojui [0/1]: ");
+        String decision = scanner.nextLine();
+        List<User> users = userDao.findAllByTeacher(decision.equals("1"));
+        User user = users.get(0);
+        System.out.printf("Prisijungete kaip vartotojas: %s%n", user);
+        return user;
     }
 
     private static Session createSession() {
