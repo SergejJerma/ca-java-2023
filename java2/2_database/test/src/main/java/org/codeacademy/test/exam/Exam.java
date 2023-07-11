@@ -17,7 +17,10 @@ public class Exam {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+//    @OneToOne(fetch = FetchType.LAZY)
     @OneToOne
+    @MapsId
+    @JoinColumn(name = "user_id")
     private User user;
 
     @OneToMany(
@@ -32,5 +35,15 @@ public class Exam {
     public void addQuestion(ExamQuestion examQuestion) {
         examQuestion.setExam(this);
         examQuestions.add(examQuestion);
+    }
+
+    @Override
+    public String toString() {
+        return "Exam{" +
+                "id=" + id +
+//                ", user=" + user.getUsername() +
+                ", examQuestions=" + examQuestions +
+                ", dateCompleted=" + dateCompleted +
+                '}';
     }
 }

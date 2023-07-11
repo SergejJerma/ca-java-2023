@@ -2,6 +2,9 @@ package org.codeacademy.test.user;
 
 import org.hibernate.Session;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Data Access Object (DAO) for the User entity
  * For more information on DAO pattern, see:
@@ -31,5 +34,11 @@ public class UserDao {
         session.beginTransaction();
         session.persist(user);
         session.getTransaction().commit();
+    }
+
+    public List<User> findAllByTeacher(boolean isTeacher) {
+        return session.createQuery("from User where teacher=:isTeacher", User.class)
+                .setParameter("isTeacher", isTeacher)
+                .getResultList();
     }
 }

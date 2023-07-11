@@ -30,4 +30,9 @@ public class ExamQuestion {
         this.exam = exam;
         this.question = question;
     }
+
+    @Override
+    public String toString() {
+        return "ExamQuestion [id=" + id + ", exam=" + exam.getId() + ", question=" + question + ", givenAnswer=" + givenAnswer + "]";
+    }
 }

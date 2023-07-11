@@ -2,6 +2,7 @@ package org.codeacademy.test;
 
 import org.codeacademy.test.exam.ExamDao;
 import org.codeacademy.test.exam.QuestionDao;
+import org.codeacademy.test.ui.StudentUi;
 import org.codeacademy.test.ui.TeacherUi;
 import org.codeacademy.test.user.User;
 import org.codeacademy.test.user.UserDao;
@@ -10,6 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -25,9 +27,11 @@ public class Main {
 
         new Initializer(userDao, questionDao, examQuestionDao).initialize();
 
-        User user = new User();//login(userDao);
         //User user = login(userDao);
-        user.setTeacher(true);
+//        User user = new User();
+//        user.setTeacher(true);
+        List<User> students = userDao.findAllByTeacher(false);
+        User user = students.get(0);
 
         if (user.isTeacher()) {
             TeacherUi teacherUi = new TeacherUi(scanner);
@@ -35,6 +39,12 @@ public class Main {
             teacherUi.setExamQuestionDao(examQuestionDao);
             teacherUi.setUserDao(userDao);
             teacherUi.run(user);
+        } else {
+            StudentUi studentUi = new StudentUi(scanner);
+            studentUi.setQuestionDao(questionDao);
+            studentUi.setExamQuestionDao(examQuestionDao);
+            studentUi.setUserDao(userDao);
+            studentUi.run(user);
         }
 
     }

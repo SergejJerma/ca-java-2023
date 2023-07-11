@@ -19,4 +19,8 @@ public class ExamDao {
     public Exam getExamById(int id) {
         return session.get(Exam.class, id);
     }
+
+//    public List<Exam> findAllByStudent(User user) {
+//        return null;
+//    }
 }

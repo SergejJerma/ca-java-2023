@@ -1,8 +1,10 @@
 package org.codeacademy.test.ui;
 
-import org.codeacademy.test.exam.*;
+import org.codeacademy.test.exam.Answer;
+import org.codeacademy.test.exam.Exam;
+import org.codeacademy.test.exam.ExamQuestion;
+import org.codeacademy.test.exam.Question;
 import org.codeacademy.test.user.User;
-import org.codeacademy.test.user.UserDao;
 
 import java.util.List;
 import java.util.Scanner;
@@ -10,21 +12,13 @@ import java.util.Scanner;
 import static org.codeacademy.test.ui.UserInterfaceCommand.CANCEL;
 import static org.codeacademy.test.ui.UserInterfaceCommand.SAVE;
 
-public class TeacherUi {
-
-    private final Scanner scanner;
-    private QuestionDao questionDao;
-    private ExamDao examDao;
-    private UserDao userDao;
+public class TeacherUi extends BasicUserInterface {
 
     public TeacherUi(Scanner scanner) {
-        this.scanner = scanner;
+        super(scanner);
     }
 
-    public void setQuestionDao(QuestionDao questionDao) {
-        this.questionDao = questionDao;
-    }
-
+    @Override
     public void run(User user) {
         boolean run = true;
         do {
@@ -164,13 +158,5 @@ public class TeacherUi {
             } catch (NumberFormatException ignore) {
             }
         }
-    }
-
-    public void setExamQuestionDao(ExamDao examDao) {
-        this.examDao = examDao;
-    }
-
-    public void setUserDao(UserDao userDao) {
-        this.userDao = userDao;
     }
 }
