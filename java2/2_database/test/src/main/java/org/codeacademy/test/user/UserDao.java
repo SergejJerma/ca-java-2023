@@ -1,8 +1,8 @@
 package org.codeacademy.test.user;
 
+import de.rtner.security.auth.spi.SimplePBKDF2;
 import org.hibernate.Session;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,23 +14,38 @@ import java.util.List;
 public class UserDao {
 
     private final Session session;
+    private final SimplePBKDF2 passwordEncoder = new SimplePBKDF2();
 
     public UserDao(Session session) {
         this.session = session;
     }
 
     public User getUserLogin(String username, String password) {
-        return session.createQuery("from User where username=:username and password=:password", User.class)
+        // get user by username
+        User user = session.createQuery("from User where username=:username", User.class)
                 .setParameter("username", username)
-                .setParameter("password", password)
                 .getSingleResultOrNull();
+
+        if (user == null)
+            return null;    //no user has such username
+
+        // check password
+        boolean passwordCorrect = new SimplePBKDF2().verifyKeyFormatted(user.getPassword(), password);
+
+        if (passwordCorrect)
+            return user;
+
+        return null;
     }
 
     public User getUserById(int id) {
         return session.get(User.class, id);
     }
 
-    public void save(User user) {
+    public void saveNewUser(User user) {
+        // Salt 8 bytes SHA1PRNG, HmacSHA1, 1000 iterations, ISO-8859-1
+        String passwordHash = passwordEncoder.deriveKeyFormatted(user.getPassword());
+        user.setPassword(passwordHash);
         session.beginTransaction();
         session.persist(user);
         session.getTransaction().commit();

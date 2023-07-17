@@ -68,12 +68,12 @@ public class Initializer {
         teacher.setUsername("teacher");
         teacher.setPassword("password");
         teacher.setTeacher(true);
-        userDao.save(teacher);
+        userDao.saveNewUser(teacher);
 
         User student = new User();
         student.setUsername("user");
         student.setPassword("password");
-        userDao.save(student);
+        userDao.saveNewUser(student);
 
         return List.of(teacher, student);
     }
