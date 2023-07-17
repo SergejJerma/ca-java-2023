@@ -22,7 +22,6 @@ public class Exam {
     private String title;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @MapsId
     @JoinColumn(name = "user_id")
     private User user;
 
