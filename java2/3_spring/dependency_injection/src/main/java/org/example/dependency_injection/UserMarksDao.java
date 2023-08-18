@@ -1,9 +1,15 @@
 package org.example.dependency_injection;
 
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+@Primary
+//@Component("userMarksDao5555")
+@Component
 class UserMarksDao implements MarksDao {
 
     Scanner scanner = new Scanner(System.in);

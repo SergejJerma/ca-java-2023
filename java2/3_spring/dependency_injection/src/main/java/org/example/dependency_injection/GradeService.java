@@ -1,13 +1,14 @@
 package org.example.dependency_injection;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
 class GradeService {
 
-    private MarksDao marksDao;
+    private final MarksDao marksDao;
 
-    public GradeService(MarksDao marksDao) {
+    public GradeService(@Qualifier("internalMarksDao") MarksDao marksDao) {
         this.marksDao = marksDao;
     }
 
