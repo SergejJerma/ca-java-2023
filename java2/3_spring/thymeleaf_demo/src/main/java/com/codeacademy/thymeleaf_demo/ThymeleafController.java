@@ -3,6 +3,7 @@ package com.codeacademy.thymeleaf_demo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -23,4 +24,12 @@ public class ThymeleafController {
         model.addAttribute("paramName", myClassInstance);
         return "myCustomHtml";
     }
+
+    @ModelAttribute("paramName")
+    public MyClass setDefaultParamName() {
+        MyClass myClassDefaultInstance = new MyClass();
+        myClassDefaultInstance.setMyName("default value");
+        return myClassDefaultInstance;
+    }
+
 }
