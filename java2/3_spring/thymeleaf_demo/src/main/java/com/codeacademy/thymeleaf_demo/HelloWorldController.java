@@ -24,4 +24,12 @@ public class HelloWorldController {
         return "Hello World!" + name;
     }
 
+    //http://localhost:8080/hello/exception
+    @GetMapping("/exception")
+    public String exceptionThrowingEndpoint() {
+        throw new MyException("for whatever reason");
+    }
+
+
+
 }
