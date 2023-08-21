@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Topics</title>
+</head>
+<body>
+
+<div th:each="topic: *{topics}">
+    <h3 th:text="${topic.title}"></h3>
+</div>
+
+</body>
+</html>
