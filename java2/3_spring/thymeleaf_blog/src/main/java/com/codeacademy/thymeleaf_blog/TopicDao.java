@@ -51,4 +51,27 @@ public class TopicDao {
 
         return topics;
     }
+
+    public void addNewTopic(Topic newTopic) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        try {
+            con = dataSource.getConnection();
+            pstmt = con.prepareStatement("insert into topic (title, header) values (?,?)");
+            pstmt.setString(1, newTopic.getTitle());
+            pstmt.setString(2, newTopic.getHeader());
+            pstmt.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstmt != null)
+                    pstmt.close();
+                if (con != null)
+                    con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

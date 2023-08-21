@@ -1,10 +1,12 @@
 package com.codeacademy.thymeleaf_blog;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @AllArgsConstructor
-@Getter
+@Data
 public class Topic {
 
     private String title;
