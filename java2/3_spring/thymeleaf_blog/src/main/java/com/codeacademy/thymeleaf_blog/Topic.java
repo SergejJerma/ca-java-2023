@@ -8,4 +8,6 @@ import lombok.Getter;
 public class Topic {
 
     private String title;
+    private String header;
+
 }

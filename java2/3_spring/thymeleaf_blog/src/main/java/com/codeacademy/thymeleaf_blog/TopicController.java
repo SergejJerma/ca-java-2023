@@ -15,10 +15,10 @@ public class TopicController {
     public String getTopics(Model model) {
 
         List<Topic> topics = List.of(
-                new Topic("Most popular films"),
-                new Topic("Top rated films"),
-                new Topic("Latest movies"),
-                new Topic("Most expensive movies")
+                new Topic("Most popular films", "More info"),
+                new Topic("Top rated films", "More info"),
+                new Topic("Latest movies", "More info"),
+                new Topic("Most expensive movies", "More info")
         );
 
         model.addAttribute("topics", topics);
