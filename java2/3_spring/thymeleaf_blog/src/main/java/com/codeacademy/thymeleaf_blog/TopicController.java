@@ -12,10 +12,10 @@ import java.util.List;
 @RequestMapping("/topics")
 public class TopicController {
 
-    private final TopicDao topicDao;
+    private final TopicService topicService;
 
-    public TopicController(TopicDao topicDao) {
-        this.topicDao = topicDao;
+    public TopicController(TopicService topicService) {
+        this.topicService = topicService;
     }
 
     @GetMapping
@@ -28,7 +28,7 @@ public class TopicController {
 //                new Topic("Most expensive movies", "More info")
 //        );
 
-        List<Topic> topics = topicDao.getAllTopics();
+        List<Topic> topics = topicService.getAllTopics();
 
         model.addAttribute("topics", topics);
         model.addAttribute("newTopic", new Topic());
@@ -41,8 +41,8 @@ public class TopicController {
 
         System.out.println(newTopic);
 
-        topicDao.addNewTopic(newTopic);
-        model.addAttribute("newTopic", new Topic());
+        Topic savedTopic = topicService.addNewTopic(newTopic);
+        model.addAttribute("newTopic", savedTopic);
         return "topic";
     }
 }
