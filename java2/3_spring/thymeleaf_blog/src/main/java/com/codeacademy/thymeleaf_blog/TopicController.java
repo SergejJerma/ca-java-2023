@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -16,6 +17,13 @@ public class TopicController {
 
     public TopicController(TopicService topicService) {
         this.topicService = topicService;
+    }
+
+    @GetMapping("/filter")
+    public String filterTopics(@RequestParam String topicTitle, Model model) {
+        List<Topic> topics = topicService.findTopicsByTitle(topicTitle);
+        model.addAttribute("topics", topics);
+        return "topics";
     }
 
     @GetMapping

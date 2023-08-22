@@ -20,4 +20,8 @@ public class TopicService {
     public Topic addNewTopic(Topic newTopic) {
         return topicRepository.save(newTopic);
     }
+
+    public List<Topic> findTopicsByTitle(String topicTitle) {
+        return topicRepository.findByTitle(topicTitle);
+    }
 }
