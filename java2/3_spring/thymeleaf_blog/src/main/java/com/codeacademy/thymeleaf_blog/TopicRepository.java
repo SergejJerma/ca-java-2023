@@ -1,5 +1,6 @@
 package com.codeacademy.thymeleaf_blog;
 
+import com.codeacademy.thymeleaf_blog.entities.Topic;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

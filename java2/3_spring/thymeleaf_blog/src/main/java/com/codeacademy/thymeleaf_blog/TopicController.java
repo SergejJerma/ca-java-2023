@@ -1,11 +1,9 @@
 package com.codeacademy.thymeleaf_blog;
 
+import com.codeacademy.thymeleaf_blog.entities.Topic;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,6 +29,13 @@ public class TopicController {
         List<Topic> topics = topicService.getAllTopics();
         model.addAttribute("topics", topics);
         return "topics";
+    }
+
+    @GetMapping("/{id}")
+    public String getTopic(@PathVariable Long id,  Model model) {
+        Topic topic = topicService.getTopic(id);
+        model.addAttribute("topic", topic);
+        return "topic";
     }
 
     @GetMapping("/add")

@@ -11,6 +11,11 @@
 
 <h3 th:text="${topic.title}"></h3>
 <section th:text="${topic.header}"></section>
+<div th:each="comment: ${topic.comments}">
+    <section th:text="${comment.text}"></section>
+</div>
+
+
 <a th:href="@{/topics}">Got to List all topics page</a>
 
 
