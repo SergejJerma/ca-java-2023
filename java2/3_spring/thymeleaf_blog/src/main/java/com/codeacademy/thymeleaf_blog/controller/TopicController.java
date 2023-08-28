@@ -68,6 +68,7 @@ public class TopicController {
 
         Topic savedTopic = topicService.addNewTopic(newTopic);
         model.addAttribute("newTopic", savedTopic);
+        model.addAttribute("comment", new Comment());
         return "topic";
     }
 }

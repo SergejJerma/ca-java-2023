@@ -11,7 +11,7 @@
 
 <h3 th:text="${topic.title}"></h3>
 <section th:text="${topic.header}"></section>
-<div th:each="comment: ${topic.comments}">
+<div th:each="comment : ${topic.comments}">
     <section th:text="${comment.text}"></section>
 </div>
 
