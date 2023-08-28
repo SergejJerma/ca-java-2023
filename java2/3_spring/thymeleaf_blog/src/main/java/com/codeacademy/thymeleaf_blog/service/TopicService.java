@@ -30,4 +30,8 @@ public class TopicService {
     public Topic getTopic(Long id) {
         return topicRepository.findById(id).get();
     }
+
+    public List<Topic> filterTopicsByKeyword(String keyword) {
+        return topicRepository.findTopicsByKeyword(keyword);
+    }
 }
