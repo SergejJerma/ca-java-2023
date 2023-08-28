@@ -62,13 +62,8 @@ public class TopicController {
     }
 
     @PostMapping
-    public String postTopics(Topic newTopic, Model model) {
-
-        System.out.println(newTopic);
-
-        Topic savedTopic = topicService.addNewTopic(newTopic);
-        model.addAttribute("newTopic", savedTopic);
-        model.addAttribute("comment", new Comment());
-        return "topic";
+    public String addNewTopic(Topic newTopic, Model model) {
+        topicService.addNewTopic(newTopic);
+        return "redirect:/topics";
     }
 }
