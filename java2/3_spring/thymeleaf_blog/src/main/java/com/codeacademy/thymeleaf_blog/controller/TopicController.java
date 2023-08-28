@@ -1,6 +1,9 @@
-package com.codeacademy.thymeleaf_blog;
+package com.codeacademy.thymeleaf_blog.controller;
 
+import com.codeacademy.thymeleaf_blog.entities.Comment;
 import com.codeacademy.thymeleaf_blog.entities.Topic;
+import com.codeacademy.thymeleaf_blog.service.CommentService;
+import com.codeacademy.thymeleaf_blog.service.TopicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +15,11 @@ import java.util.List;
 public class TopicController {
 
     private final TopicService topicService;
+    private final CommentService commentService;
 
-    public TopicController(TopicService topicService) {
+    public TopicController(TopicService topicService, CommentService commentService) {
         this.topicService = topicService;
+        this.commentService = commentService;
     }
 
     @GetMapping("/filter")
@@ -33,10 +38,22 @@ public class TopicController {
 
     @GetMapping("/{id}")
     public String getTopic(@PathVariable Long id,  Model model) {
+        model.addAttribute("id", id);
+        model.addAttribute("comment", new Comment());
         Topic topic = topicService.getTopic(id);
         model.addAttribute("topic", topic);
         return "topic";
     }
+
+    @PostMapping("/{id}")
+    public String addCommentToTopic(@PathVariable Long id, Comment comment, Model model) {
+        Topic topic = topicService.getTopic(id);
+        comment.setTopic(topic);
+        commentService.addCommentToTopic(comment);
+        return "redirect:/topics/" + id;
+    }
+
+
 
     @GetMapping("/add")
     public String getAddTopicForm(Model model) {

@@ -1,10 +1,10 @@
-package com.codeacademy.thymeleaf_blog;
+package com.codeacademy.thymeleaf_blog.service;
 
 import com.codeacademy.thymeleaf_blog.entities.Topic;
+import com.codeacademy.thymeleaf_blog.repo.TopicRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class TopicService {

@@ -1,4 +1,4 @@
-package com.codeacademy.thymeleaf_blog;
+package com.codeacademy.thymeleaf_blog.repo;
 
 import com.codeacademy.thymeleaf_blog.entities.Topic;
 import org.springframework.data.jpa.repository.JpaRepository;
