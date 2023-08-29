@@ -91,4 +91,9 @@ public class TopicController {
         return "listTopics";
     }
 
+    @GetMapping("/international")
+    public String getInternationalPage() {
+        return "international";
+    }
+
 }
