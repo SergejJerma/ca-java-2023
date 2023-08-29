@@ -74,8 +74,6 @@ public class TopicController {
         final int currentPage = page.orElse(1);
         final int pageSize = size.orElse(5);
 
-        System.out.println(">>>>>>>>>    " + currentPage);
-
         Page<Topic> bookPage = topicService.findPaginated(PageRequest.of(currentPage - 1, pageSize));
 
         model.addAttribute("topicPage", bookPage);
