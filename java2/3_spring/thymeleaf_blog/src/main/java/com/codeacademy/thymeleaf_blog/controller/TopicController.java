@@ -6,6 +6,8 @@ import com.codeacademy.thymeleaf_blog.service.CommentService;
 import com.codeacademy.thymeleaf_blog.service.TopicService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -84,7 +86,10 @@ public class TopicController {
      *  http://localhost:8080/topics/list?size=3&page=0&sort=title,asc
      */
     @GetMapping("/list")
-    public String listTopics(Model model, Pageable pageable) {
+    public String listTopics(Model model,
+                             @PageableDefault(sort = { "title"}, direction = Sort.Direction.DESC, size = 2, page = 1)
+                             Pageable pageable)
+    {
         Page<Topic> bookPage = topicService.findPaginated(pageable);
 
         model.addAttribute("topicPage", bookPage);
