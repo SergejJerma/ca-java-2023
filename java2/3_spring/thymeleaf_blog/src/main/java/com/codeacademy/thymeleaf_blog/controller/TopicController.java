@@ -96,7 +96,7 @@ public class TopicController {
 
         int totalPages = bookPage.getTotalPages();
         if (totalPages > 0) {
-            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+            List<Integer> pageNumbers = IntStream.rangeClosed(0, totalPages - 1)
                     .boxed()
                     .collect(Collectors.toList());
             model.addAttribute("pageNumbers", pageNumbers);
