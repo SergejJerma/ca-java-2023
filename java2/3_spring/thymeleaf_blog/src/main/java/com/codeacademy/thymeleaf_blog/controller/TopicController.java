@@ -5,13 +5,12 @@ import com.codeacademy.thymeleaf_blog.entities.Topic;
 import com.codeacademy.thymeleaf_blog.service.CommentService;
 import com.codeacademy.thymeleaf_blog.service.TopicService;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -79,12 +78,14 @@ public class TopicController {
         return "topics";
     }
 
+    /**
+     * List topics using pageable
+     * Request example:
+     *  http://localhost:8080/topics/list?size=3&page=0&sort=title,asc
+     */
     @GetMapping("/list")
-    public String listBooks(Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
-        final int currentPage = page.orElse(1);
-        final int pageSize = size.orElse(5);
-
-        Page<Topic> bookPage = topicService.findPaginated(PageRequest.of(currentPage - 1, pageSize));
+    public String listTopics(Model model, Pageable pageable) {
+        Page<Topic> bookPage = topicService.findPaginated(pageable);
 
         model.addAttribute("topicPage", bookPage);
 
