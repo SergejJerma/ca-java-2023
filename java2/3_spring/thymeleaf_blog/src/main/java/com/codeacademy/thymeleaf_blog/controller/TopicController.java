@@ -48,6 +48,16 @@ public class TopicController {
         Topic topic = topicService.getTopic(id);
         comment.setTopic(topic);
         commentService.addCommentToTopic(comment);
+        /*
+         * If Post-Redirect-Get pattern is not used then
+         * after user does POST, and gets server response,
+         * the last request made is POST.
+         * PROBLEM: if user presses refresh button - user makes last request (POST)
+         * and once more sends the last request to the server (thus duplicate data can occur on the server.
+         * (uncomment to try it out)
+         * */
+//        model.addAttribute("topic", topic);
+//        return "topic";
         return "redirect:/topics/" + id;
     }
 
