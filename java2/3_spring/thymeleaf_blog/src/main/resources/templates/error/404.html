@@ -6,7 +6,8 @@
 </head>
 <body>
 
-Such page does not exist
+Such page does not exist<br>
+<span th:text="'Time:' + ${#dates.format(#dates.createNow(), 'yyyy-MMM-dd  HH:mm:ss.SSS')}"></span>
 
 </body>
 </html>
