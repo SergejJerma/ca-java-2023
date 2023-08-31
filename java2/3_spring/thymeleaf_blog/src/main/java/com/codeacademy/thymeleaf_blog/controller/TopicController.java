@@ -28,13 +28,6 @@ public class TopicController {
         this.commentService = commentService;
     }
 
-    @GetMapping
-    public String getTopics(Model model) {
-        List<Topic> topics = topicService.getAllTopics();
-        model.addAttribute("topics", topics);
-        return "topics";
-    }
-
     @GetMapping("/{id}")
     public String getTopic(@PathVariable Long id,  Model model) {
         model.addAttribute("id", id);
@@ -83,18 +76,17 @@ public class TopicController {
     /**
      * List topics using pageable
      * Request example:
-     *  http://localhost:8080/topics/list?size=3&page=0&sort=title,asc
+     *  http://localhost:8080/topics?size=3&page=0&sort=title,asc
      */
-    @GetMapping("/list")
+    @GetMapping
     public String listTopics(Model model,
                              @PageableDefault(sort = { "title"}, direction = Sort.Direction.DESC, size = 2, page = 1)
                              Pageable pageable)
     {
-        Page<Topic> bookPage = topicService.findPaginated(pageable);
+        Page<Topic> topicsPage = topicService.findPaginated(pageable);
+        model.addAttribute("topics", topicsPage);
 
-        model.addAttribute("topicPage", bookPage);
-
-        int totalPages = bookPage.getTotalPages();
+        int totalPages = topicsPage.getTotalPages();
         if (totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(0, totalPages - 1)
                     .boxed()
@@ -102,7 +94,7 @@ public class TopicController {
             model.addAttribute("pageNumbers", pageNumbers);
         }
 
-        return "listTopics";
+        return "topics";
     }
 
 }
