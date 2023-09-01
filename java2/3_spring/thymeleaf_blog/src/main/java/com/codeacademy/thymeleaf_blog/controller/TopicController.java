@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -99,7 +100,14 @@ public class TopicController {
 
     @GetMapping("/exception")
     public String getException() {
-        throw  new CustomStatusException("Just to test how this works");
+        return topicService.throwException();
+    }
+
+    @ExceptionHandler
+    public String handleException(CustomStatusException exception, Model model) {
+        model.addAttribute("errorId", UUID.randomUUID().toString());
+        model.addAttribute("message", exception.getMessage());
+        return  "customError";
     }
 
 }

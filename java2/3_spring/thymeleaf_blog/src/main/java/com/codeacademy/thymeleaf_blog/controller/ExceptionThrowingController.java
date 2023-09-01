@@ -1,0 +1,23 @@
+package com.codeacademy.thymeleaf_blog.controller;
+
+import com.codeacademy.thymeleaf_blog.service.TopicService;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/throwing")
+public class ExceptionThrowingController {
+
+    private final TopicService topicService;
+
+    public ExceptionThrowingController(TopicService topicService) {
+        this.topicService = topicService;
+    }
+
+    @GetMapping("/exception")
+    public String getException() {
+        return topicService.throwException();
+    }
+
+}
