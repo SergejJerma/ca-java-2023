@@ -97,4 +97,9 @@ public class TopicController {
         return "topics";
     }
 
+    @GetMapping("/exception")
+    public String getException() {
+        throw  new CustomStatusException("Just to test how this works");
+    }
+
 }
