@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 
-@Profile(value = "devProfile")
+@Profile(value = "!prodProfile")
 @RestController
 @RequestMapping("/hello")
 public class OnlyTestController {
