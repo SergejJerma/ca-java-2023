@@ -24,7 +24,7 @@ public class OnlyTestController {
 //    @Value("${some.value.from.property.source}")
     private final String someValue;
 
-    public OnlyTestController(Environment environment, @Value("${some.value.from.property.source}") String prop) {
+    public OnlyTestController(Environment environment, @Value("${some.missing.value:default value}") String prop) {
         this.environment = environment;
         this.someValue = prop;
     }
