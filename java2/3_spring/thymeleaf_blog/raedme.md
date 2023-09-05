@@ -23,4 +23,13 @@ docker pull mysql:8
 docker run -e MYSQL_ROOT_PASSWORD=rootPassword mysql:8
 ```
 
+## docker-compose
+Remember: ALWAYS REBUILD YOUR APP BEFORE rebuilding docker image (to pick up you latest code changes)
+```bash
+mvn clean compile
+```
 
+Run docker compose (application + database + ... possibly other services)
+```bash
+docker-compose up --build -d
+```
