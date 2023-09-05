@@ -22,9 +22,9 @@ public class OnlyTestController {
     private String environmentProperty;
 
 //    @Value("${some.value.from.property.source}")
-    private final String someValue;
+    private final String[] someValue;
 
-    public OnlyTestController(Environment environment, @Value("${some.missing.value:default value}") String prop) {
+    public OnlyTestController(Environment environment, @Value("#{'${values}'.split(';')}") String[] prop) {
         this.environment = environment;
         this.someValue = prop;
     }
@@ -34,7 +34,7 @@ public class OnlyTestController {
         String allActiveProfiles = Arrays.toString(environment.getActiveProfiles());
         String message = "Some info %s about currently active profiles that should not be visible in PROD, like %s"
                 .formatted(allActiveProfiles, this.environmentProperty);
-        return message.concat("\n some value from propertySource: %s".formatted(someValue));
+        return message.concat("\n some value from propertySource: %s".formatted(Arrays.toString(someValue)));
     }
 
 }
