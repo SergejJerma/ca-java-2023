@@ -1,6 +1,12 @@
 # Can set active profile using ... application.yaml
 #spring.profiles.active=prodProfile2,myCustomProfile
 
+
+custom:
+  properties:
+    email: my@email.com
+    age: 30
+
 my.custom.environment.property: "default property value"
 
 logging:

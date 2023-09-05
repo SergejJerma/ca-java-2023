@@ -1,13 +1,17 @@
 package com.codeacademy.thymeleaf_blog.config;
 
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
 import java.util.Arrays;
 
-@Profile(value = {"myCustomProfile"})
+@PropertySource("classpath:mySecrets.properties")
+@EnableConfigurationProperties(CustomConfigProp.class)
+//@Profile(value = {"!myCustomProfile"})
 @Configuration
 public class CustomProfileConfig {
 
@@ -16,9 +20,10 @@ public class CustomProfileConfig {
 //    private Environment environment;
 
     @Bean
-    public String defaultProfileTestBean(Environment environment) {
+    public String defaultProfileTestBean(Environment environment, CustomConfigProp prop) {
         String[] activeProfiles = environment.getActiveProfiles();
-        System.out.println("Active profiles: " + Arrays.toString(activeProfiles));
+        System.out.println("Active profiles: " + Arrays.toString(activeProfiles)
+                + "email: %s, age: %s".formatted(prop.email(), prop.age()));
         return "";
     }
 
