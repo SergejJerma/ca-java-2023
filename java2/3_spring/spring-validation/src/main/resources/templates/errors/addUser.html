@@ -50,11 +50,7 @@
 					<p th:if="${#fields.hasErrors('phoneNumber')}"
 						th:errorclass="error" th:errors="*{phoneNumber}" />
 				</div>
-				<div th:if="${#fields.hasErrors('global')}">
-					<h3>Global errors:</h3>
-					<p th:each="err : ${#fields.errors('global')}" th:text="${err}"
-						class="error" />
-				</div>
+
 				<h3>All errors in place:</h3>
 				<div th:if="${#fields.hasAnyErrors()}">
 					<ul>

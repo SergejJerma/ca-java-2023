@@ -13,11 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserController {
 
-    @Autowired
-    private UserRepository repository;
-
-    @Autowired
-    private UserValidationService validationService;
 
     @GetMapping("/add")
     public String showAddUserForm(User user) {
@@ -27,12 +22,6 @@ public class UserController {
     @PostMapping("/add")
     public String addUser(@Valid User user, BindingResult result, Model model) {
 
-        String err = validationService.validateUser(user);
-
-        if (!err.isEmpty()) {
-            ObjectError error = new ObjectError("globalError", err);
-            result.addError(error);
-        }
 
         if (result.hasErrors()) {
             return "errors/addUser";
