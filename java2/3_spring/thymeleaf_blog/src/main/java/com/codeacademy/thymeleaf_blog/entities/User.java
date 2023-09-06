@@ -1,5 +1,6 @@
 package com.codeacademy.thymeleaf_blog.entities;
 
+import com.codeacademy.thymeleaf_blog.util.PhoneNumber;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,5 +33,6 @@ public class User {
 
     private String country;
 
+    @PhoneNumber(message = "Phone number is not valid.")
     private String phoneNumber;
 }
