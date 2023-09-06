@@ -1,22 +1,21 @@
-package com.baeldung.thymeleaf.errors;
+package com.codeacademy.thymeleaf_blog.controller;
 
-import javax.validation.Valid;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import com.codeacademy.thymeleaf_blog.entities.User;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/users")
 public class UserController {
-
 
     @GetMapping("/add")
     public String showAddUserForm(User user) {
-        return "errors/addUser";
+        return "user/addUser";
     }
 
     @PostMapping("/add")
@@ -24,12 +23,10 @@ public class UserController {
 
 
         if (result.hasErrors()) {
-            return "errors/addUser";
+            return "user/addUser";
         }
 
-        repository.save(user);
-        model.addAttribute("users", repository.findAll());
-        return "errors/home";
+        return "user/home";
     }
 
 }

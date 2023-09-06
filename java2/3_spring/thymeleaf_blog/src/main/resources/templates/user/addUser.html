@@ -15,7 +15,7 @@
 	<div>
 		<div>
 			<h2>Add a Record</h2>
-			<form action="#" th:action="@{/add}" th:object="${user}"
+			<form action="#" th:action="@{/users/add}" th:object="${user}"
 				method="post" class="form">
 				<div>
 					<label for="fullName">Name</label> <input type="text"
@@ -50,7 +50,6 @@
 					<p th:if="${#fields.hasErrors('phoneNumber')}"
 						th:errorclass="error" th:errors="*{phoneNumber}" />
 				</div>
-
 				<h3>All errors in place:</h3>
 				<div th:if="${#fields.hasAnyErrors()}">
 					<ul>
