@@ -1,6 +1,7 @@
 package com.codeacademy.thymeleaf_blog.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +18,7 @@ public class Topic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @NotEmpty(message = "Title cannot be empty.")
     private String title;
     private String header;
 

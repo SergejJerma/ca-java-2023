@@ -4,12 +4,14 @@ import com.codeacademy.thymeleaf_blog.entities.Comment;
 import com.codeacademy.thymeleaf_blog.entities.Topic;
 import com.codeacademy.thymeleaf_blog.service.CommentService;
 import com.codeacademy.thymeleaf_blog.service.TopicService;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -57,14 +59,16 @@ public class TopicController {
     }
 
     @GetMapping("/add")
-    public String getAddTopicForm(Model model) {
-        model.addAttribute("newTopic", new Topic());
+    public String getAddTopicForm(Topic topic) {
         return "addTopic";
     }
 
-    @PostMapping
-    public String addNewTopic(Topic newTopic, Model model) {
-        topicService.addNewTopic(newTopic);
+    @PostMapping("/add")
+    public String addNewTopic(@Valid Topic topic, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "addTopic";
+        }
+        topicService.addNewTopic(topic);
         return "redirect:/topics";
     }
     @GetMapping("/filter")
