@@ -15,15 +15,10 @@ spring:
     # default password
     password:
 
-  # schemos iniciavimo scripto vieta
-  sql:
-    init:
-      schema-locations: classpath:db/schema.sql
-      data-locations: classpath:db/data.sql
-  # jeigu kas nors netinka duombazeje - tegu Hibernate pataiso automatiskai. Jei viskas OK - tegu neliecia
+  # validuoja pgl db/migration sql
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     database-platform: org.hibernate.dialect.H2Dialect
     properties:
       hibernate:
@@ -50,9 +45,9 @@ custom:
 
 my.custom.environment.property: "default property value"
 
-logging:
-  level:
-    root: info
+#logging:
+#  level:
+#    root: info
 ---
 spring:
   config:

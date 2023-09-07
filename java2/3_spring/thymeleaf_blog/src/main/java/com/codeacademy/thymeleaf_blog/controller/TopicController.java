@@ -5,6 +5,8 @@ import com.codeacademy.thymeleaf_blog.entities.Topic;
 import com.codeacademy.thymeleaf_blog.service.CommentService;
 import com.codeacademy.thymeleaf_blog.service.TopicService;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -20,8 +22,11 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Controller
+//@Slf4j
 @RequestMapping("/topics")
 public class TopicController {
+
+    private static final Logger logger = LoggerFactory.getLogger(TopicController.class);
 
     private final TopicService topicService;
     private final CommentService commentService;
@@ -68,7 +73,9 @@ public class TopicController {
         if (result.hasErrors()) {
             return "addTopic";
         }
-        topicService.addNewTopic(topic);
+        logger.info("New topic={} added", topic);
+        Topic savedTopic = topicService.addNewTopic(topic);
+        logger.info("New topic={} saved", savedTopic);
         return "redirect:/topics";
     }
     @GetMapping("/filter")

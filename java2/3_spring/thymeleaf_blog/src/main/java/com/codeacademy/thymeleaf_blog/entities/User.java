@@ -1,10 +1,7 @@
 package com.codeacademy.thymeleaf_blog.entities;
 
 import com.codeacademy.thymeleaf_blog.util.PhoneNumber;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @Data
+@Table(name = "usr")
 public class User {
 
     @Id
