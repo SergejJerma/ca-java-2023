@@ -1,10 +1,11 @@
 package com.codeacademy.thymeleaf_blog.config;
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.validation.annotation.Validated;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Validated
 //@PropertySource("classpath:mySecrets.properties")

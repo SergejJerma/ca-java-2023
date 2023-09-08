@@ -1,10 +1,11 @@
 package com.codeacademy.thymeleaf_blog.entities;
 
 import com.codeacademy.thymeleaf_blog.util.PhoneNumber;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
 @NoArgsConstructor

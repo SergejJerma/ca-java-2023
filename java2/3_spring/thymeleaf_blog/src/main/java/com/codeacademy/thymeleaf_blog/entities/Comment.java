@@ -1,8 +1,10 @@
 package com.codeacademy.thymeleaf_blog.entities;
 
-import jakarta.persistence.*;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
