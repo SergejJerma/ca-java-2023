@@ -1,6 +1,5 @@
 package com.codeacademy.thymeleaf_blog.service;
 
-import com.codeacademy.thymeleaf_blog.controller.CustomStatusException;
 import com.codeacademy.thymeleaf_blog.entities.Topic;
 import com.codeacademy.thymeleaf_blog.repo.TopicRepository;
 import org.springframework.data.domain.Page;
@@ -31,10 +30,6 @@ public class TopicService {
     }
     public Page<Topic> findPaginated(Pageable pageable) {
         return topicRepository.findAll(pageable);
-    }
-
-    public String throwException() {
-        throw  new CustomStatusException("Just to test how this works");
     }
 
     public void deleteTopic(Long id) {

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -55,7 +54,7 @@ public class TopicController {
          * after user does POST, and gets server response,
          * the last request made is POST.
          * PROBLEM: if user presses refresh button - user makes last request (POST)
-         * and once more sends the last request to the server (thus duplicate data can occur on the server.
+         * and once more sends the last request to the server (thus duplicate data can occur on the server).
          * (uncomment to try it out)
          * */
 //        model.addAttribute("topic", topic);
@@ -84,6 +83,7 @@ public class TopicController {
         logger.info("New topic={} saved", savedTopic);
         return "redirect:/topics";
     }
+
     @GetMapping("/filter")
     public String filterTopics(@RequestParam String keyword, Model model) {
         List<Topic> topics = topicService.filterTopicsByKeyword(keyword);
@@ -113,18 +113,6 @@ public class TopicController {
         }
 
         return "topics";
-    }
-
-    @GetMapping("/exception")
-    public String getException() {
-        return topicService.throwException();
-    }
-
-    @ExceptionHandler
-    public String handleException(CustomStatusException exception, Model model) {
-        model.addAttribute("errorId", UUID.randomUUID().toString());
-        model.addAttribute("message", exception.getMessage());
-        return  "customError";
     }
 
 }
