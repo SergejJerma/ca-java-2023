@@ -21,10 +21,13 @@ public class WebSecurityConfig {
 		this.userService = userService;
 	}
 
+	private final String[] staticFiles = {"/css/**", "/images/**", "/js/**"};
+
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
+				.antMatchers(staticFiles).permitAll()
 				.antMatchers("/", "/h2/**", "/topics", "/registration").permitAll()
 				.anyRequest().authenticated()
 				.and()
