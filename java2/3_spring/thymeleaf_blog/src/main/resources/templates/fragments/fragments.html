@@ -24,10 +24,14 @@
                 <li><a href="#" class="nav-link px-2 text-white" th:text="#{About}">About</a></li>
             </ul>
 
-            <form th:action="@{/topics/filter}">
-                <span th:text="#{Filter}">Filter:</span>
-                <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
-                <input type="submit" value="Search" />
+            <form class="row row-cols-lg-auto g-3 align-items-center me-2">
+                <div class="col-12">
+                    <label class="visually-hidden" for="searchInput" th:value="#{Search}">Search</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="searchInput" th:placeholder="#{Search}">
+                        <div class="input-group-text"><i class="fas fa-search"></i></div>
+                    </div>
+                </div>
             </form>
 
             <div th:fragment="languageSelector" class="dropdown">
