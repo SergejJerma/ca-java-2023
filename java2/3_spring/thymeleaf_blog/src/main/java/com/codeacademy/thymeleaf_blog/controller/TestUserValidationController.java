@@ -1,6 +1,6 @@
 package com.codeacademy.thymeleaf_blog.controller;
 
-import com.codeacademy.thymeleaf_blog.entities.User;
+import com.codeacademy.thymeleaf_blog.entities.TestUserValidation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,15 +12,15 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/users")
-public class UserController {
+public class TestUserValidationController {
 
     @GetMapping("/add")
-    public String showAddUserForm(User user) {
+    public String showAddUserForm(TestUserValidation user) {
         return "user/addUser";
     }
 
     @PostMapping("/add")
-    public String addUser(@Valid User user, BindingResult result, Model model) {
+    public String addUser(@Valid TestUserValidation user, BindingResult result, Model model) {
 
 
         if (result.hasErrors()) {

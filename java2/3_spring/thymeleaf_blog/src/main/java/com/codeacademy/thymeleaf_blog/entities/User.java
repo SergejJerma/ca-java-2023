@@ -1,37 +1,58 @@
 package com.codeacademy.thymeleaf_blog.entities;
 
-import com.codeacademy.thymeleaf_blog.util.PhoneNumber;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotBlank;
+import java.util.Collection;
+import java.util.Set;
+
 
 @Entity
 @NoArgsConstructor
 @Data
 @Table(name = "usr")
-public class User {
-
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(message = "Username cannot be empty")
+    private String username;
+    @NotBlank(message = "Password cannot be empty")
+    private String password;
+    private boolean active;
 
-    @NotEmpty(message = "User's name cannot be empty.")
-    @Size(min = 5, max = 250)
-    private String fullName;
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles;
 
-    @NotEmpty(message = "User's email cannot be empty.")
-    @Size(min = 7, max = 320)
-    @Email
-    private String email;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
 
-    @NotNull(message = "User's age cannot be null.")
-    @Min(value = 18)
-    private Integer age;
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
 
-    private String country;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
 
-    @PhoneNumber(message = "Phone number is not valid.")
-    private String phoneNumber;
+    @Override
+    public boolean isEnabled() {
+        return isActive();
+    }
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return getRoles();
+    }
 }
