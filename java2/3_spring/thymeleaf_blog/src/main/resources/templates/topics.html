@@ -19,10 +19,19 @@
         <table class="table table-dark table-striped">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col" th:text="#{Title}">Title</th>
-                    <th scope="col" th:text="#{Header}">Header</th>
-                    <th scope="col" th:text="#{Action}">Action</th>
+                    <th scope="col">
+                        <a>#</a>
+                    </th>
+                    <th scope="col">
+                        <a th:text="#{Title}">Title</a>
+                    </th>
+                    <th scope="col">
+                        <a th:text="#{Header}">Header</a>
+                    </th>
+                    <th scope="col">
+                        <a th:text="#{Action}">Action</a>
+                        <a class="btn btn-success float-end" th:href="@{/topics/add}" th:text="#{Create}">Create</a>
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -50,8 +59,6 @@
         </div>
     </div>
 
-    <h1>New topic submission form</h1>
-    <a th:href="@{/topics/add}">Go to Create Topic Form page</a>
 
 </main>
 
