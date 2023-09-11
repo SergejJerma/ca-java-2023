@@ -15,3 +15,7 @@
     color: white;
     border-radius: 2px;
 }
+
+.error {
+    color: indianred;
+}

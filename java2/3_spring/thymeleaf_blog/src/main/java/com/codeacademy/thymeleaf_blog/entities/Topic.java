@@ -19,7 +19,7 @@ public class Topic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty(message = "Title cannot be empty.")
+    @NotEmpty(message = "{title.missing}")
     private String title;
     private String header;
 
