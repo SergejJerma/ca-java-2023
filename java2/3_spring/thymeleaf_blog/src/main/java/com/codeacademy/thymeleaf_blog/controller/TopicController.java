@@ -63,6 +63,12 @@ public class TopicController {
         return "redirect:/topics/" + id;
     }
 
+    @PostMapping("/delete/{id}")
+    public String deleteTopic(@PathVariable Long id) {
+        topicService.deleteTopic(id);
+        return "redirect:/topics";
+    }
+
     @GetMapping("/add")
     public String getAddTopicForm(Topic topic) {
         return "addTopic";

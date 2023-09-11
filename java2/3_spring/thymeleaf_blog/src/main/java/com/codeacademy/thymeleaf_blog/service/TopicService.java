@@ -36,4 +36,8 @@ public class TopicService {
     public String throwException() {
         throw  new CustomStatusException("Just to test how this works");
     }
+
+    public void deleteTopic(Long id) {
+        topicRepository.deleteById(id);
+    }
 }

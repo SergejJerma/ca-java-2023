@@ -48,6 +48,13 @@
                     <td th:text="${topic.title}"></td>
                     <td th:text="${topic.header}"></td>
                     <td>
+                        <form action="#" th:action="@{/topics/delete/{id}(id=${topic.id})}" th:object="${topic}"
+                              method="post" class="form">
+                            <input type="submit" value="Delete Topic">
+
+                        </form>
+                    </td>
+                    <td>
                         <a class="btn btn-secondary" th:href="@{/topics/{id}(id=${topic.id})}" th:text="#{View}">view</a>
                     </td>
                 </tr>
