@@ -28,7 +28,7 @@ public class WebSecurityConfig {
 
 		http.authorizeRequests()
 				.antMatchers(staticFiles).permitAll()
-				.antMatchers("/", "/h2/**", "/topics", "/registration").permitAll()
+				.antMatchers("/", "/h2/**", "/topics", "/topics/*", "/registration").permitAll()
 				.anyRequest().authenticated()
 				.and()
 				.formLogin()
