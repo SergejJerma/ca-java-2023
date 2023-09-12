@@ -47,6 +47,6 @@ public class WebSecurityConfig {
 	@Autowired
 	public void configure(AuthenticationManagerBuilder auth, PasswordEncoder passwordEncoder) throws Exception {
 		auth.userDetailsService(userService)
-				.passwordEncoder(NoOpPasswordEncoder.getInstance());
+				.passwordEncoder(NoOpPasswordEncoder.getInstance()); //.passwordEncoder(passwordEncoder);
 	}
 }
