@@ -49,7 +49,8 @@
                     <td th:text="${topic.header}"></td>
                     <td>
                         <form action="#" th:action="@{/topics/delete/{id}(id=${topic.id})}" th:object="${topic}"
-                              method="post" class="form">
+                              th:method="delete" class="form">
+                            <input type="hidden" name="_method" value="delete">
                             <input type="submit" value="Delete Topic">
 
                         </form>
