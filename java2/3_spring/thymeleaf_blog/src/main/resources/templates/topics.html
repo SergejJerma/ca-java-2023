@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" data-bs-theme="dark">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      data-bs-theme="dark" lang="en" >
 <head>
     <meta charset="UTF-8">
     <title>Movie Topics</title>
@@ -40,11 +41,11 @@
                     <td th:text="${topic.title}"></td>
                     <td th:text="${topic.header}"></td>
                     <td>
-                        <form th:action="@{/topics/delete/{id}(id=${topic.id})}" th:object="${topic}" th:method="delete" class="form">
+                        <form sec:authorize="hasAuthority('ADMIN')" th:action="@{/topics/delete/{id}(id=${topic.id})}" th:object="${topic}" th:method="delete" class="form">
                             <input type="hidden" name="_method" value="delete">
                             <input type="submit" value="Delete Topic" class="btn btn-danger">
-                            <a class="btn btn-primary" th:href="@{/topics/{id}(id=${topic.id})}" th:text="#{View}">View</a>
                         </form>
+                        <a class="btn btn-primary" th:href="@{/topics/{id}(id=${topic.id})}" th:text="#{View}">View</a>
                     </td>
                 </tr>
             </tbody>
