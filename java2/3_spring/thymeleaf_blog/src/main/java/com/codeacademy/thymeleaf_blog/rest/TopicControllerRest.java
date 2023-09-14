@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +29,8 @@ public class TopicControllerRest {
         return ResponseEntity.ok().body(topics);
     }
 
-    @GetMapping("/{id}")
+//    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_XML_VALUE)
+    @GetMapping(path = "/{id}")
     public ResponseEntity<TopicDto> getTopic(@PathVariable long id) {
         return ResponseEntity.of(topicService.getTopic(id));
     }
