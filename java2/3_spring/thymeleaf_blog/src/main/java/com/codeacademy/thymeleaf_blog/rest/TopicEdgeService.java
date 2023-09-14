@@ -29,6 +29,18 @@ public class TopicEdgeService {
         return topicService.getTopic(topidId).map(this::toTopicDto);
     }
 
+    public TopicDto addTopic(TopicDto topicDto) {
+        var topic = topicService.addNewTopic(toDomainTopic(topicDto));
+        return toTopicDto(topic);
+    }
+
+    private Topic toDomainTopic(TopicDto topicDto) {
+        Topic topic = new Topic();
+        topic.setHeader(topicDto.getHeader());
+        topic.setTitle(topicDto.getTitle());
+        return topic;
+    }
+
     private TopicDto toTopicDto(Topic topic) {
         TopicDto topicDto = new TopicDto();
         topicDto.setId(topic.getId());
