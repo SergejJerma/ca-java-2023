@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TopicService {
@@ -21,8 +22,8 @@ public class TopicService {
         return topicRepository.save(newTopic);
     }
 
-    public Topic getTopic(Long id) {
-        return topicRepository.findById(id).orElse(null);
+    public Optional<Topic> getTopic(Long id) {
+        return topicRepository.findById(id);
     }
 
     public List<Topic> filterTopicsByKeyword(String keyword) {

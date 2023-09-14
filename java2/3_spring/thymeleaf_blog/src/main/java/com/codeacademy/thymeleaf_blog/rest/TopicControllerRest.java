@@ -30,10 +30,6 @@ public class TopicControllerRest {
 
     @GetMapping("/{id}")
     public ResponseEntity<TopicDto> getTopic(@PathVariable long id) {
-        TopicDto topic = topicService.getTopic(id);
-        if (topic == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok().body(topic);
+        return ResponseEntity.of(topicService.getTopic(id));
     }
 }

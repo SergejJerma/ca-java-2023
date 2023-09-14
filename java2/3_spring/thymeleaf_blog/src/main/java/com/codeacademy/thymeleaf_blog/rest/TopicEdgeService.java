@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TopicEdgeService {
@@ -24,12 +25,8 @@ public class TopicEdgeService {
                 .map(this::toTopicDto);
     }
 
-    public TopicDto getTopic(long topidId) {
-        Topic topic = topicService.getTopic(topidId);
-        if (topic == null) {
-            return null;
-        }
-        return toTopicDto(topic);
+    public Optional<TopicDto> getTopic(long topidId) {
+        return topicService.getTopic(topidId).map(this::toTopicDto);
     }
 
     private TopicDto toTopicDto(Topic topic) {

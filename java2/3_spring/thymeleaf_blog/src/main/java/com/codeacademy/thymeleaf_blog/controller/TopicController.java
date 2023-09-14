@@ -39,14 +39,14 @@ public class TopicController {
     public String getTopic(@PathVariable Long id,  Model model) {
         model.addAttribute("id", id);
         model.addAttribute("comment", new Comment());
-        Topic topic = topicService.getTopic(id);
+        Topic topic = topicService.getTopic(id).orElse(null);
         model.addAttribute("topic", topic);
         return "topic";
     }
 
     @PostMapping("/{id}")
     public String addCommentToTopic(@PathVariable Long id, Comment comment, Model model) {
-        Topic topic = topicService.getTopic(id);
+        Topic topic = topicService.getTopic(id).orElse(null);
         comment.setTopic(topic);
         commentService.addCommentToTopic(comment);
         /*
