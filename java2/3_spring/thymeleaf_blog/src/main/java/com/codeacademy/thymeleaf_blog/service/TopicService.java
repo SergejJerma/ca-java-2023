@@ -22,7 +22,7 @@ public class TopicService {
     }
 
     public Topic getTopic(Long id) {
-        return topicRepository.findById(id).get();
+        return topicRepository.findById(id).orElse(null);
     }
 
     public List<Topic> filterTopicsByKeyword(String keyword) {

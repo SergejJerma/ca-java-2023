@@ -24,6 +24,14 @@ public class TopicEdgeService {
                 .map(this::toTopicDto);
     }
 
+    public TopicDto getTopic(long topidId) {
+        Topic topic = topicService.getTopic(topidId);
+        if (topic == null) {
+            return null;
+        }
+        return toTopicDto(topic);
+    }
+
     private TopicDto toTopicDto(Topic topic) {
         TopicDto topicDto = new TopicDto();
         topicDto.setId(topic.getId());
