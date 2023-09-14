@@ -52,4 +52,15 @@ public class TopicControllerRest {
         topicService.deleteTopicById(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping
+    public ResponseEntity<TopicDto> updateTopic(@RequestBody TopicDto topicToUpdate) {
+        TopicDto updatedTopic = topicService.updateTopic(topicToUpdate);
+        return ResponseEntity.ok().body(updatedTopic);
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    private ResponseEntity<ErrorResponse> handleErrorResponse(Exception ex) {
+        return ResponseEntity.badRequest().body(new ErrorResponse(ex.getMessage()));
+    }
 }

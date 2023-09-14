@@ -38,6 +38,15 @@ public class TopicEdgeService {
         topicService.deleteTopic(id);
     }
 
+    public TopicDto updateTopic(TopicDto topicToUpdate) {
+        Long id = topicToUpdate.getId();
+        Topic topicFound = topicService.getTopic(id)
+                .orElseThrow(() -> new IllegalArgumentException("Topic with id %d not found".formatted(id)));
+        topicFound.setTitle(topicToUpdate.getTitle());
+        topicFound.setHeader(topicToUpdate.getHeader());
+        return toTopicDto(topicService.save(topicFound));
+    }
+
     private Topic toDomainTopic(TopicDto topicDto) {
         Topic topic = new Topic();
         topic.setHeader(topicDto.getHeader());
