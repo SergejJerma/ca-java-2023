@@ -34,6 +34,10 @@ public class TopicEdgeService {
         return toTopicDto(topic);
     }
 
+    public void deleteTopicById(long id) {
+        topicService.deleteTopic(id);
+    }
+
     private Topic toDomainTopic(TopicDto topicDto) {
         Topic topic = new Topic();
         topic.setHeader(topicDto.getHeader());

@@ -46,4 +46,10 @@ public class TopicControllerRest {
         return ResponseEntity.created(uri)
                 .body(topicDto);
     }
+
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<TopicDto> deleteTopic(@PathVariable long id) {
+        topicService.deleteTopicById(id);
+        return ResponseEntity.noContent().build();
+    }
 }
