@@ -22,11 +22,13 @@ public class WebSecurityConfig {
 	}
 
 	private final String[] staticFiles = {"/css/**", "/images/**", "/js/**"};
+	private final String[] restApi = {"/rest/**"};
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
+				.antMatchers(restApi).permitAll()
 				.antMatchers(staticFiles).permitAll()
 				.antMatchers("/", "/h2/**", "/topics", "/topics/*", "/registration").permitAll()
 				.anyRequest().authenticated()
