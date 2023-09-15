@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      lang="en">
 <head>
     <meta charset="UTF-8">
 </head>
@@ -23,6 +24,11 @@
                 <li><a href="#" class="nav-link px-2 text-white" th:text="#{FAQs}">FAQs</a></li>
                 <li><a href="#" class="nav-link px-2 text-white" th:text="#{About}">About</a></li>
             </ul>
+
+            <div sec:authorize="isAuthenticated()">
+                <span>Username:</span>
+                <span sec:authentication="principal.username"></span>
+            </div>
 
             <form class="row row-cols-lg-auto g-3 align-items-center me-2">
                 <div class="col-12">
