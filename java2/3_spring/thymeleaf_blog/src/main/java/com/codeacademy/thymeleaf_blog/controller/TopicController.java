@@ -28,11 +28,9 @@ public class TopicController {
     private static final Logger logger = LoggerFactory.getLogger(TopicController.class);
 
     private final TopicService topicService;
-    private final CommentService commentService;
 
-    public TopicController(TopicService topicService, CommentService commentService) {
+    public TopicController(TopicService topicService) {
         this.topicService = topicService;
-        this.commentService = commentService;
     }
 
     @GetMapping("/{id}")
@@ -42,24 +40,6 @@ public class TopicController {
         Topic topic = topicService.getTopic(id).orElse(null);
         model.addAttribute("topic", topic);
         return "topic";
-    }
-
-    @PostMapping("/{id}")
-    public String addCommentToTopic(@PathVariable Long id, Comment comment, Model model) {
-        Topic topic = topicService.getTopic(id).orElse(null);
-        comment.setTopic(topic);
-        commentService.addCommentToTopic(comment);
-        /*
-         * If Post-Redirect-Get pattern is not used then
-         * after user does POST, and gets server response,
-         * the last request made is POST.
-         * PROBLEM: if user presses refresh button - user makes last request (POST)
-         * and once more sends the last request to the server (thus duplicate data can occur on the server).
-         * (uncomment to try it out)
-         * */
-//        model.addAttribute("topic", topic);
-//        return "topic";
-        return "redirect:/topics/" + id;
     }
 
     @DeleteMapping("/delete/{id}")
