@@ -15,11 +15,16 @@
 
 <main>
     <div class="container mt-5 mb-1">
-    <h3 th:text="${topic.title}"></h3>
+    <h3>Written by <span th:text="${topic.title}"></span></h3>
     <section th:text="${topic.header}"></section>
     <div th:each="comment : ${topic.comments}">
-        <section th:text="${comment?.createdBy?.username}"></section>
-        <section th:text="${comment.text}"></section>
+        <div class="card">
+            <div class="card-header" th:text="${comment?.createdBy?.username}"></div>
+            <div class="card-body">
+                <p class="card-text" th:text="${comment.text}"></p>
+                <a href="#" class="btn btn-primary">Do some action</a>
+            </div>
+        </div>
     </div>
     <div sec:authorize="hasAnyAuthority('USER', 'ADMIN')" class="container">
         <h3>Add new comment</h3>
