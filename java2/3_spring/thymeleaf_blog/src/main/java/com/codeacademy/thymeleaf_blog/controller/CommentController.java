@@ -2,8 +2,11 @@ package com.codeacademy.thymeleaf_blog.controller;
 
 import com.codeacademy.thymeleaf_blog.entities.Comment;
 import com.codeacademy.thymeleaf_blog.entities.Topic;
+import com.codeacademy.thymeleaf_blog.entities.User;
 import com.codeacademy.thymeleaf_blog.service.CommentService;
 import com.codeacademy.thymeleaf_blog.service.TopicService;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,9 +24,11 @@ public class CommentController {
         this.commentService = commentService;
     }
 
+    @PreAuthorize("hasRole('ROLE_USER')")
     @PostMapping
-    public String addCommentToTopic(Long id, Comment comment, Model model) {
+    public String addCommentToTopic(@AuthenticationPrincipal User user, Long id, Comment comment, Model model) {
         Topic topic = topicService.getTopic(id).orElse(null);
+        comment.setCreatedBy(user);
         comment.setTopic(topic);
         commentService.addCommentToTopic(comment);
         /*
