@@ -24,7 +24,9 @@
         </div>
         <div class="card-body">
             <p class="card-text" th:text="${comment.text}"></p>
-            <a href="#" class="btn btn-primary">Do some action</a>
+            <a th:if="${comment?.createdBy?.username} == ${#authentication.name}" th:text="#{Edit}"
+               class="btn btn-primary">
+            </a>
         </div>
     </div>
     <div sec:authorize="hasAnyAuthority('USER', 'ADMIN')" class="container">
