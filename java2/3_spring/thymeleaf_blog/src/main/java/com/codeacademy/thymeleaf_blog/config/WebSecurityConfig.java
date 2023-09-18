@@ -41,7 +41,7 @@ public class WebSecurityConfig {
 				.logout()
 				.permitAll()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/login");
+				.logoutSuccessUrl("/topics");
 
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
