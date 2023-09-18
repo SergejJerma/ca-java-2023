@@ -17,13 +17,9 @@ import java.util.Optional;
 public class TopicService {
 
     private final TopicRepository topicRepository;
-    private final UserRepository userRepository;
-    private final CommentRepository commentRepository;
 
-    public TopicService(TopicRepository topicRepository, UserRepository userRepository, CommentRepository commentRepository) {
+    public TopicService(TopicRepository topicRepository) {
         this.topicRepository = topicRepository;
-        this.userRepository = userRepository;
-        this.commentRepository = commentRepository;
     }
 
     public Topic addNewTopic(Topic newTopic) {
@@ -48,17 +44,4 @@ public class TopicService {
     public Topic save(Topic topicFound) {
         return topicRepository.save(topicFound);
     }
-
-    public void addComment(long topicId, Comment comment, User user) {
-        user = userRepository.findById(user.getId())
-                .orElseThrow(() -> new IllegalArgumentException("User with id %d does not exist"));
-        Topic topic = topicRepository.findById(topicId)
-                .orElseThrow(() -> new IllegalArgumentException("Topics with id %d does not exist"));
-
-        topic.addComment(comment);
-        user.addComment(comment);
-
-        commentRepository.save(comment);
-    }
-
 }

@@ -3,7 +3,6 @@ package com.codeacademy.thymeleaf_blog.controller;
 import com.codeacademy.thymeleaf_blog.entities.Comment;
 import com.codeacademy.thymeleaf_blog.entities.User;
 import com.codeacademy.thymeleaf_blog.service.CommentService;
-import com.codeacademy.thymeleaf_blog.service.TopicService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -16,16 +15,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/comments")
 public class CommentController {
 
-    private final TopicService topicService;
+    private final CommentService commentService;
 
-    public CommentController(TopicService topicService, CommentService commentService) {
-        this.topicService = topicService;
+    public CommentController(CommentService commentService) {
+        this.commentService = commentService;
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")
     @PostMapping
     public String addCommentToTopic(@AuthenticationPrincipal User user, @ModelAttribute Comment comment, @RequestParam long topicId) {
-        topicService.addComment(topicId, comment, user);
+        commentService.addComment(topicId, comment, user);
         return "redirect:/topics/%s".formatted(comment.getTopic().getId());
     }
 }

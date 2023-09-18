@@ -14,18 +14,18 @@ import java.util.Collections;
 @Service
 public class UserService implements UserDetailsService {
 
-    private final UserRepository userRepo;
+    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepo, PasswordEncoder passwordEncoder) {
-        this.userRepo = userRepo;
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepo.findByUsername(username);
+        User user = userRepository.findByUsername(username);
 
         if (user == null) {
             throw new UsernameNotFoundException("User not found");
@@ -34,7 +34,7 @@ public class UserService implements UserDetailsService {
         return user;
     }
     public boolean addUser(User user) {
-        User userFromDb = userRepo.findByUsername(user.getUsername());
+        User userFromDb = userRepository.findByUsername(user.getUsername());
 
         if (userFromDb != null) {
             return false;
@@ -45,9 +45,13 @@ public class UserService implements UserDetailsService {
         user.setPassword(user.getPassword());
 //        user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        userRepo.save(user);
+        userRepository.save(user);
 
         return true;
     }
 
+    public User findById(long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User with id %d does not exist"));
+    }
 }
