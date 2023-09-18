@@ -23,7 +23,11 @@ public class Topic {
     private String title;
     private String header;
 
-    @OneToMany(mappedBy = "topic", orphanRemoval = true)
+    @OneToMany(mappedBy = "topic", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
 
+    public void addComment(Comment comment) {
+        comment.setTopic(this);
+        this.comments.add(comment);
+    }
 }

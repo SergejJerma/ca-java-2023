@@ -29,7 +29,7 @@ public class User implements UserDetails {
     @NotBlank(message = "Password cannot be empty")
     private String password;
 
-    @OneToMany(mappedBy = "createdBy")
+    @OneToMany(mappedBy = "createdBy", cascade = CascadeType.PERSIST)
     private List<Comment> comments = new ArrayList<>();
 
     private boolean active;
@@ -63,6 +63,11 @@ public class User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();
+    }
+
+    public void addComment(Comment comment) {
+        comments.add(comment);
+        comment.setCreatedBy(this);
     }
 
     @Override
