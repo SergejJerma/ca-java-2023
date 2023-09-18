@@ -3,8 +3,10 @@ package com.codeacademy.thymeleaf_blog.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor
@@ -23,6 +25,9 @@ public class Comment {
 
     @ManyToOne
     private User createdBy;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 
     @Override
     public String toString() {
