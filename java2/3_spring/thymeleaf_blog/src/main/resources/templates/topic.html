@@ -15,7 +15,7 @@
 
 <main>
     <div class="container mt-5 mb-1">
-    <h3>Written by <span th:text="${topic.title}"></span></h3>
+    <h3 th:text="${topic.title}"></h3>
     <section th:text="${topic.header}"></section>
     <div th:each="comment : ${topic.comments}" class="card mt-1">
         <div class="card-header d-flex justify-content-between">
