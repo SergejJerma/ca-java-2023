@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Optional;
@@ -14,6 +15,7 @@ import java.util.Optional;
 import static org.hamcrest.Matchers.containsString;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -54,5 +56,25 @@ class TopicControllerTest {
 //  ... you're gonna use it fot verifying SOAP services
 //                .andExpect(xpath("/html/body/main/div/h3").string("Some very special topic title"))
 //                .andExpect(xpath("/html/body/main/div/section").string("Some very special topic header"));
+    }
+
+    @Test
+    void addNewTopic_userNotLoggedIn_redirectsToLogin() throws Exception {
+        //given
+        long givenTopicId = 1L;
+        Topic userSubmittedNewTopic = new Topic();
+        userSubmittedNewTopic.setId(givenTopicId);
+        userSubmittedNewTopic.setHeader("Some very special topic header");
+        userSubmittedNewTopic.setTitle("Some very special topic title");
+
+        //when-then
+        mockMvc.perform(post("/topics/add")
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                        .param("title", "Some very special topic title")
+                        .param("header", "Some very special topic header")
+                )
+                .andDo(print())
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrlPattern("**/login"));
     }
 }

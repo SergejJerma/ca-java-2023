@@ -31,7 +31,7 @@
                     </th>
                     <th scope="col">
                         <a th:text="#{Action}">Action</a>
-                        <a class="btn btn-success float-end" th:href="@{/topics/add}" th:text="#{Create}">Create</a>
+                        <a sec:authorize="isAuthenticated()" class="btn btn-success float-end" th:href="@{/topics/add}" th:text="#{Create}">Create</a>
                     </th>
                 </tr>
             </thead>
