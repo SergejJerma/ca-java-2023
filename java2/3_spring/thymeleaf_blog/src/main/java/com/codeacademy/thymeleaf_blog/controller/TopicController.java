@@ -2,7 +2,6 @@ package com.codeacademy.thymeleaf_blog.controller;
 
 import com.codeacademy.thymeleaf_blog.entities.Comment;
 import com.codeacademy.thymeleaf_blog.entities.Topic;
-import com.codeacademy.thymeleaf_blog.service.CommentService;
 import com.codeacademy.thymeleaf_blog.service.TopicService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,6 +42,7 @@ public class TopicController {
         return "topic";
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/delete/{id}")
     public String deleteTopic(@PathVariable Long id) {
         topicService.deleteTopic(id);
