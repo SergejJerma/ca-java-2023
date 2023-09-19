@@ -25,8 +25,8 @@ public class TopicEdgeService {
                 .map(this::toTopicDto);
     }
 
-    public Optional<TopicDto> getTopic(long topidId) {
-        return topicService.getTopic(topidId).map(this::toTopicDto);
+    public Optional<TopicDto> getTopic(long topicId) {
+        return topicService.getTopic(topicId).map(this::toTopicDto);
     }
 
     public TopicDto addTopic(TopicDto topicDto) {
